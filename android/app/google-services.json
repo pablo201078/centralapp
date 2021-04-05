@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "122572465590",
+    "firebase_url": "https://centralapp-mobile.firebaseio.com",
+    "project_id": "centralapp-mobile",
+    "storage_bucket": "centralapp-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122572465590:android:77cd443f55d89d20e0cd17",
+        "android_client_info": {
+          "package_name": "com.centralApp.central_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122572465590-rrrc837tq15f3q5lhjp31hjoqbpgd7q6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl0zPk7uhWnInxQsLQ3HUIn7rS0LxY80Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122572465590-rrrc837tq15f3q5lhjp31hjoqbpgd7q6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
