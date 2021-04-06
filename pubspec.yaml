@@ -27,7 +27,6 @@ dependencies:
   badges: ^1.1.1 #contador en el boton del carrito
   http:
  # qr_mobile_vision: ^2.0.0 #leer QR y Pdf417 del Dni
-  #barcode_scan_fork: ^2.0.2
   barcode_scan: ^3.0.1
   shared_preferences:
   scoped_model:
