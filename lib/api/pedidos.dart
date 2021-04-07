@@ -7,23 +7,6 @@ import 'package:http/http.dart' as http;
 import '../constantes.dart';
 import '../notificaciones.dart';
 
-/*Future<List<Pedido>> getPedidos(int idCliente) async {
-  var response = await http.get('${URL}pedidos.php?idCliente=$idCliente');
-
-  if (response.statusCode == 200) {
-    var jsonData = json.decode(response.body);
-    List<Pedido> lista = List<Pedido>();
-    for (var item in jsonData) {
-      lista.add(Pedido.fromJson(item));
-    }
-
-    return lista;
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Error de conexion');
-  }
-}*/
 
 Future<Pedido> getPedido(int idPedido) async {
   var client = http.Client();

@@ -6,12 +6,9 @@ import '../utils.dart';
 
 Future<List<Articulo>> getOfertas(int idCliente) async {
   var id = await getDeviceId();
-
-   var response = await http
-       .get('${URL}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
-  /*var response = await http.get(
-      '${URL}articulos-pruebabanner.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
-*/
+  var url = Uri.parse(
+      '${URL}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
+  var response = await http.get(url);
   if (response.statusCode == 200) {
     // If the server did return a 2 00 OK response,
     // then parse the JSON.
