@@ -6,8 +6,9 @@ import 'package:http/http.dart' as http;
 import '../constantes.dart';
 
 Future<List<Credito>> getCreditos(int idCliente) async {
-  var response = await http.get('${URL}compras.php?idCliente=$idCliente');
-  print('${URL}compras.php?idCliente=$idCliente');
+  var url = Uri.parse('${URL}compras.php?idCliente=$idCliente');
+  var response = await http.get(url);
+
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
     List<Credito> lista = List<Credito>();
@@ -24,9 +25,11 @@ Future<List<Credito>> getCreditos(int idCliente) async {
 }
 
 Future<Credito> getCredito(int idCliente, int idCredito) async {
+  var url =
+      Uri.parse('${URL}compras.php?idCredito=$idCredito&idCliente=$idCliente');
   var response = await http
       .get('${URL}compras.php?idCredito=$idCredito&idCliente=$idCliente');
-  print('${URL}compras.php?idCredito=$idCredito&idCliente=$idCliente');
+
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
     List<Credito> lista = List<Credito>();
@@ -43,8 +46,8 @@ Future<Credito> getCredito(int idCliente, int idCredito) async {
 }
 
 Future<List<Pago>> getPagos(int idCredito) async {
-  var response =
-      await http.get('${URL}historial_pago.php?idCredito=$idCredito');
+  var url = Uri.parse('${URL}historial_pago.php?idCredito=$idCredito');
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
@@ -62,8 +65,8 @@ Future<List<Pago>> getPagos(int idCredito) async {
 }
 
 Future<List<Deuda>> getDeuda(int idCredito) async {
-  var response =
-      await http.get('${URL}cuotasAdeudadas.php?idCredito=$idCredito');
+  var url = Uri.parse('${URL}cuotasAdeudadas.php?idCredito=$idCredito');
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
@@ -85,9 +88,9 @@ Future<List<Credito>> getCreditosDeuda(int idCliente) async {
   List<Credito> lista = List<Credito>();
   int timeout = 5;
   try {
-    http.Response response = await client
-        .get('${URL}compras.php?idCliente=$idCliente&soloDeuda=1')
-        .timeout(Duration(seconds: timeout));
+    var url = Uri.parse('${URL}compras.php?idCliente=$idCliente&soloDeuda=1');
+    http.Response response =
+        await client.get(url).timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
@@ -116,9 +119,9 @@ Future<int> getCreditosDeudaContador(int idCliente) async {
   List<Credito> lista = List<Credito>();
   int timeout = 2;
   try {
-    http.Response response = await client
-        .get('${URL}compras.php?idCliente=$idCliente&soloDeuda=1')
-        .timeout(Duration(seconds: timeout));
+    var url = Uri.parse('${URL}compras.php?idCliente=$idCliente&soloDeuda=1');
+    http.Response response =
+        await client.get(url).timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
