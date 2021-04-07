@@ -11,10 +11,8 @@ import '../utils.dart';
 Future<Usuario> getUsuario(
     String codigo, bool validarDispositivo, int idTipo) async {
   var id = await getDeviceId();
-  /*final response =
-      await http.get(URL + 'login.php?pdf417=${codigo}&deviceId=$id');*/
 
-  final response = await http.post(URL + 'loginV2.php', body: {
+  final response = await http.post(Uri.parse(URL + 'loginV2.php'), body: {
     'tipoLogin': '1', //scan
     'pdf417': codigo,
     'deviceId': id,
@@ -38,7 +36,7 @@ Future<Usuario> getUsuario(
 Future<Usuario> getUsuarioClave(
     String dni, String clave, bool validarDispositivo, int idTipo) async {
   var id = await getDeviceId();
-  final response = await http.post(URL + 'loginV2.php', body: {
+  final response = await http.post(Uri.parse(URL + 'loginV2.php'), body: {
     'tipoLogin': '2', //dni  clave
     'clave': clave,
     'dni': dni,
@@ -66,7 +64,7 @@ Future<List<String>> getBusquedas(int idCliente) async {
   int timeout = 2;
   try {
     http.Response response = await client
-        .get('${URL}busquedasAnteriores.php?idCliente=${idCliente}')
+        .get(Uri.parse('${URL}busquedasAnteriores.php?idCliente=${idCliente}'))
         .timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
@@ -95,7 +93,9 @@ Future<String> getQr(LoggedModel loggedModel, int idCliente) async {
   int timeout = 3;
   try {
     http.Response response = await client
-        .get('${URL}getQrV2.php?idCliente=${idCliente}')
+        .get(
+          Uri.parse('${URL}getQrV2.php?idCliente=${idCliente}'),
+        )
         .timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
@@ -126,7 +126,10 @@ Future<int> checkQr(LoggedModel loggedModel) async {
   int timeout = 5;
   try {
     http.Response response = await client
-        .get('${URL}getQrV2.php?idCliente=${loggedModel.getUser.idCliente}')
+        .get(
+          Uri.parse(
+              '${URL}getQrV2.php?idCliente=${loggedModel.getUser.idCliente}'),
+        )
         .timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
@@ -157,7 +160,9 @@ Future<bool> checkLogin(int idCliente) async {
   int timeout = 2;
   try {
     http.Response response = await client
-        .get('${URL}checkLogin.php?idCliente=$idCliente&deviceId=$id')
+        .get(
+          Uri.parse('${URL}checkLogin.php?idCliente=$idCliente&deviceId=$id'),
+        )
         .timeout(Duration(seconds: timeout));
 
     print('${URL}checkLogin.php?idCliente=$idCliente&deviceId=$id');
@@ -182,12 +187,8 @@ Future<bool> postRenovacionEfectivo(int idCliente, DateTime fecha) async {
 
   int timeout = 3;
   try {
-    print(
-      '${URL}postRenovarEfectivoV2.php?idCliente=$idCliente',
-    );
-
     http.Response response = await client.post(
-      '${URL}postRenovarEfectivoV2.php',
+      Uri.parse('${URL}postRenovarEfectivoV2.php'),
       body: {
         'idCliente': idCliente.toString(),
         'fecha': fecha.toString(),
@@ -219,7 +220,7 @@ Future<bool> postContactarAsesor(int idCliente) async {
   try {
     http.Response response = await client
         .get(
-          '${URL}contactarAsesor.php?idCliente=$idCliente',
+          Uri.parse('${URL}contactarAsesor.php?idCliente=$idCliente'),
         )
         .timeout(Duration(seconds: timeout));
 
@@ -244,7 +245,9 @@ Future<Vencimiento> checkVencimiento(int idCliente) async {
   int timeout = 3;
   try {
     http.Response response = await client
-        .get('${URL}checkVencimiento.php?idCliente=$idCliente')
+        .get(
+          Uri.parse('${URL}checkVencimiento.php?idCliente=$idCliente'),
+        )
         .timeout(Duration(seconds: timeout));
 
     print('${URL}checkVencimiento.php?idCliente=$idCliente');
@@ -268,7 +271,7 @@ Future<Vencimiento> checkVencimiento(int idCliente) async {
 
 Future<bool> postImagen(
     String fileName, String base64Image, int idCliente) async {
-  final response = await http.post('${URL}postImagen.php',
+  final response = await http.post(Uri.parse('${URL}postImagen.php'),
       // headers: {"Content-Type": "multipart/form-data"},
       encoding: Encoding.getByName("utf-8"),
       body: {
@@ -286,14 +289,13 @@ Future<bool> postCompartirQr(int idCliente) async {
   int timeout = 3;
   try {
     http.Response response = await client.post(
-      '${URL}postCompartirQr.php',
+      Uri.parse('${URL}postCompartirQr.php'),
       body: {
         'idCliente': idCliente.toString(),
       },
     ).timeout(Duration(seconds: timeout));
 
     return (response.statusCode == 200);
-
   } on TimeoutException catch (e) {
     print('Timeout Error: $e');
     return false;
