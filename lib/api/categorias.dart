@@ -4,8 +4,10 @@ import 'package:http/http.dart' as http;
 import '../constantes.dart';
 
 Future<List<ArticuloCategoria>> getCategorias(int idCliente, int idTipo) async {
-  var response =
-      await http.get('${URL}categorias.php?idTipo=$idTipo&idCliente=$idCliente');
+  var url =
+      Uri.parse('${URL}categorias.php?idTipo=$idTipo&idCliente=$idCliente');
+
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
@@ -13,7 +15,7 @@ Future<List<ArticuloCategoria>> getCategorias(int idCliente, int idTipo) async {
 
     for (var o in jsonData) {
       lista.add(ArticuloCategoria.fromJson(o));
-    //  print(o.toString());
+      //  print(o.toString());
     }
 
     return lista;
