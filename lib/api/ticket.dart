@@ -4,8 +4,10 @@ import 'package:http/http.dart' as http;
 import '../constantes.dart';
 
 Future<List<TicketItem>> getTicket(int idCliente) async {
-  var response = await http.get('${URL}ticketV2.php?idCliente=$idCliente');
-  print('${URL}ticketV2.php?idCliente=$idCliente');
+  var response = await http.get(
+    Uri.parse('${URL}ticketV2.php?idCliente=$idCliente'),
+  );
+
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
     List<TicketItem> lista = List<TicketItem>();
@@ -25,7 +27,9 @@ Future<List<TicketItem>> getTicket(int idCliente) async {
 }
 
 Future<bool> getUltimoTicket(int idCliente) async {
-  var response = await http.get('${URL}ticket.php?idCliente=$idCliente');
+  var response = await http.get(
+    Uri.parse('${URL}ticket.php?idCliente=$idCliente'),
+  );
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
