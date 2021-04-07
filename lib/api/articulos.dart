@@ -14,7 +14,8 @@ Future<bool> postFavorito(
 
   int timeout = 3;
   try {
-    http.Response response = await client.post(URL + 'postFavorito.php', body: {
+    var url = Uri.parse(URL + 'postFavorito.php');
+    http.Response response = await client.post(url, body: {
       'idCliente': idCliente.toString(),
       'idArticulo': articulo.idArticulo.toString(),
       'favorito': favorito.toString()
@@ -41,12 +42,11 @@ Future<List<Articulo>> getCarrito(int idCliente) async {
   List<Articulo> lista = List<Articulo>();
   int timeout = 3;
   try {
-    http.Response response = await client
-        .get('${URL}articulosV2.php?idTipo=2&idCliente=$idCliente')
-        .timeout(Duration(seconds: timeout));
+    var url = Uri.parse('${URL}articulosV2.php?idTipo=2&idCliente=$idCliente');
+    http.Response response =
+        await client.get(url).timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
-
       var jsonData = json.decode(response.body);
       Articulo art;
       for (var o in jsonData) {
@@ -73,16 +73,17 @@ Future<bool> actualizarCarrito(
   var client = http.Client();
   int timeout = 5;
   try {
-    http.Response response = await client.post(URL + 'postCarrito.php', body: {
+    var url = Uri.parse(URL + 'postCarrito.php');
+    http.Response response = await client.post(url, body: {
       'idCliente': idCliente.toString(),
       'idArticulo': articulo.idArticulo.toString(),
       'cc': articulo.plan.toString(),
       'cantidad': articulo.getCantidad.toString(),
-      'usado': articulo.usado ? '1': '0',
+      'usado': articulo.usado ? '1' : '0',
       'enCarrito': enCarrito.toString(),
       'idAtributo': articulo.atributo.idAtributo.toString(),
     }).timeout(Duration(seconds: timeout));
-    print(response.body.toString());
+
     return (response.statusCode == 200);
   } on TimeoutException catch (e) {
     print('Timeout Error: $e');
@@ -103,8 +104,8 @@ Future<bool> comprarCarrito(int idCliente, BuildContext ctx) async {
   var client = http.Client();
   int timeout = 8;
   try {
-    http.Response response =
-        await client.post(URL + 'comprarCarrito.php', body: {
+    var url = Uri.parse(URL + 'comprarCarrito.php');
+    http.Response response = await client.post(url, body: {
       'idCliente': idCliente.toString(),
     }).timeout(Duration(seconds: timeout));
 
@@ -127,8 +128,9 @@ Future<bool> comprarCarrito(int idCliente, BuildContext ctx) async {
 }
 
 Future<List<Articulo>> getSearch(int idCliente, String searchQuery) async {
-  var response = await http.get(
+  var url = Uri.parse(
       '${URL}articulosV2.php?idTipo=4&idCliente=$idCliente&searchQuery=$searchQuery');
+  var response = await http.get(url);
   if (response.statusCode == 200) {
     List<Articulo> lista = List<Articulo>();
     var jsonData = json.decode(response.body);
@@ -152,12 +154,11 @@ Future<List<Articulo>> getFavoritos(int idCliente) async {
   List<Articulo> lista = List<Articulo>();
   int timeout = 2;
   try {
-    http.Response response = await client
-        .get('${URL}articulosV2.php?idTipo=3&idCliente=$idCliente')
-        .timeout(Duration(seconds: timeout));
+    var url = Uri.parse('${URL}articulosV2.php?idTipo=3&idCliente=$idCliente');
+    http.Response response =
+        await client.get(url).timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
-
       var jsonData = json.decode(response.body);
       Articulo art;
       for (var o in jsonData) {
@@ -180,8 +181,9 @@ Future<List<Articulo>> getFavoritos(int idCliente) async {
 }
 
 Future<List<Articulo>> getDestacados(int idCliente, int idTipo) async {
-  var response =
-      await http.get('${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
+  var url =
+      Uri.parse('${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     List<Articulo> lista = List<Articulo>();
@@ -202,8 +204,9 @@ Future<List<Articulo>> getDestacados(int idCliente, int idTipo) async {
 
 Future<List<Articulo>> getArticulosPorCategoria(
     int idCliente, int idTipo, int idCategoria) async {
-  var response = await http.get(
+  var url = Uri.parse(
       '${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idCategoria=$idCategoria');
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     List<Articulo> lista = List<Articulo>();
@@ -226,13 +229,11 @@ Future<bool> postHistorial(int idCliente, int idArticulo) async {
   var client = http.Client();
   int timeout = 10;
   try {
-    http.Response response =
-        await client.post(URL + 'postHistorial.php', body: {
+    var url = Uri.parse(URL + 'postHistorial.php');
+    http.Response response = await client.post(url, body: {
       'idCliente': idCliente.toString(),
       'idArticulo': idArticulo.toString(),
     }).timeout(Duration(seconds: timeout));
-
-    print(response.body.toString());
 
     return (response.statusCode == 200);
   } on TimeoutException catch (e) {
@@ -248,8 +249,8 @@ Future<bool> postHistorial(int idCliente, int idArticulo) async {
 }
 
 Future<List<Articulo>> getArticulosHistorial(int idCliente) async {
-  var response =
-      await http.get('${URL}articulosV2.php?idTipo=10&idCliente=$idCliente');
+  var url = Uri.parse('${URL}articulosV2.php?idTipo=10&idCliente=$idCliente');
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     List<Articulo> lista = List<Articulo>();
@@ -269,10 +270,9 @@ Future<List<Articulo>> getArticulosHistorial(int idCliente) async {
 }
 
 Future<List<Articulo>> getUsados(int idCliente) async {
-  var response =
-  await http.get('${URL}articulosV2.php?idTipo=11&idCliente=$idCliente');
+  var url = Uri.parse('${URL}articulosV2.php?idTipo=11&idCliente=$idCliente');
 
-  print( '${URL}articulosV2.php?idTipo=11&idCliente=$idCliente');
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     List<Articulo> lista = List<Articulo>();
@@ -280,7 +280,7 @@ Future<List<Articulo>> getUsados(int idCliente) async {
     Articulo art;
     for (var o in jsonData) {
       art = Articulo.fromJson(o);
-     // print(art.descripcion);
+      // print(art.descripcion);
       lista.add(art);
     }
 
@@ -293,9 +293,9 @@ Future<List<Articulo>> getUsados(int idCliente) async {
 }
 
 Future<Articulo> getArticulo(int idCliente, int idTipo, int idArticulo) async {
-  var response = await http.get(
+  var url = Uri.parse(
       '${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idArticulo=$idArticulo');
-
+  var response = await http.get(url);
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);

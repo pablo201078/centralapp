@@ -9,6 +9,8 @@ class CompraDetalleCuotaActual extends StatelessWidget {
 
   CompraDetalleCuotaActual({this.credito});
 
+
+
   @override
   Widget build(BuildContext context) {
     String txt = '';
