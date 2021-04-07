@@ -13,10 +13,7 @@ Future<List<ArticuloCategoria>> getCategorias(int idCliente, int idTipo) async {
     var jsonData = json.decode(response.body);
     List<ArticuloCategoria> lista = List<ArticuloCategoria>();
 
-    for (var o in jsonData) {
-      lista.add(ArticuloCategoria.fromJson(o));
-      //  print(o.toString());
-    }
+    for (var o in jsonData) lista.add(ArticuloCategoria.fromJson(o));
 
     return lista;
   } else {
