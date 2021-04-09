@@ -226,7 +226,7 @@ dialogoOrigenImagen(BuildContext context) {
 dialogoCerrarApp(BuildContext context, GlobalKey<ScaffoldState> _scaffoldKey) {
   return showDialog(
     context: context,
-    child: AlertDialog(
+    builder: (context) => AlertDialog(
       title: Text(
         '¿Queres cerrar?',
         style: TextStyle(color: Theme.of(context).accentColor),
