@@ -7,15 +7,16 @@ import 'package:http/http.dart' as http;
 import '../constantes.dart';
 import '../notificaciones.dart';
 
-
 Future<Pedido> getPedido(int idPedido) async {
   var client = http.Client();
   Pedido pedido;
-  print('${URL}pedidosV2.php?idPedido=$idPedido');
+
   int timeout = 4;
   try {
     http.Response response = await client
-        .get('${URL}pedidosV2.php?idPedido=$idPedido')
+        .get(
+          Uri.parse('${URL}pedidosV2.php?idPedido=$idPedido'),
+        )
         .timeout(Duration(seconds: timeout));
 
     if (response.statusCode == 200) {
@@ -44,7 +45,9 @@ Future<List<Pedido>> getPedidos(int idCliente) async {
   int timeout = 3;
   try {
     http.Response response = await client
-        .get('${URL}pedidosV2.php?idCliente=$idCliente')
+        .get(
+          Uri.parse('${URL}pedidosV2.php?idCliente=$idCliente'),
+        )
         .timeout(Duration(seconds: timeout));
 
     print('${URL}pedidosV2.php?idCliente=$idCliente');
@@ -70,7 +73,9 @@ Future<List<Pedido>> getPedidos(int idCliente) async {
 }
 
 Future<List<PedidoEtapa>> getPedidoEtapas(int idPim) async {
-  var response = await http.get('${URL}pedido_etapas.php?idPim=$idPim');
+  var response = await http.get(
+    Uri.parse('${URL}pedido_etapas.php?idPim=$idPim'),
+  );
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
@@ -90,7 +95,8 @@ Future<List<PedidoEtapa>> getPedidoEtapas(int idPim) async {
 Future<bool> anularPedido(int id, BuildContext ctx) async {
   int timeout = 10;
   try {
-    http.Response response = await http.post('${URL}anularPedido.php', body: {
+    http.Response response =
+        await http.post(Uri.parse('${URL}anularPedido.php'), body: {
       'id': id.toString(),
     }).timeout(Duration(seconds: timeout));
     print(response.body);
