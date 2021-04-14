@@ -98,8 +98,6 @@ class _Imagen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    SizeConfig().init(context);
-
     _buildContainer(context, imageProvider) {
       return Card(
         elevation: 8.0,
