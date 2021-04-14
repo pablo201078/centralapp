@@ -202,9 +202,7 @@ class _Qr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('el Qr es: -$data-');
-
-    return Screenshot(
+      return Screenshot(
       controller: screenshotController,
       child: QrImage(
         data: data,
