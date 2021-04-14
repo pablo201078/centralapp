@@ -44,7 +44,6 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  bool _mostrarBotonTicket = false;
   bool _mostrarBotonActualizarQr = false;
   bool _qrOk = false;
   bool _actualizando = false;
@@ -113,14 +112,6 @@ class _BodyState extends State<_Body> {
   }
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-    // timer.cancel();
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Stack(
@@ -176,7 +167,6 @@ class _BodyState extends State<_Body> {
               child: BotonCompartirQr(
                 usuario: widget.usuario.getUser,
                 screenshotController: _screenshotController,
-
               ),
             ),
           ),
@@ -218,6 +208,9 @@ class _Qr extends StatelessWidget {
       controller: screenshotController,
       child: QrImage(
         data: data,
+        embeddedImage: Image.asset(
+          'assets/imagenes/amacar01.png',
+        ).image,
         padding: EdgeInsets.all(4.5),
         backgroundColor: Colors.white,
         version: QrVersions.auto,

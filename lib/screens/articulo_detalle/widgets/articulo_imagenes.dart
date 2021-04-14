@@ -77,10 +77,13 @@ class _ArticuloImagenesState extends State<ArticuloImagenes> {
           ),
         ),
 
-        Positioned(
-            bottom: 20.0,
-            right: 14.0,
-            child: BotonCompartir(link: widget.articulo.link))
+        Visibility(
+          visible: !widget.articulo.usado,
+          child: Positioned(
+              bottom: 20.0,
+              right: 14.0,
+              child: BotonCompartir(link: widget.articulo.link)),
+        )
       ],
     );
   }
@@ -90,7 +93,7 @@ class _Imagen extends StatelessWidget {
   final String url;
   final Articulo articulo;
 
-  _Imagen({Key key, @required this.url, @required this.articulo});
+  _Imagen({@required this.url, @required this.articulo});
 
   @override
   Widget build(BuildContext context) {

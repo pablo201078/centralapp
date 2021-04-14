@@ -123,7 +123,6 @@ class _ScrollView extends StatelessWidget {
     return ListView(
       physics: BouncingScrollPhysics(),
       children: [
-
         ArticuloDescripcion(articulo: articulo),
         Visibility(
           visible: articulo.usado,
