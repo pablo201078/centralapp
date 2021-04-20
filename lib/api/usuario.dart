@@ -102,7 +102,13 @@ Future<String> getQr(LoggedModel loggedModel, int idCliente) async {
     print('${URL}getQrV3.php?idCliente=${idCliente}');
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
-      loggedModel.actualizarQr(jsonData['qr'], jsonData['fecha']);
+      loggedModel.actualizarDatos(
+        jsonData['qr'],
+        jsonData['fecha'],
+        jsonData['cierraSesion'],
+        jsonData['nroSocio'],
+        jsonData['rubro'],
+      );
       abrirSesionOneSignal(idCliente, jsonData['hash']);
 
       return jsonData['qr'];

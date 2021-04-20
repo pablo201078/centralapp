@@ -7,7 +7,6 @@ import 'package:scoped_model/scoped_model.dart';
 import '../articulo.dart';
 
 class LoggedModel extends Model {
-
   LoggedModel() {
     _init();
   }
@@ -27,11 +26,11 @@ class LoggedModel extends Model {
   String get clave => _clave;
   bool get isLogged => _isLogged;
 
-  Usuario get getUser{
-      print('get user: ' + _user);
-      return Usuario.fromJson(
-        json.decode(_user),
-      );
+  Usuario get getUser {
+    print('get user: ' + _user);
+    return Usuario.fromJson(
+      json.decode(_user),
+    );
   }
 
   void saveEstado(value) async {
@@ -43,16 +42,19 @@ class LoggedModel extends Model {
     Usuario usr = this.getUser;
     usr.qr = value;
     usr.setQrFecha = fecha;
- //   usr.cierraSesion = true;
+    //   usr.cierraSesion = true;
     print('actualizar QR: ' + usr.cierraSesion.toString());
     this.setUsuario(usr);
   }
 
-  void actualizarDatos(qr, fecha, cierraSesion) {
+  void actualizarDatos(qr, fecha, cierraSesion, nroSocio, rubro) {
     Usuario usr = this.getUser;
     usr.qr = qr;
     usr.setQrFecha = fecha;
     usr.cierraSesion = cierraSesion;
+    usr.nroSocio = nroSocio;
+    usr.rubro = rubro;
+
     print('actualizar Datos: ' + usr.cierraSesion.toString());
     this.setUsuario(usr);
   }

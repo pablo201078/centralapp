@@ -6,9 +6,9 @@ class Usuario {
   final String nombre;
   final String localidad;
   final String dni;
-  final String nroSocio;
+  String nroSocio;
   final String comercio;
-  final String rubro;
+  String rubro;
   String imagen;
   bool imagenLocal;
   bool cierraSesion;
