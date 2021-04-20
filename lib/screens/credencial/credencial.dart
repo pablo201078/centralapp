@@ -35,7 +35,7 @@ class Credencial extends StatelessWidget {
   }
 }
 
-class _Body extends StatefulWidget   {
+class _Body extends StatefulWidget {
   final LoggedModel usuario;
 
   _Body({@required this.usuario});
@@ -43,7 +43,7 @@ class _Body extends StatefulWidget   {
   _BodyState createState() => _BodyState();
 }
 
-class _BodyState extends State<_Body> with WidgetsBindingObserver{
+class _BodyState extends State<_Body> with WidgetsBindingObserver {
   bool _mostrarBotonActualizarQr = false;
   bool _qrOk = false;
   bool _actualizando = false;
@@ -93,22 +93,21 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver{
   void initState() {
     // TODO: implement initState
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     verificarQr();
-    /*  timer = Timer.periodic(
-      new Duration(seconds: 4),
-      (time) async {
-         bool rta = await getUltimoTicket(widget.usuario.getUser.idCliente);
-        //bool int =
-        //    await checkQr(widget.usuario.idCliente, widget.usuario.qrCode);
-        print('check ticket');
-        if (rta) {
-          time.cancel();
-          setState(() {
-            _mostrarBotonTicket = true;
-          });
-        }
-      },
-    );*/
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if(state == AppLifecycleState.resumed){
+      print('volviendo. Check QR');
+    }
   }
 
   @override
@@ -202,7 +201,7 @@ class _Qr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Screenshot(
+    return Screenshot(
       controller: screenshotController,
       child: QrImage(
         data: data,
