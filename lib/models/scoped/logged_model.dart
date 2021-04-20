@@ -48,6 +48,15 @@ class LoggedModel extends Model {
     this.setUsuario(usr);
   }
 
+  void actualizarDatos(qr, fecha, cierraSesion) {
+    Usuario usr = this.getUser;
+    usr.qr = qr;
+    usr.setQrFecha = fecha;
+    usr.cierraSesion = cierraSesion;
+    print('actualizar Datos: ' + usr.cierraSesion.toString());
+    this.setUsuario(usr);
+  }
+
   void actualizarHash(value) {
     Usuario usr = this.getUser;
     usr.hash = value;

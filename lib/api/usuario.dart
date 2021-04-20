@@ -94,10 +94,12 @@ Future<String> getQr(LoggedModel loggedModel, int idCliente) async {
   try {
     http.Response response = await client
         .get(
-          Uri.parse('${URL}getQrV2.php?idCliente=${idCliente}'),
+          Uri.parse('${URL}getQrV3.php?idCliente=${idCliente}'),
         )
-        .timeout(Duration(seconds: timeout));
-
+        .timeout(
+          Duration(seconds: timeout),
+        );
+    print('${URL}getQrV3.php?idCliente=${idCliente}');
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
       loggedModel.actualizarQr(jsonData['qr'], jsonData['fecha']);
