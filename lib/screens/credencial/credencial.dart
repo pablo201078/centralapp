@@ -35,7 +35,7 @@ class Credencial extends StatelessWidget {
   }
 }
 
-class _Body extends StatefulWidget {
+class _Body extends StatefulWidget   {
   final LoggedModel usuario;
 
   _Body({@required this.usuario});
@@ -43,7 +43,7 @@ class _Body extends StatefulWidget {
   _BodyState createState() => _BodyState();
 }
 
-class _BodyState extends State<_Body> {
+class _BodyState extends State<_Body> with WidgetsBindingObserver{
   bool _mostrarBotonActualizarQr = false;
   bool _qrOk = false;
   bool _actualizando = false;

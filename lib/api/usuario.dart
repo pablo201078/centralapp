@@ -157,7 +157,7 @@ Future<int> checkQr(LoggedModel loggedModel) async {
 Future<bool> checkLogin(int idCliente) async {
   var client = http.Client();
   var id = await getDeviceId();
-  int timeout = 2;
+  int timeout = 3;
   try {
     http.Response response = await client
         .get(
@@ -165,11 +165,7 @@ Future<bool> checkLogin(int idCliente) async {
         )
         .timeout(Duration(seconds: timeout));
 
-    print('${URL}checkLogin.php?idCliente=$idCliente&deviceId=$id');
-
-    if (response.statusCode == 200) {
-      return response.body.trim() == '1';
-    }
+    if (response.statusCode == 200) return response.body.trim() != '0';
   } on TimeoutException catch (e) {
     print('Timeout Error: $e');
     return true;
