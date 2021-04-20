@@ -49,11 +49,11 @@ class LoggedModel extends Model {
 
   void actualizarDatos(qr, fecha, cierraSesion, nroSocio, rubro) {
     Usuario usr = this.getUser;
-    usr.qr = qr;
-    usr.setQrFecha = fecha;
-    usr.cierraSesion = cierraSesion;
-    usr.nroSocio = nroSocio;
-    usr.rubro = rubro;
+    if (qr != '') usr.qr = qr;
+    if (fecha != '') usr.setQrFecha = fecha;
+    if (cierraSesion != '') usr.cierraSesion = cierraSesion == '1';
+    if (nroSocio != '') usr.nroSocio = nroSocio;
+    if (rubro != '') usr.rubro = rubro;
 
     print('actualizar Datos: ' + usr.cierraSesion.toString());
     this.setUsuario(usr);
