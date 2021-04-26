@@ -105,7 +105,7 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if(state == AppLifecycleState.resumed){
+    if (state == AppLifecycleState.resumed) {
       verificarQr();
     }
   }
