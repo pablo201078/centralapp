@@ -27,7 +27,6 @@ class LoggedModel extends Model {
   bool get isLogged => _isLogged;
 
   Usuario get getUser {
-    print('get user: ' + _user);
     return Usuario.fromJson(
       json.decode(_user),
     );
