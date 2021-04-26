@@ -94,7 +94,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ScopedModel<LoggedModel>(
       model: loggedModel,
       child: ScopedModel<CarritoModel>(
@@ -134,6 +133,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-
-
 }
