@@ -1,18 +1,11 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:device_info/device_info.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'models/usuario.dart';
-
-import 'Dart:typed_data';
-import 'Dart:ui' as ui;
-import 'package:flutter/rendering.Dart';
-import 'package:flutter/services.Dart';
-import 'package:path_provider/path_provider.Dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;
@@ -114,3 +107,5 @@ String formatearFechaStr(DateTime fecha) {
 
   return '$dia  ${DateFormat('dd').format(fecha)}';
 }
+
+

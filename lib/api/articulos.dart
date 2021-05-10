@@ -39,7 +39,7 @@ Future<bool> postFavorito(
 
 Future<List<Articulo>> getCarrito(int idCliente) async {
   var client = http.Client();
-  List<Articulo> lista = List<Articulo>();
+  List<Articulo> lista = <Articulo>[];
   int timeout = 3;
   try {
     var url = Uri.parse('${URL}articulosV2.php?idTipo=2&idCliente=$idCliente');
@@ -132,7 +132,7 @@ Future<List<Articulo>> getSearch(int idCliente, String searchQuery) async {
       '${URL}articulosV2.php?idTipo=4&idCliente=$idCliente&searchQuery=$searchQuery');
   var response = await http.get(url);
   if (response.statusCode == 200) {
-    List<Articulo> lista = List<Articulo>();
+    List<Articulo> lista = <Articulo>[];
     var jsonData = json.decode(response.body);
     Articulo art;
     for (var o in jsonData) {
@@ -151,7 +151,7 @@ Future<List<Articulo>> getSearch(int idCliente, String searchQuery) async {
 
 Future<List<Articulo>> getFavoritos(int idCliente) async {
   var client = http.Client();
-  List<Articulo> lista = List<Articulo>();
+  List<Articulo> lista = <Articulo>[];
   int timeout = 2;
   try {
     var url = Uri.parse('${URL}articulosV2.php?idTipo=3&idCliente=$idCliente');
@@ -186,7 +186,7 @@ Future<List<Articulo>> getDestacados(int idCliente, int idTipo) async {
   var response = await http.get(url);
 
   if (response.statusCode == 200) {
-    List<Articulo> lista = List<Articulo>();
+    List<Articulo> lista = <Articulo>[];
     var jsonData = json.decode(response.body);
     Articulo art;
     for (var o in jsonData) {
@@ -209,7 +209,7 @@ Future<List<Articulo>> getArticulosPorCategoria(
   var response = await http.get(url);
 
   if (response.statusCode == 200) {
-    List<Articulo> lista = List<Articulo>();
+    List<Articulo> lista = <Articulo>[];
     var jsonData = json.decode(response.body);
     Articulo art;
     for (var o in jsonData) {
@@ -253,7 +253,7 @@ Future<List<Articulo>> getArticulosHistorial(int idCliente) async {
   var response = await http.get(url);
 
   if (response.statusCode == 200) {
-    List<Articulo> lista = List<Articulo>();
+    List<Articulo> lista = <Articulo>[];
     var jsonData = json.decode(response.body);
     Articulo art;
     for (var o in jsonData) {
@@ -275,7 +275,7 @@ Future<List<Articulo>> getUsados(int idCliente) async {
   var response = await http.get(url);
 
   if (response.statusCode == 200) {
-    List<Articulo> lista = List<Articulo>();
+    List<Articulo> lista = <Articulo>[];
     var jsonData = json.decode(response.body);
     Articulo art;
     for (var o in jsonData) {

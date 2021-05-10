@@ -11,14 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class Ticket extends StatelessWidget {
-  // int idCliente;
-
-  //Ticket({this.idCliente});
-
   @override
   Widget build(BuildContext context) {
-    //  final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-    //this.idCliente = arguments['idCliente'];
     final LoggedModel model =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
     // TODO: implement build

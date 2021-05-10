@@ -2,11 +2,13 @@ import 'package:centralApp/logic/efectivo.dart';
 import 'package:centralApp/models/scoped/logged_model.dart';
 import 'package:centralApp/models/scoped/pedidos.dart';
 import 'package:centralApp/widgets/menu_lateral/widgets/menu_lateral_header_usuario.dart';
+import 'package:centralApp/screens/ticket/ticket.dart';
 import 'package:centralApp/widgets/contador.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../notificaciones.dart';
+import '../../transiciones.dart';
 import 'widgets/cerrar_session.dart';
 import 'widgets/custom_list_tile.dart';
 import 'widgets/menu_lateral_header.dart';
@@ -45,10 +47,15 @@ class MenuLateral extends StatelessWidget {
                   iconColor: model.isLogged ? Colors.black : Colors.grey,
                   icon: Icons.account_balance_wallet,
                   onTap: () {
-                    //  Navigator.of(context).pop();
                     if (model.isLogged)
-                      Navigator.pushNamed(context, '/ticket',
-                          arguments: {'idCliente': model.getUser.idCliente});
+                      Navigator.push(
+                        context,
+                        ScaleRoute(
+                          page: Ticket(),
+                        ),
+                      );
+                    // Navigator.pushNamed(context, '/ticket',
+                    //  arguments: {'idCliente': model.getUser.idCliente});
                     else
                       dialogoDebeIniciarSesion(context);
                   },
@@ -120,7 +127,8 @@ class MenuLateral extends StatelessWidget {
               ],
             ),
           ),
-          (model.isLogged && model.getUser.cierraSesion??false) //si esta logueado y puede cerrar sesion. Solo algun clientes pueden cerrar sesion( comparten celular para abrir dos cuentas )
+          (model.isLogged && model.getUser.cierraSesion ??
+                  false) //si esta logueado y puede cerrar sesion. Solo algun clientes pueden cerrar sesion( comparten celular para abrir dos cuentas )
               ? CerrarSesion(model: model)
               : Container()
         ],
