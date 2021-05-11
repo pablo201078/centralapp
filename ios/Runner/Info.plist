@@ -26,6 +26,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Para seleccionar una imagen de perfil</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Para seleccionar una imagen de perfil</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -41,5 +45,21 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSAppTransportSecurity</key>
+        <dict>
+          <key>NSAllowsArbitraryLoads</key>
+          <false/>
+          <key>NSExceptionDomains</key>
+          <dict>
+            <key>mutualamacar.no-ip.org</key>
+            <dict>
+              <key>NSIncludesSubdomains</key>
+              <true/>
+              <key>NSExceptionAllowsInsecureHTTPLoads</key>
+              <true/>
+            </dict>
+          </dict>
+        </dict>
+
 </dict>
 </plist>

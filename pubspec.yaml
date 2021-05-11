@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  badges:  #contador en el boton del carrito
+  badges:
+  #contador en el boton del carrito
   http:
   barcode_scan: ^3.0.1
   shared_preferences:
@@ -39,7 +40,7 @@ dependencies:
   auto_size_text: ^2.1.0
   photo_view:
   url_launcher:
-  intl: ^0.16.1 #formatear numeros
+  intl: ^0.17.0 #formatear numeros
   connectivity: ^0.4.9+2
   flutter_icons: ^1.1.0
   font_awesome_flutter: ^8.8.1
