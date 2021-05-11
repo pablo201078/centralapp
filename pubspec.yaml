@@ -56,7 +56,6 @@ dependencies:
   check_app_version: ^0.0.8
   flutter_sms: ^2.1.1
   flutter_datetime_picker: ^1.5.1
-  #flutter_local_notifications: ^3.0.1+4
   onesignal_flutter: ^2.6.3
   screenshot: ^0.3.0
   path_provider:
