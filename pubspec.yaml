@@ -50,7 +50,6 @@ dependencies:
   bubble_bottom_bar: ^1.2.0
   flutter_svg: ^0.22.0
   timeline_tile: #las etapas del pedido
-  flutter_phone_state: ^0.5.8 #para disparar la llamada al 0800
   image_picker: ^0.6.7+17
   device_info: # para sacar el ID de android
   get: ^3.25.4
@@ -60,7 +59,7 @@ dependencies:
   onesignal_flutter: ^2.6.3
   screenshot: ^0.3.0
   path_provider:
-
+  sizer: ^2.0.13
 
 dev_dependencies:
   flutter_test:

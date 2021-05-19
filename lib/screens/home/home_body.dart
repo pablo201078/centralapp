@@ -15,6 +15,7 @@ import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:check_app_version/show_dialog.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import '../../constantes.dart';
 import '../../utils.dart';
 
 class HomeBody extends StatefulWidget {
@@ -54,7 +55,7 @@ class _HomeBodyMain extends State<HomeBody> {
       updateButtonText: 'Actualizar',
       laterButtonText: 'Despues',
       body: '¿Queres Actualizarla ahora?',
-      jsonUrl: 'http://mutualamacar.no-ip.org/app/version.json',
+      jsonUrl: URL + 'version.json',
     ).checkVersion();
   }
 
@@ -119,10 +120,6 @@ class _HomeBodyMain extends State<HomeBody> {
             children: <Widget>[
               ListaOfertas(futuro: _ofertas),
               AccesosDirectos(),
-              /*SizedBox(
-                //height: 12,
-                height: SizeConfig.safeBlockVertical * 0.1
-              ),*/
               HomeDestacadosHogar(
                 futuro: _destacadosHogar,
               ),

@@ -54,9 +54,8 @@ class _Container extends StatelessWidget {
         autoplay: true,
         autoplayDelay: 8500,
         autoplayDisableOnInteraction: true,
-        //  loop: false,
         itemWidth: SizeConfig.safeBlockHorizontal * 90,
-        itemHeight: SizeConfig.safeBlockHorizontal * 100 * 0.44,
+        itemHeight: SizeConfig.safeBlockVertical * 30,//100 * 0.44,
         itemCount: ofertas.length,
         itemBuilder: (context, i) {
           return ofertas[i] != null

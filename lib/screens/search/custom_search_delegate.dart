@@ -75,7 +75,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
     var lista = query.isEmpty
-        ? busquedas
+        ? busquedas ?? []
         : busquedas
             .where((element) =>
                 element.toLowerCase().startsWith(query.toLowerCase()))

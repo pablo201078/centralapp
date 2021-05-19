@@ -18,6 +18,7 @@ import 'package:centralApp/screens/usados/usados.dart';
 import 'package:centralApp/screens/renovacion_efectivo/renovacion_efectivo.dart';
 import 'package:centralApp/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:sizer/sizer.dart';
 import 'api/articulos.dart';
 import 'api/pedidos.dart';
 import 'api/usuario.dart';
@@ -99,35 +100,40 @@ class MyApp extends StatelessWidget {
       child: ScopedModel<CarritoModel>(
         model: carritoModel,
         child: OverlaySupport(
-          child: GetMaterialApp(
-            title: 'Central App',
-            initialRoute: '/',
-            routes: {
-              '/': (context) => Home(),
-              '/loggin': (context) => Loggin(),
-              '/credencial': (context) => Credencial(),
-              '/carrito': (context) => Carrito(),
-              '/search_result': (context) => SearchResult(),
-              '/favoritos': (context) => Favoritos(),
-              '/historial': (context) => Historial(),
-              '/pedidos': (context) => Pedidos(),
-              '/pedido_detalle': (context) => PedidoDetalle(),
-              '/hogar': (context) => Hogar(),
-              '/equipamiento_comercial': (context) => EquipamientoComercial(),
-              '/usados': (context) => Usados(),
-              '/deuda_vencida': (context) => DeudaVencida(),
-              '/mis_compras': (context) => MisCompras(),
-              '/mis_compras_detalle': (context) => MisComprasDetalle(),
-              '/destacadosHogar': (context) => DestacadosHogar(),
-              '/destacadosComercial': (context) => DestacadosComercial(),
-              '/articulo_detalle': (context) => ArticuloDetalle(),
-              '/renovacion_efectivo': (context) => RenovacionEfectivo(),
-              '/articulo_detalle_galeria': (context) =>
-                  ArticuloDetalleGaleria(),
-              '/ticket': (context) => Ticket(),
+          child: Sizer(
+            builder: (context, orientation, deviceType) {
+              return GetMaterialApp(
+                title: 'Central App',
+                initialRoute: '/',
+                routes: {
+                  '/': (context) => Home(),
+                  '/loggin': (context) => Loggin(),
+                  '/credencial': (context) => Credencial(),
+                  '/carrito': (context) => Carrito(),
+                  '/search_result': (context) => SearchResult(),
+                  '/favoritos': (context) => Favoritos(),
+                  '/historial': (context) => Historial(),
+                  '/pedidos': (context) => Pedidos(),
+                  '/pedido_detalle': (context) => PedidoDetalle(),
+                  '/hogar': (context) => Hogar(),
+                  '/equipamiento_comercial': (context) =>
+                      EquipamientoComercial(),
+                  '/usados': (context) => Usados(),
+                  '/deuda_vencida': (context) => DeudaVencida(),
+                  '/mis_compras': (context) => MisCompras(),
+                  '/mis_compras_detalle': (context) => MisComprasDetalle(),
+                  '/destacadosHogar': (context) => DestacadosHogar(),
+                  '/destacadosComercial': (context) => DestacadosComercial(),
+                  '/articulo_detalle': (context) => ArticuloDetalle(),
+                  '/renovacion_efectivo': (context) => RenovacionEfectivo(),
+                  '/articulo_detalle_galeria': (context) =>
+                      ArticuloDetalleGaleria(),
+                  '/ticket': (context) => Ticket(),
+                },
+                debugShowCheckedModeBanner: false,
+                theme: theme(),
+              );
             },
-            debugShowCheckedModeBanner: false,
-            theme: theme(),
           ),
         ),
       ),

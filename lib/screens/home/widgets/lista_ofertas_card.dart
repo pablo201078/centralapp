@@ -38,7 +38,6 @@ class ListaOfertasCard extends StatelessWidget {
         placeholder: (context, url) => CircularProgressIndicator(),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
-      //child: _card,
       onTap: () {
         Navigator.pushNamed(context, '/articulo_detalle',
             arguments: {'articulo': this.oferta});
