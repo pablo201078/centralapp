@@ -3,7 +3,7 @@ import 'package:centralApp/screens/loggin/widgets/login_manual_body.dart';
 import 'package:centralApp/screens/loggin/widgets/scanner_body2.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../utils.dart';
+import 'dart:io';
 
 class Loggin extends StatefulWidget {
   @override
@@ -15,7 +15,9 @@ class Loggin extends StatefulWidget {
 
 class LogginState extends State<Loggin> {
   int _tipoLogin = 0;
-  bool android6 = false;
+//  bool android6 = false;
+
+/*
   void getAndroidVersion2() async {
     var rta = await getAndroidVersion();
     print('version: $rta');
@@ -24,20 +26,21 @@ class LogginState extends State<Loggin> {
         android6 = true;
       });
   }
+*/
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getAndroidVersion2();
+    //getAndroidVersion2();
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    return !android6
-        ? Scaffold(
+    return Platform.isAndroid ? //!android6
+         Scaffold(
             bottomNavigationBar: BubbleBottomBar(
               opacity: .2,
               currentIndex: _tipoLogin,

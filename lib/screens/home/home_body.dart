@@ -1,19 +1,15 @@
 import 'dart:async';
 import 'package:centralApp/api/articulos.dart';
 import 'package:centralApp/api/ofertas.dart';
-import 'package:centralApp/api/usuario.dart';
 import 'package:centralApp/logic/efectivo.dart';
 import 'package:centralApp/models/articulo.dart';
-
 import 'package:centralApp/screens/home/widgets/accesos_directos.dart';
 import 'package:centralApp/screens/home/widgets/boton_login.dart';
 import 'package:centralApp/screens/home/widgets/boton_whatsapp.dart';
 import 'package:centralApp/screens/home/widgets/home_destacados.dart';
 import 'package:centralApp/screens/home/widgets/home_destacados_hogar.dart';
 import 'package:centralApp/screens/home/widgets/lista_ofertas.dart';
-import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:check_app_version/show_dialog.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import '../../constantes.dart';
 import '../../utils.dart';
@@ -30,9 +26,9 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyMain extends State<HomeBody> {
-  int _connectionStatus = 0;
+/*  int _connectionStatus = 0;
   final Connectivity _connectivity = Connectivity();
-  StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  StreamSubscription<ConnectivityResult> _connectivitySubscription;*/
   Future<List<Articulo>> _ofertas;
   Future<List<Articulo>> _destacadosHogar;
   Future<List<Articulo>> _destacadosComercial;
@@ -44,9 +40,9 @@ class _HomeBodyMain extends State<HomeBody> {
     _ofertas = getOfertas(widget.idCliente);
     _destacadosHogar = getDestacados(widget.idCliente, 5);
     _destacadosComercial = getDestacados(widget.idCliente, 6);
-    initConnectivity();
+/*    initConnectivity();
     _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);*/
 
     ShowDialog(
       context: context,
@@ -60,6 +56,7 @@ class _HomeBodyMain extends State<HomeBody> {
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
+/*
   Future<void> initConnectivity() async {
     ConnectivityResult result;
     // Platform messages may fail, so we use a try/catch PlatformException.
@@ -77,8 +74,9 @@ class _HomeBodyMain extends State<HomeBody> {
 
     return _updateConnectionStatus(result);
   }
+*/
 
-  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
+  /*Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     switch (result) {
       case ConnectivityResult.wifi:
         setState(() {
@@ -101,18 +99,18 @@ class _HomeBodyMain extends State<HomeBody> {
         });
         break;
     }
-  }
+  }*/
 
   @override
   void dispose() {
-    _connectivitySubscription.cancel();
+   // _connectivitySubscription.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    if (_connectionStatus > 0)
+    /*if (_connectionStatus > 0)*/
       return Stack(
         children: <Widget>[
           ListView(
@@ -149,7 +147,7 @@ class _HomeBodyMain extends State<HomeBody> {
           ),
         ],
       );
-    else
-      return SinConexion();
+   // else
+    //  return SinConexion();
   }
 }

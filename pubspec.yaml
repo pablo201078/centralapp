@@ -41,7 +41,7 @@ dependencies:
   photo_view:
   url_launcher:
   intl: ^0.17.0 #formatear numeros
-  connectivity: ^0.4.9+2
+  #connectivity: ^0.4.9+2
   flutter_icons: ^1.1.0
   font_awesome_flutter: ^8.8.1
   share: ^0.6.5 #compartir por whatsapp
@@ -59,7 +59,7 @@ dependencies:
   onesignal_flutter: ^2.6.3
   screenshot: ^0.3.0
   path_provider:
-  sizer: ^2.0.13
+
 
 dev_dependencies:
   flutter_test:
