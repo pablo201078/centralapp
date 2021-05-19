@@ -59,6 +59,7 @@ dependencies:
   onesignal_flutter: ^2.6.3
   screenshot: ^0.3.0
   path_provider:
+  firebase_core: "0.7.0"
 
 
 dev_dependencies:

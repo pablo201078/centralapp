@@ -1,6 +1,5 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 import '../../../utils.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -33,7 +32,7 @@ class CustomListTile extends StatelessWidget {
           ? Icon(
               icon,
               color: iconColor != null ? iconColor : Colors.grey,
-              size: 16.sp,//SizeConfig.blockSizeHorizontal * 8.6,
+              size: SizeConfig.blockSizeHorizontal * 8.6,
             )
           : badge,
       trailing: this.trailing,
