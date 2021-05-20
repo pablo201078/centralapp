@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:centralApp/logic/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -29,9 +31,7 @@ class _LoginFormState extends State<LoginForm> {
           Divider(
             color: Colors.white,
           ),
-          Expanded(
-            child: ColumnaSolicitadClave(),
-          ),
+          ColumnaSolicitadClave(),
         ],
       ),
     );
@@ -55,7 +55,7 @@ class ColumnaSolicitadClave extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.w500),
           ),
-          SizedBox(height: SizeConfig.safeBlockVertical *3.0),
+          SizedBox(height: SizeConfig.safeBlockVertical * 3.0),
           BotonAyuda(),
           Text(
             'Solicitar Ayuda',
@@ -65,18 +65,6 @@ class ColumnaSolicitadClave extends StatelessWidget {
                 color: Colors.white,
                 fontWeight: FontWeight.w500),
           ),
-          // SizedBox(height: SizeConfig.safeBlockVertical * 5.00),
-          /*Text(
-                'Solicita tu Contraseña por WhatsApp',
-                style: TextStyle(
-                    fontSize: getProportionateScreenWidth(15),
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: BotonWhatsApp(),
-              ),*/
         ],
       ),
     );
@@ -208,36 +196,31 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField buildDniFormField() {
     return TextFormField(
-      keyboardType: TextInputType.number,
-      maxLength: 8,
+      keyboardType: Platform.isIOS ? TextInputType.text : TextInputType.number,
+      maxLength: Platform.isIOS ? 15 : 8,
       style: TextStyle(color: Colors.white),
       onSaved: (newValue) => dni = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: kDniNullError);
+          removeError(error: Platform.isIOS ? kUserNullError : kDniNullError);
         }
-        /* else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
-        }*/
+
         return null;
       },
       validator: (value) {
         if (value.isEmpty || value.length < 8) {
-          addError(error: kDniNullError);
+          addError(error: Platform.isIOS ? kUserNullError : kDniNullError);
           return "";
         }
 
-        /*else if (!dniValidatorRegExp.hasMatch(value)) {
-          addError(error: kDniNullError);
-          return "";
-        }*/
         return null;
       },
       decoration: InputDecoration(
-          labelText: "Número de DNI sin puntos ni espacios.",
+          labelText: Platform.isIOS
+              ? "Usuario."
+              : "Número de DNI sin puntos ni espacios.",
           labelStyle: TextStyle(color: Colors.white),
           hintStyle: TextStyle(color: Colors.white),
-          //hintText: "Ingrese su numero de Dni",
           // If  you are using latest version of flutter then lable text and hint text shown like this
           // if you r using flutter less then 1.20.* then maybe this is not working properly
           floatingLabelBehavior: FloatingLabelBehavior.auto,

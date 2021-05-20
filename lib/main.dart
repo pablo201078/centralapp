@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:centralApp/screens/articulo_detalle/widgets/articulo_detalle_galeria.dart';
 import 'package:centralApp/screens/carrito/carrito.dart';
 import 'package:centralApp/screens/destacados_hogar/destacados_hogar.dart';
@@ -19,6 +17,7 @@ import 'package:centralApp/screens/ticket/ticket.dart';
 import 'package:centralApp/screens/usados/usados.dart';
 import 'package:centralApp/screens/renovacion_efectivo/renovacion_efectivo.dart';
 import 'package:centralApp/theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'api/articulos.dart';
 import 'api/pedidos.dart';
@@ -71,8 +70,8 @@ void main() async {
         statusBarIconBrightness: Brightness.light),
   );
 
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+ // SystemChrome.setPreferredOrientations(
+    //  [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   LoggedModel loggedModel = LoggedModel();
   CarritoModel carritoModel = CarritoModel();
@@ -97,40 +96,44 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<LoggedModel>(
-      model: loggedModel,
-      child: ScopedModel<CarritoModel>(
-        model: carritoModel,
-        child: OverlaySupport(
-          child: GetMaterialApp(
-            title: 'Central App',
-            initialRoute: '/',
-            routes: {
-              '/': (context) => Home(),
-              '/loggin': (context) => Loggin(),
-              '/credencial': (context) => Credencial(),
-              '/carrito': (context) => Carrito(),
-              '/search_result': (context) => SearchResult(),
-              '/favoritos': (context) => Favoritos(),
-              '/historial': (context) => Historial(),
-              '/pedidos': (context) => Pedidos(),
-              '/pedido_detalle': (context) => PedidoDetalle(),
-              '/hogar': (context) => Hogar(),
-              '/equipamiento_comercial': (context) => EquipamientoComercial(),
-              '/usados': (context) => Usados(),
-              '/deuda_vencida': (context) => DeudaVencida(),
-              '/mis_compras': (context) => MisCompras(),
-              '/mis_compras_detalle': (context) => MisComprasDetalle(),
-              '/destacadosHogar': (context) => DestacadosHogar(),
-              '/destacadosComercial': (context) => DestacadosComercial(),
-              '/articulo_detalle': (context) => ArticuloDetalle(),
-              '/renovacion_efectivo': (context) => RenovacionEfectivo(),
-              '/articulo_detalle_galeria': (context) =>
-                  ArticuloDetalleGaleria(),
-              '/ticket': (context) => Ticket(),
-            },
-            debugShowCheckedModeBanner: false,
-            theme: theme(),
+
+    return ScreenUtilInit(
+      designSize: Size(360, 690),
+      builder: () => ScopedModel<LoggedModel>(
+        model: loggedModel,
+        child: ScopedModel<CarritoModel>(
+          model: carritoModel,
+          child: OverlaySupport(
+            child: GetMaterialApp(
+              title: 'Central App',
+              initialRoute: '/',
+              routes: {
+                '/': (context) => Home(),
+                '/loggin': (context) => Loggin(),
+                '/credencial': (context) => Credencial(),
+                '/carrito': (context) => Carrito(),
+                '/search_result': (context) => SearchResult(),
+                '/favoritos': (context) => Favoritos(),
+                '/historial': (context) => Historial(),
+                '/pedidos': (context) => Pedidos(),
+                '/pedido_detalle': (context) => PedidoDetalle(),
+                '/hogar': (context) => Hogar(),
+                '/equipamiento_comercial': (context) => EquipamientoComercial(),
+                '/usados': (context) => Usados(),
+                '/deuda_vencida': (context) => DeudaVencida(),
+                '/mis_compras': (context) => MisCompras(),
+                '/mis_compras_detalle': (context) => MisComprasDetalle(),
+                '/destacadosHogar': (context) => DestacadosHogar(),
+                '/destacadosComercial': (context) => DestacadosComercial(),
+                '/articulo_detalle': (context) => ArticuloDetalle(),
+                '/renovacion_efectivo': (context) => RenovacionEfectivo(),
+                '/articulo_detalle_galeria': (context) =>
+                    ArticuloDetalleGaleria(),
+                '/ticket': (context) => Ticket(),
+              },
+             // debugShowCheckedModeBanner: false,
+              theme: theme(),
+            ),
           ),
         ),
       ),

@@ -13,7 +13,8 @@ final RegExp emailValidatorRegExp =
 RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 final RegExp dniValidatorRegExp =
 RegExp(r"^(\d{2}\{1}\d{3}\\d{3})|(\d{2}\s{1}\d{3}\s\d{3})$");
-const String kDniNullError = "Por favor ingreso su nro de Dni";
+const String kDniNullError = "Por favor ingrese su nro de Dni";
+const String kUserNullError = "Ingrese su usuario";
 const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Por favor ingrese su clave";
 const String kShortPassError = "Contraseña muy corta";

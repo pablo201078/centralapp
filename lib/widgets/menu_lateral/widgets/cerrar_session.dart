@@ -11,9 +11,24 @@ Future<void> createDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('¿Confirma salir de su cuenta?',
-              style: TextStyle(color: Theme.of(context).primaryColor)),
+          title: Text(
+            '¿Confirma salir de su cuenta?',
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
           actions: [
+            MaterialButton(
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              textColor: Theme.of(context).primaryColor,
+              child: Text(
+                'No',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+            ),
             MaterialButton(
               elevation: 5.0,
               color: Theme.of(context).accentColor,
@@ -28,19 +43,6 @@ Future<void> createDialog(
               child: Text(
                 'Si, salir',
                 style: TextStyle(color: Colors.white),
-              ),
-            ),
-            MaterialButton(
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              textColor: Theme.of(context).primaryColor,
-              child: Text(
-                'No',
-                style: TextStyle(color: Theme.of(context).primaryColor),
               ),
             ),
           ],

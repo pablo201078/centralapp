@@ -5,8 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CircleButton extends StatelessWidget {
   final String caption;
@@ -24,12 +23,12 @@ class CircleButton extends StatelessWidget {
 
   Widget boton(BuildContext context) {
     return Container(
-      width: SizeConfig.safeBlockHorizontal * 13,
-      height: SizeConfig.safeBlockHorizontal * 13,
+      width: 0.14.sw, //SizeConfig.safeBlockHorizontal * 13,
+      height: 0.14.sw, //SizeConfig.safeBlockHorizontal * 13,
       child: IconButton(
         icon: Icon(
           this.icon,
-          size: SizeConfig.safeBlockHorizontal * 7.5,
+          size: 0.09.sw//25.sp,
         ),
         color: Theme.of(context).primaryColor,
         onPressed: onPress,
@@ -54,7 +53,7 @@ class CircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.safeBlockHorizontal * 19,
+      width: 0.19.sw, //SizeConfig.safeBlockHorizontal * 19,
       child: Column(
         children: [
           boton(context),
@@ -66,7 +65,7 @@ class CircleButton extends StatelessWidget {
             maxLines: 2,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 8, //SizeConfig.safeBlockHorizontal * 2.6,
+              fontSize: 13.sp,
               fontWeight: FontWeight.w500,
               color: Colors.blueGrey,
             ),
@@ -85,7 +84,7 @@ class AccesosDirectos extends StatelessWidget {
 
     // TODO: implement build
     return Container(
-      height: SizeConfig.safeBlockVertical * 15,
+      height : 0.30.sw,
       width: double.infinity,
       padding: EdgeInsets.only(top: 10, right: 4),
       child: Row(
@@ -97,12 +96,11 @@ class AccesosDirectos extends StatelessWidget {
             shadowColor: Theme.of(context).accentColor,
             icon: Icons.history,
             onPress: () {
-              if (model.isLogged && model.getUser.idTipo == 1 )
+              if (model.isLogged && model.getUser.idTipo == 1)
                 Navigator.pushNamed(context, '/historial',
                     arguments: {'idCliente': model.getUser.idCliente});
             },
           ),
-
           CircleButton(
             caption: 'Hogar',
             shadowColor: Theme.of(context).accentColor,
@@ -128,7 +126,6 @@ class AccesosDirectos extends StatelessWidget {
             caption: '2da Mano',
             shadowColor: Theme.of(context).primaryColor,
             icon: FontAwesomeIcons.recycle,
-            //    icon: MaterialCommunityIcons.fridge,
             onPress: () {
               Navigator.pushNamed(
                 context,
@@ -140,12 +137,10 @@ class AccesosDirectos extends StatelessWidget {
             showBadge: model.favoritosCantidad != 0,
             position: BadgePosition.topEnd(top: -3, end: 5),
             badgeColor: Theme.of(context).accentColor,
-            // badgeColor: Colors.grey,
             elevation: 0,
             animationDuration: Duration(milliseconds: 300),
             animationType: BadgeAnimationType.slide,
             badgeContent: Text(
-              //isLogged ? enCarrito.toString() : '0',
               model.favoritosCantidad.toString(),
               style: TextStyle(color: Colors.white),
             ),
@@ -154,7 +149,7 @@ class AccesosDirectos extends StatelessWidget {
                 shadowColor: Theme.of(context).accentColor,
                 icon: Icons.favorite_border,
                 onPress: () {
-                  if (model.isLogged  && model.getUser.idTipo == 1 )
+                  if (model.isLogged && model.getUser.idTipo == 1)
                     Navigator.pushNamed(context, '/favoritos', arguments: {
                       'idCliente': model.isLogged ? model.getUser.idCliente : 0
                     });

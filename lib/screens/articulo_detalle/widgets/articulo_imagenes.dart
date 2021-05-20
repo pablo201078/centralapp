@@ -3,8 +3,8 @@ import 'package:centralApp/models/articulo.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/numeracion_imagen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import '../../../utils.dart';
 import '../../../widgets/articulo_banner_oferta.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'boton_compartir.dart';
 
 class ArticuloImagenes extends StatefulWidget {
@@ -27,8 +27,8 @@ class _ArticuloImagenesState extends State<ArticuloImagenes> {
     return Stack(
       children: [
         Container(
-          height: SizeConfig.safeBlockVertical * 30.0,
-          width: SizeConfig.safeBlockHorizontal * 100,
+          height: 0.3.sh,
+          width: 1.sw,
           child: Swiper(
             autoplayDisableOnInteraction: true,
             autoplay: true,

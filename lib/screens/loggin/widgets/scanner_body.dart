@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'loggin_bar.dart';
 
-class ScannerBody2 extends StatelessWidget {
+class ScannerBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(

@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeDestacados extends StatelessWidget {
   final Future<List<Articulo>> futuro;
@@ -36,7 +37,7 @@ class _Cargando extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 700,
+      height: 0.8.sh,
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -112,7 +113,7 @@ class _CajaDestacados extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedCard(
       shadowColor: Theme.of(context).primaryColor,
-      height: 700, //SizeConfig.safeBlockVertical * 95,
+      height: 0.90.sh,//700,
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0.0),
       child: Column(
         children: [
@@ -177,8 +178,8 @@ class _Card extends StatelessWidget {
             arguments: {'articulo': articulo});
       },
       child: Container(
-        height: 200,
-        width: SizeConfig.safeBlockHorizontal * 37,
+        height: 0.26.sh,//200,
+        width: 0.37.sw,
         decoration: BoxDecoration(
           border: Border(
             left: BorderSide(
@@ -199,6 +200,7 @@ class _Card extends StatelessWidget {
             Hero(
               tag: 'articulo-${articulo.idArticulo}',
               child: Image(
+                height: 0.18.sh,
                 loadingBuilder: (
                   BuildContext context,
                   Widget child,
@@ -220,7 +222,7 @@ class _Card extends StatelessWidget {
                 articulo.descripcion,
                 maxLines: 2,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 2),
+                style: TextStyle(fontSize: 12.sp),
               ),
             ),
             SizedBox(
@@ -229,7 +231,7 @@ class _Card extends StatelessWidget {
             Text(
               plan,
               style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 3.3,
+                  fontSize:  12.sp,
                   color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.w500),
             ),
@@ -252,11 +254,11 @@ class _Encabezado extends StatelessWidget {
         maxLines: 1,
         textAlign: TextAlign.left,
         style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 4.3,
+            fontSize: 17.sp,
             fontWeight: FontWeight.w600),
       ),
       alignment: Alignment.centerLeft,
-      height: 50, //SizeConfig.safeBlockVertical * 6.0,
+      height: 0.06.sh,
       width: double.infinity,
       decoration: BoxDecoration(
         border: Border(
@@ -281,8 +283,6 @@ class _Footer extends StatelessWidget {
     final LoggedModel model =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
 
-    //  var listaAux = lista.where((element) => !element.destacado).toList();
-
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20.0),
@@ -295,7 +295,7 @@ class _Footer extends StatelessWidget {
             : null,
         child: Container(
           padding: EdgeInsets.only(left: 20.0, right: 20),
-          height: 50,
+          height: 0.06.sh,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -307,7 +307,7 @@ class _Footer extends StatelessWidget {
                       : '',
                   style: TextStyle(
                       color: Colors.blueAccent,
-                      fontSize: SizeConfig.safeBlockHorizontal * 3.6,
+                      fontSize: 17.sp,
                       fontWeight: FontWeight.bold),
                 ),
               ),

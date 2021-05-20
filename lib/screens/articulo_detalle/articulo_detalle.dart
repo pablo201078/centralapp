@@ -99,7 +99,7 @@ class _Scaffold extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: buildAppBar(context, title: 'Producto', actions: _buildActions()),
+      appBar: buildAppBar(context,  title: 'Producto', actions: _buildActions()),
       body: _ScrollView(articulo: articulo, botonCarrito: agregarAlCarrito),
     );
   }

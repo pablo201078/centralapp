@@ -17,7 +17,7 @@ class Caption extends StatelessWidget {
       child: Text(
         this.texto,
         style: TextStyle(
-          fontSize: size??SizeConfig.safeBlockHorizontal * 4.4,
+          fontSize: size,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,
           shadows: [

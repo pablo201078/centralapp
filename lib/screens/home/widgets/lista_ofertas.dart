@@ -1,8 +1,8 @@
 import 'package:centralApp/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import '../../../utils.dart';
 import 'lista_ofertas_card.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListaOfertas extends StatelessWidget {
   Future<List<Articulo>> futuro;
@@ -45,8 +45,8 @@ class _Container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.safeBlockHorizontal * 100 * 0.44,
-      width: SizeConfig.safeBlockHorizontal * 100,
+      height: 0.46.sw,
+      width: 1.sw,
       margin: EdgeInsets.only(left: 10),
       child: Swiper(
         layout: SwiperLayout.STACK, // TINDER,
@@ -54,8 +54,8 @@ class _Container extends StatelessWidget {
         autoplay: true,
         autoplayDelay: 8500,
         autoplayDisableOnInteraction: true,
-        itemWidth: SizeConfig.safeBlockHorizontal * 90,
-        itemHeight: SizeConfig.safeBlockVertical * 30,//100 * 0.44,
+        itemWidth: 0.9.sw,
+       // itemHeight: 0.22.sh,
         itemCount: ofertas.length,
         itemBuilder: (context, i) {
           return ofertas[i] != null

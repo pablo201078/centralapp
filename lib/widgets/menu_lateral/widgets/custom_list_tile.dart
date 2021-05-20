@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CustomListTile extends StatelessWidget {
   IconData icon;
@@ -32,14 +33,14 @@ class CustomListTile extends StatelessWidget {
           ? Icon(
               icon,
               color: iconColor != null ? iconColor : Colors.grey,
-              size: SizeConfig.blockSizeHorizontal * 8.6,
+              size: 28.sp,
             )
           : badge,
       trailing: this.trailing,
       title: Text(
         title,
         style: TextStyle(
-            fontSize: SizeConfig.blockSizeHorizontal * 3.6,
+            fontSize:  15.sp,
             color: Theme.of(context).accentColor),
       ),
     );

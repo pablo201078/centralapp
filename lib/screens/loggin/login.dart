@@ -1,6 +1,6 @@
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:centralApp/screens/loggin/widgets/login_manual_body.dart';
-import 'package:centralApp/screens/loggin/widgets/scanner_body2.dart';
+import 'package:centralApp/screens/loggin/widgets/scanner_body.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:io';
@@ -39,8 +39,9 @@ class LogginState extends State<Loggin> {
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    return Platform.isAndroid ? //!android6
-         Scaffold(
+    return Platform.isAndroid
+        ? //!android6
+        Scaffold(
             bottomNavigationBar: BubbleBottomBar(
               opacity: .2,
               currentIndex: _tipoLogin,
@@ -85,17 +86,11 @@ class LogginState extends State<Loggin> {
                 )
               ],
             ),
-            body: _tipoLogin == 0 ? ScannerBody2() : LoginManualBody(),
+            body: _tipoLogin == 0 ? ScannerBody() : LoginManualBody(),
           )
-        : _ScaffoldLoginManual();
-  }
-}
-
-class _ScaffoldLoginManual extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: LoginManualBody(),
-    );
+        : Scaffold(
+        resizeToAvoidBottomInset:true,
+            body: LoginManualBody(),
+          );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:centralApp/models/articulo.dart';
 import 'package:flutter/material.dart';
-import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:centralApp/utils.dart';
 
 class ArticuloPlanes extends StatefulWidget {
   final Articulo articulo;
@@ -13,7 +14,7 @@ class ArticuloPlanes extends StatefulWidget {
 
 class _ArticuloPlanesState extends State<ArticuloPlanes> {
   Plan planActual;
-  var lista = List<Plan>();
+  var lista = <Plan>[];
 
   @override
   void initState() {
@@ -51,7 +52,7 @@ class _ArticuloPlanesState extends State<ArticuloPlanes> {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, right: 15.0),
       child: Container(
-        height: SizeConfig.safeBlockVertical * 6.5,
+        height: 0.09.sh,
         padding: const EdgeInsets.only(left: 15.0, right: 15.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
@@ -63,7 +64,7 @@ class _ArticuloPlanesState extends State<ArticuloPlanes> {
             value: planActual,
             style: TextStyle(
                 color: Colors.blueAccent,
-                fontSize: SizeConfig.blockSizeHorizontal * 4.0),
+                fontSize: 15.sp),
             onChanged: (Plan planNuevo) {
               setState(() {
                 planActual = planNuevo;
@@ -86,7 +87,6 @@ class _ArticuloPlanesState extends State<ArticuloPlanes> {
                           child: Text(
                             'Antes ${formatearNumero(value.monto)}',
                             style: TextStyle(
-                                // fontWeight: FontWeight.w800,
                                 fontSize: SizeConfig.blockSizeHorizontal * 3.8,
                                 color: Colors.blueGrey),
                           ),

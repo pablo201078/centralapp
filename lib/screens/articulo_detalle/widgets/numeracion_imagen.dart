@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NumeracionImagen extends StatelessWidget {
   final String texto;
@@ -17,8 +16,8 @@ class NumeracionImagen extends StatelessWidget {
       top: this.top,
       left: this.left,
       child: Container(
-        width: SizeConfig.safeBlockHorizontal * 8.9,
-        height: SizeConfig.safeBlockVertical * 2.7,
+        width: 0.13.sw,
+        height: 0.025.sh,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: Colors.grey.withOpacity(0.3), //Colors.grey.withOpacity(0.5),
@@ -28,7 +27,7 @@ class NumeracionImagen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 2.0, right: 2.0),
           child: Text(
             texto,
-            style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 2.6),
+            style: TextStyle(fontSize: 13.sp),
           ),
         ),
       ),

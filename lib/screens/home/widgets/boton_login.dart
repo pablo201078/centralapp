@@ -2,7 +2,7 @@ import 'package:centralApp/models/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BotonLogin extends StatefulWidget {
   @override
@@ -22,12 +22,12 @@ class _BotonLoginState extends State<BotonLogin> {
     }
     return FloatingActionButton.extended(
       elevation: 10.0,
-      tooltip: 'Abre la Cámara para identificarte como Socio de A.M.A.C.A.R.',
+      tooltip: 'Abre la Cámara para identificarte como Socio',
       backgroundColor: Theme.of(context).accentColor,
       icon: Icon(MaterialCommunityIcons.qrcode),
       label: Text(
         'Iniciar Sesión',
-        style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 4.5),
+        style: TextStyle(fontSize: 20.sp),
       ),
       onPressed: () {
         Navigator.pushNamed(context, '/loggin');

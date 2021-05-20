@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 import '../notificaciones.dart';
 import '../one_signal.dart';
@@ -124,6 +125,35 @@ Future<void> compartirQr(ScreenshotController screenshotController,
     lista.add(imgFile.path);
     Share.shareFiles(lista, text: 'QR válido  solo para hoy.');
   });
+}
+
+void contactoWhatsApp(BuildContext context) {
+  final LoggedModel model =
+      ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+  String texto =
+      'Hola soy ${model.getUser.nombre} de ${model.getUser.localidad}, necesito contactar un asesor.';
+
+  launchWhatsApp(phone: '542364326738', message: texto);
+}
+
+void launchWhatsApp({
+  @required String phone,
+  @required String message,
+}) async {
+  String url() {
+    if (Platform.isIOS) {
+      return "whatsapp://wa.me/$phone/?text=${Uri.parse(message)}";
+    } else {
+      return 'https://api.whatsapp.com/send?phone=$phone&text=${Uri.parse(message)}';
+      //return "whatsapp://send?   phone=$phone&text=${Uri.parse(message)}";
+    }
+  }
+
+  if (await canLaunch(url())) {
+    await launch(url());
+  } else {
+    throw 'Could not launch ${url()}';
+  }
 }
 
 /*

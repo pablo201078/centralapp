@@ -4,7 +4,7 @@ import 'package:centralApp/models/articulo.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../utils.dart';
 
@@ -32,7 +32,7 @@ class _Cargando extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 700,
+      height: 0.8.sh,// 700,
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -106,7 +106,7 @@ class _CajaDestacados extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedCard(
       shadowColor: Theme.of(context).accentColor,
-      height: 700, //SizeConfig.safeBlockVertical * 95,
+      height: 0.90.sh,//700,
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0.0),
       child: Column(
         children: [
@@ -170,10 +170,9 @@ class _Card extends StatelessWidget {
             arguments: {'articulo': articulo});
       },
       child: Container(
-        height: 200,
-        width: SizeConfig.safeBlockHorizontal * 37,
+        height: 0.26.sh,//200,
+        width: 0.37.sw,
         decoration: BoxDecoration(
-          // color: Colors.redAccent,
           border: Border(
             left: BorderSide(
                 width: 0.3,
@@ -190,10 +189,8 @@ class _Card extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /* Hero(
-              tag: 'articulo-${articulo.idArticulo}',
-             child:*/
             Image(
+              height: 0.18.sh,
               loadingBuilder: (
                 BuildContext context,
                 Widget child,
@@ -208,14 +205,13 @@ class _Card extends StatelessWidget {
               image: CachedNetworkImageProvider(
                   'https://amacar.com.ar/images/cache/product-page/articulo-${articulo.idArticulo}_0.png'),
             ),
-            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),
               child: AutoSizeText(
                 articulo.descripcion,
                 maxLines: 2,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 2),
+                style: TextStyle(fontSize: 12.sp),
               ),
             ),
             SizedBox(
@@ -224,7 +220,7 @@ class _Card extends StatelessWidget {
             Text(
               plan,
               style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 3.3,
+                  fontSize: 12.sp,
                   color: Theme.of(context).accentColor,
                   fontWeight: FontWeight.w500),
             ),
@@ -246,12 +242,10 @@ class _Encabezado extends StatelessWidget {
         titulo,
         maxLines: 1,
         textAlign: TextAlign.left,
-        style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 4.3,
-            fontWeight: FontWeight.w600),
+        style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
       ),
       alignment: Alignment.centerLeft,
-      height: 50, //SizeConfig.safeBlockVertical * 6.0,
+      height: 0.06.sh,
       width: double.infinity,
       decoration: BoxDecoration(
         border: Border(
@@ -291,15 +285,14 @@ class _Footer extends StatelessWidget {
                   'Ver Todos ( ${lista.length} )',
                   style: TextStyle(
                       color: Colors.blueAccent,
-                      fontSize: SizeConfig.safeBlockHorizontal * 3.6,
+                      fontSize: 17.sp,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Icon(Icons.arrow_forward_ios, color: Colors.blueAccent)
             ],
           ),
-
-          height: 50, //SizeConfig.safeBlockVertical * 7.0,
+          height: 0.06.sh,
         ),
       ),
     );

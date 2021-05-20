@@ -60,6 +60,7 @@ dependencies:
   screenshot: ^0.3.0
   path_provider:
   firebase_core: "0.7.0"
+  flutter_screenutil: ^5.0.0+2
 
 
 dev_dependencies:

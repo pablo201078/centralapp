@@ -1,13 +1,14 @@
 import 'package:centralApp/constantes.dart';
 import 'package:flutter/material.dart';
 import 'caption.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar(BuildContext context,
     {String title, double size, bool drawer, List<Widget> actions}) {
   return AppBar(
     title: Caption(
       texto: title,
-      size: size,
+      size: size??17.sp,
     ),
     centerTitle: false,
 

@@ -1,7 +1,6 @@
 import 'package:centralApp/models/articulo.dart';
 import 'package:flutter/material.dart';
-
-import '../../../utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArticuloDescripcion extends StatelessWidget {
   const ArticuloDescripcion({
@@ -23,8 +22,7 @@ class ArticuloDescripcion extends StatelessWidget {
             style: TextStyle(
               color: Colors.black54, //Theme.of(context).accentColor,
               fontWeight: FontWeight.bold,
-
-              fontSize: SizeConfig.safeBlockHorizontal * 3.8,
+              fontSize: 18.sp,
             ),
           ),
           Text(
@@ -32,7 +30,7 @@ class ArticuloDescripcion extends StatelessWidget {
             style: TextStyle(
               color: Colors.black, //Theme.of(context).accentColor,
               //  fontWeight: FontWeight.bold,
-              fontSize: SizeConfig.safeBlockHorizontal * 3.0,
+              fontSize: 13.sp,
             ),
           ),
         ],

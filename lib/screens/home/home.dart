@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../../utils.dart';
 import '../../notificaciones.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home_body.dart';
 import '../../widgets/menu_lateral/menu_lateral.dart';
 import '../../widgets/boton_carrito.dart';
@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
       appBar: buildAppBar(
         context,
         title: 'Central  App',
-        size: SizeConfig.safeBlockHorizontal * 5.0,
+        size: 21.sp,
         drawer: true,
         actions: [
           BotonBuscar(),
