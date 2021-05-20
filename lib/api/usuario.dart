@@ -110,6 +110,7 @@ Future<String> getQr(LoggedModel loggedModel, int idCliente) async {
         jsonData['nroSocio'] ?? '',
         jsonData['rubro'] ?? '',
       );
+
       abrirSesionOneSignal(idCliente, jsonData['hash']);
 
       return jsonData['qr'];

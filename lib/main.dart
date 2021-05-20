@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:centralApp/screens/articulo_detalle/widgets/articulo_detalle_galeria.dart';
 import 'package:centralApp/screens/carrito/carrito.dart';
 import 'package:centralApp/screens/destacados_hogar/destacados_hogar.dart';
@@ -39,6 +41,7 @@ void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
     PedidosModel pedidosModel) async {
   print('inicializar app');
   var idCliente = await getIdCliente();
+
   //inicializo oneSignal aunque no este logueado
   await inicializarOneSignal();
 

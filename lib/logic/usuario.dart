@@ -88,7 +88,7 @@ void loginOk(Usuario usr, int tipoUsuario, BuildContext context) {
 void cerrarSesion(LoggedModel model, CarritoModel carritoModel) {
   model.logged = false;
   carritoModel.vaciar();
-  cerrarSesionOneSignal();
+  if (Platform.isAndroid || Platform.isIOS) cerrarSesionOneSignal();
 }
 
 //para cuando solicitan la clave por SMS
@@ -109,11 +109,10 @@ void enviarSms(BuildContext context) {
 
 Future<void> compartirQr(ScreenshotController screenshotController,
     BuildContext context, int idCliente) async {
-
   bool rta = await postCompartirQr(idCliente);
 
-  if ( !rta ){
-    showSnackBar( context, 'No se pudo compartir el QR.', Colors.redAccent);
+  if (!rta) {
+    showSnackBar(context, 'No se pudo compartir el QR.', Colors.redAccent);
     return;
   }
 
