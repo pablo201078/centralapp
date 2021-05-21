@@ -5,9 +5,7 @@ import 'package:centralApp/utils.dart';
 
 class ArticuloPlanes extends StatefulWidget {
   final Articulo articulo;
-
   ArticuloPlanes({Key key, this.articulo});
-
   @override
   _ArticuloPlanesState createState() => _ArticuloPlanesState();
 }
@@ -52,7 +50,7 @@ class _ArticuloPlanesState extends State<ArticuloPlanes> {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, right: 15.0),
       child: Container(
-        height: 0.09.sh,
+        height: 0.07.sh,
         padding: const EdgeInsets.only(left: 15.0, right: 15.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
@@ -87,7 +85,7 @@ class _ArticuloPlanesState extends State<ArticuloPlanes> {
                           child: Text(
                             'Antes ${formatearNumero(value.monto)}',
                             style: TextStyle(
-                                fontSize: SizeConfig.blockSizeHorizontal * 3.8,
+                                fontSize: 12.sp,
                                 color: Colors.blueGrey),
                           ),
                         )
