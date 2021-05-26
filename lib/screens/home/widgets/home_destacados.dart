@@ -113,7 +113,7 @@ class _CajaDestacados extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedCard(
       shadowColor: Theme.of(context).primaryColor,
-      height: 0.90.sh,//700,
+      height: 0.90.sh, //700,
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0.0),
       child: Column(
         children: [
@@ -178,7 +178,7 @@ class _Card extends StatelessWidget {
             arguments: {'articulo': articulo});
       },
       child: Container(
-        height: 0.26.sh,//200,
+        height: 0.26.sh, //200,
         width: 0.37.sw,
         decoration: BoxDecoration(
           border: Border(
@@ -222,7 +222,7 @@ class _Card extends StatelessWidget {
                 articulo.descripcion,
                 maxLines: 2,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12.sp),
+                style: Theme.of(context).textTheme.caption,
               ),
             ),
             SizedBox(
@@ -230,10 +230,9 @@ class _Card extends StatelessWidget {
             ),
             Text(
               plan,
-              style: TextStyle(
-                  fontSize:  12.sp,
+              style: Theme.of(context).textTheme.caption.copyWith(
                   color: Theme.of(context).accentColor,
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w600),
             ),
           ],
         ),
@@ -253,9 +252,10 @@ class _Encabezado extends StatelessWidget {
         titulo,
         maxLines: 1,
         textAlign: TextAlign.left,
-        style: TextStyle(
-            fontSize: 17.sp,
-            fontWeight: FontWeight.w600),
+        style: Theme.of(context)
+            .textTheme
+            .subtitle1
+            .copyWith(fontWeight: FontWeight.w600),
       ),
       alignment: Alignment.centerLeft,
       height: 0.06.sh,
@@ -305,9 +305,8 @@ class _Footer extends StatelessWidget {
                   model.isLogged
                       ? 'Ver Productos de ${model.getUser.rubro} '
                       : '',
-                  style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 17.sp,
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      color: Theme.of(context).accentColor,
                       fontWeight: FontWeight.bold),
                 ),
               ),

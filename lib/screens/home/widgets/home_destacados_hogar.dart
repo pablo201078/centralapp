@@ -32,7 +32,7 @@ class _Cargando extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 0.8.sh,// 700,
+      height: 0.8.sh, // 700,
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -106,7 +106,7 @@ class _CajaDestacados extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedCard(
       shadowColor: Theme.of(context).accentColor,
-      height: 0.90.sh,//700,
+      height: 0.90.sh, //700,
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0.0),
       child: Column(
         children: [
@@ -170,7 +170,7 @@ class _Card extends StatelessWidget {
             arguments: {'articulo': articulo});
       },
       child: Container(
-        height: 0.26.sh,//200,
+        height: 0.26.sh, //200,
         width: 0.37.sw,
         decoration: BoxDecoration(
           border: Border(
@@ -211,7 +211,9 @@ class _Card extends StatelessWidget {
                 articulo.descripcion,
                 maxLines: 2,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12.sp),
+                style: Theme.of(context)
+                    .textTheme
+                    .caption, //TextStyle(fontSize: 12.sp),
               ),
             ),
             SizedBox(
@@ -219,10 +221,9 @@ class _Card extends StatelessWidget {
             ),
             Text(
               plan,
-              style: TextStyle(
-                  fontSize: 12.sp,
+              style: Theme.of(context).textTheme.caption.copyWith(
                   color: Theme.of(context).accentColor,
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w600),
             ),
           ],
         ),
@@ -242,7 +243,7 @@ class _Encabezado extends StatelessWidget {
         titulo,
         maxLines: 1,
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
+        style: Theme.of(context).textTheme.subtitle1,
       ),
       alignment: Alignment.centerLeft,
       height: 0.06.sh,
@@ -283,9 +284,8 @@ class _Footer extends StatelessWidget {
               Expanded(
                 child: Text(
                   'Ver Todos ( ${lista.length} )',
-                  style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 17.sp,
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      color: Theme.of(context).accentColor,
                       fontWeight: FontWeight.bold),
                 ),
               ),

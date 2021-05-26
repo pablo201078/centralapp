@@ -70,8 +70,8 @@ void main() async {
         statusBarIconBrightness: Brightness.light),
   );
 
- // SystemChrome.setPreferredOrientations(
-    //  [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   LoggedModel loggedModel = LoggedModel();
   CarritoModel carritoModel = CarritoModel();
@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
                     ArticuloDetalleGaleria(),
                 '/ticket': (context) => Ticket(),
               },
-             // debugShowCheckedModeBanner: false,
+              debugShowCheckedModeBanner: false,
               theme: theme(),
             ),
           ),

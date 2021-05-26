@@ -1,4 +1,5 @@
 import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'lista_ofertas_card.dart';
@@ -45,8 +46,8 @@ class _Container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 0.46.sw,
-      width: 1.sw,
+      height: Responsive.isMobile(context) ? 0.46.sw : 0.25.sw,
+      width: double.infinity,
       margin: EdgeInsets.only(left: 10),
       child: Swiper(
         layout: SwiperLayout.STACK, // TINDER,
@@ -55,7 +56,7 @@ class _Container extends StatelessWidget {
         autoplayDelay: 8500,
         autoplayDisableOnInteraction: true,
         itemWidth: 0.9.sw,
-       // itemHeight: 0.22.sh,
+        // itemHeight: 0.22.sh,
         itemCount: ofertas.length,
         itemBuilder: (context, i) {
           return ofertas[i] != null

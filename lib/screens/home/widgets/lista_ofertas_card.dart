@@ -32,7 +32,7 @@ class ListaOfertasCard extends StatelessWidget {
 
     return GestureDetector(
       child: CachedNetworkImage(
-        imageUrl: this.oferta.urlImagen??'',
+        imageUrl: this.oferta.urlImagen ?? '',
         imageBuilder:
             _buildContainer, // el container es el q muestra la imagen, lo construyo aca adentro para usar cachedImages
         placeholder: (context, url) => CircularProgressIndicator(),

@@ -4,6 +4,7 @@ import 'package:centralApp/widgets/boton_buscar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import '../../responsive.dart';
 import '../../utils.dart';
 import '../../notificaciones.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,6 @@ class Home extends StatelessWidget {
     SizeConfig().init(context);
 
     Future<bool> _onWillPop() {
-
       if (_scaffoldKey.currentState.isDrawerOpen)
         _scaffoldKey.currentState.openEndDrawer();
       else
@@ -44,12 +44,20 @@ class Home extends StatelessWidget {
           BotonCarrito(),
         ],
       ),
-      drawer: MenuLateral(),
+      drawer: /*Responsive.isMobile(context) ?*/ MenuLateral()/* : null*/,
       body: WillPopScope(
         onWillPop: _onWillPop,
-        child: HomeBody(
-            idCliente:
-                loggedModel.isLogged ? loggedModel.getUser.idCliente : 0),
+        child: Responsive(
+          mobile: HomeBody(
+              idCliente:
+                  loggedModel.isLogged ? loggedModel.getUser.idCliente : 0),
+          tablet: HomeBody(
+              idCliente:
+                  loggedModel.isLogged ? loggedModel.getUser.idCliente : 0),
+          desktop: HomeBody(
+              idCliente:
+                  loggedModel.isLogged ? loggedModel.getUser.idCliente : 0),
+        ),
       ),
     );
   }
