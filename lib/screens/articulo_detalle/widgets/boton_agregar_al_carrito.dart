@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:centralApp/logic/carrito.dart';
 import 'package:centralApp/models/articulo.dart';
 import 'package:centralApp/api/articulos.dart';
 import 'package:centralApp/models/scoped/carrito.dart';
@@ -9,17 +10,10 @@ import '../../../constantes.dart';
 import '../../../notificaciones.dart';
 import '../../../utils.dart';
 
-class BotonAgregarAlCarrito extends StatefulWidget {
+class BotonAgregarAlCarrito extends StatelessWidget {
   final Articulo articulo;
 
   BotonAgregarAlCarrito({Key key, @required this.articulo});
-
-  @override
-  _BotonAgregarAlCarritoState createState() => _BotonAgregarAlCarritoState();
-}
-
-class _BotonAgregarAlCarritoState extends State<BotonAgregarAlCarrito> {
-  bool cargando = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,45 +21,17 @@ class _BotonAgregarAlCarritoState extends State<BotonAgregarAlCarrito> {
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: true);
 
     final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
-
-    void click() async {
-
-      if (!loggedModel.isLogged || loggedModel.getUser.idTipo == 2 ) {
-        showSnackBar(context, txtIniciarSesion, Colors.redAccent);
-        return;
-      }
-
-      if (this.cargando) return;
-
-
-      if (widget.articulo.atributo.idAtributo == 0 &&
-          widget.articulo.tieneAtributo) {
-        showMessage(
-            context, 'Tenes que elegir de que tipo es.', DialogType.WARNING);
-        return;
-      }
-
-      setState(() {
-        this.cargando = true;
-      });
-
-      bool rta = await actualizarCarrito(
-          this.widget.articulo, loggedModel.getUser.idCliente, true, context);
-      setState(() {
-        this.cargando = false;
-      });
-      if (rta) {
-        carritoModel.agregar(this.widget.articulo);
-        Navigator.pushNamed(context, '/carrito');
-      }
-    }
+        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
 
     return Padding(
       padding:
           const EdgeInsets.only(left: 15, right: 15.0, top: 10, bottom: 10),
       child: MaterialButton(
-        onPressed:  loggedModel.isLogged && loggedModel.getUser.idTipo == 1 ? click: null,
+        onPressed: loggedModel.isLogged && loggedModel.getUser.idTipo == 1
+            ? () {
+                agregarAlCarrito(context, articulo);
+              }
+            : null,
         height: SizeConfig.safeBlockVertical * 6.5,
         elevation: 0.0,
         splashColor: Colors.transparent,
@@ -73,18 +39,18 @@ class _BotonAgregarAlCarritoState extends State<BotonAgregarAlCarrito> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              carritoModel.existe(this.widget.articulo)
+              carritoModel.existe(articulo)
                   ? 'Ya lo tenes en el Carrito'
                   : 'Agregar al Carrito',
               style: TextStyle(
-                color: carritoModel.existe(this.widget.articulo)
+                color: carritoModel.existe(articulo)
                     ? Colors.white
                     : Colors.blueAccent,
                 fontWeight: FontWeight.w600,
                 fontSize: SizeConfig.safeBlockHorizontal * 4.0,
               ),
             ),
-            !cargando
+            !carritoModel.cargando
                 ? _Icono(carritoModel)
                 : Padding(
                     padding: const EdgeInsets.only(left: 15.0),
@@ -94,11 +60,12 @@ class _BotonAgregarAlCarritoState extends State<BotonAgregarAlCarrito> {
                   ),
           ],
         ),
-        color: carritoModel.existe(this.widget.articulo)
+        color: carritoModel.existe(articulo)
             ? Colors.green[200]
-            : Colors.blueAccent
-                .withOpacity(0.25), //Theme.of(context).accentColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.0)),
+            : Colors.blueAccent.withOpacity(0.25),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7.0),
+        ),
       ),
     );
   }
@@ -107,12 +74,8 @@ class _BotonAgregarAlCarritoState extends State<BotonAgregarAlCarrito> {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
       child: Icon(
-        carritoModel.existe(this.widget.articulo)
-            ? Icons.check
-            : Icons.add_shopping_cart,
-        color: carritoModel.existe(this.widget.articulo)
-            ? Colors.white
-            : Colors.blueAccent,
+        carritoModel.existe(articulo) ? Icons.check : Icons.add_shopping_cart,
+        color: carritoModel.existe(articulo) ? Colors.white : Colors.blueAccent,
       ),
     );
   }

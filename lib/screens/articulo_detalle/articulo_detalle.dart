@@ -99,7 +99,7 @@ class _Scaffold extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: buildAppBar(context,  title: 'Producto', actions: _buildActions()),
+      appBar: buildAppBar(context, title: 'Producto', actions: _buildActions()),
       body: _ScrollView(articulo: articulo, botonCarrito: agregarAlCarrito),
     );
   }
@@ -153,8 +153,9 @@ class _ScrollView extends StatelessWidget {
         ),
         SizedBox(height: 10.0),
         Visibility(
-            visible: botonCarrito,
-            child: BotonAgregarAlCarrito(articulo: this.articulo)),
+          visible: botonCarrito,
+          child: BotonAgregarAlCarrito(articulo: this.articulo),
+        ),
       ],
     );
   }

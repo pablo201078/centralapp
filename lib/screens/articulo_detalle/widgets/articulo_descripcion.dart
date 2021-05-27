@@ -1,6 +1,5 @@
 import 'package:centralApp/models/articulo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArticuloDescripcion extends StatelessWidget {
   const ArticuloDescripcion({
@@ -17,22 +16,10 @@ class ArticuloDescripcion extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            this.articulo.descripcion,
-            style: TextStyle(
-              color: Colors.black54, //Theme.of(context).accentColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 18.sp,
-            ),
-          ),
-          Text(
-            'Código: ${this.articulo.codArticulo}',
-            style: TextStyle(
-              color: Colors.black, //Theme.of(context).accentColor,
-              //  fontWeight: FontWeight.bold,
-              fontSize: 13.sp,
-            ),
-          ),
+          Text(this.articulo.descripcion,
+              style: Theme.of(context).textTheme.headline6),
+          Text('Código: ${this.articulo.codArticulo}',
+              style: Theme.of(context).textTheme.caption),
         ],
       ),
     );

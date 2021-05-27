@@ -97,9 +97,8 @@ class Articulo {
   }
 
   factory Articulo.fromJson(Map<String, dynamic> jsonData) {
-    List<Map<String, String>> listacaracteristicas =
-        List<Map<String, String>>();
-    List<Atributo> listaAtributos = List<Atributo>();
+    List<Map<String, String>> listacaracteristicas = <Map<String, String>>[];
+    List<Atributo> listaAtributos = <Atributo>[];
     Atributo atributo;
     //las caracteristicas son un json
     for (var o in json.decode(jsonData['caracteristicas'])) {

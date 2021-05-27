@@ -9,10 +9,10 @@ import 'package:centralApp/screens/home/widgets/boton_whatsapp.dart';
 import 'package:centralApp/screens/home/widgets/home_destacados.dart';
 import 'package:centralApp/screens/home/widgets/home_destacados_hogar.dart';
 import 'package:centralApp/screens/home/widgets/lista_ofertas.dart';
+import 'package:centralApp/widgets/menu_lateral/menu_lateral.dart';
 import 'package:check_app_version/show_dialog.dart';
 import 'package:flutter/material.dart';
 import '../../constantes.dart';
-
 
 class HomeBody extends StatefulWidget {
   final int idCliente;
@@ -111,42 +111,43 @@ class _HomeBodyMain extends State<HomeBody> {
   Widget build(BuildContext context) {
     // TODO: implement build
     /*if (_connectionStatus > 0)*/
-    return Stack(
-      children: <Widget>[
-        ListView(
-          //physics: BouncingScrollPhysics(),
-          children: <Widget>[
-            ListaOfertas(futuro: _ofertas),
-            AccesosDirectos(),
-            HomeDestacadosHogar(
-              futuro: _destacadosHogar,
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            HomeDestacados(
-              futuro: _destacadosComercial,
-            ),
-            SizedBox(
-              height: 100,
-            ),
-          ],
-        ),
-        Visibility(
-          visible: widget.idCliente != 0,
-          child: Align(
-            alignment: Alignment.bottomRight,
-            child: BotonWhatsApp(),
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          ListView(
+            children: <Widget>[
+              ListaOfertas(futuro: _ofertas),
+              AccesosDirectos(),
+              HomeDestacadosHogar(
+                futuro: _destacadosHogar,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              HomeDestacados(
+                futuro: _destacadosComercial,
+              ),
+              SizedBox(
+                height: 100,
+              ),
+            ],
           ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: BotonLogin(),
+          Visibility(
+            visible: widget.idCliente != 0,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: BotonWhatsApp(),
+            ),
           ),
-        ),
-      ],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: BotonLogin(),
+            ),
+          ),
+        ],
+      ),
     );
     // else
     //  return SinConexion();

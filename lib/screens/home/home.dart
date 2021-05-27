@@ -37,14 +37,14 @@ class Home extends StatelessWidget {
       appBar: buildAppBar(
         context,
         title: 'Central  App',
-        size: 21.sp,
+        size: 20.sp,
         drawer: true,
         actions: [
           BotonBuscar(),
           BotonCarrito(),
         ],
       ),
-      drawer: /*Responsive.isMobile(context) ?*/ MenuLateral()/* : null*/,
+      drawer: /*Responsive.isMobile(context) ?*/ MenuLateral() /* : null*/,
       body: WillPopScope(
         onWillPop: _onWillPop,
         child: Responsive(
@@ -54,9 +54,21 @@ class Home extends StatelessWidget {
           tablet: HomeBody(
               idCliente:
                   loggedModel.isLogged ? loggedModel.getUser.idCliente : 0),
-          desktop: HomeBody(
-              idCliente:
-                  loggedModel.isLogged ? loggedModel.getUser.idCliente : 0),
+          desktop: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: MenuLateral(),
+              ),
+              Expanded(
+                flex: 8,
+                child: HomeBody(
+                    idCliente: loggedModel.isLogged
+                        ? loggedModel.getUser.idCliente
+                        : 0),
+              ),
+            ],
+          ),
         ),
       ),
     );

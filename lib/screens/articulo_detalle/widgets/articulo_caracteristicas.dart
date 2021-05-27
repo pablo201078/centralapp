@@ -24,10 +24,10 @@ Widget _buildEncabezado(BuildContext context, String texto) {
       children: [
         Text(
           'Caracteristicas Generales',
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).accentColor,
-              fontSize: SizeConfig.safeBlockHorizontal * 4.7),
+          style: Theme.of(context).textTheme.headline6.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).accentColor,
+              ),
         ),
         SizedBox(
           height: SizeConfig.safeBlockVertical * 2.0,

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CarritoModel extends Model {
-  List<Articulo> _carrito = List<Articulo>();
+  List<Articulo> _carrito = <Articulo>[];
+  bool _cargando = false;
 
   static CarritoModel of(BuildContext context) =>
       ScopedModel.of<CarritoModel>(context);
@@ -15,6 +16,15 @@ class CarritoModel extends Model {
 
   int get cantidad {
     return _carrito.length;
+  }
+
+  set cargando(value) {
+    _cargando = value;
+    notifyListeners();
+  }
+
+  bool get cargando {
+    return _cargando;
   }
 
   double get total {
@@ -62,5 +72,4 @@ class CarritoModel extends Model {
         .where((element) => element.idArticulo == articulo.idArticulo);
     return !contain.isEmpty;
   }
-
 }
