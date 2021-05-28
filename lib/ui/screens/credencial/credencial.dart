@@ -2,19 +2,19 @@ import 'dart:async';
 import 'package:animate_do/animate_do.dart';
  import 'package:centralApp/data/repositories/usuario.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
-import 'package:centralApp/screens/credencial/widgets/qr_actualizado.dart';
-import 'package:centralApp/screens/credencial/widgets/boton_compartir_qr.dart';
-import 'package:centralApp/screens/credencial/widgets/boton_actualizar_qr.dart';
-import 'package:centralApp/screens/credencial/widgets/tarjeta_dorso.dart';
-import 'package:centralApp/screens/credencial/widgets/tarjeta_frente.dart';
-import 'package:centralApp/widgets/app_bar.dart';
+import 'package:centralApp/ui/screens/credencial/widgets/qr_actualizado.dart';
+import 'package:centralApp/ui/screens/credencial/widgets/boton_compartir_qr.dart';
+import 'package:centralApp/ui/screens/credencial/widgets/boton_actualizar_qr.dart';
+import 'package:centralApp/ui/screens/credencial/widgets/tarjeta_dorso.dart';
+import 'package:centralApp/ui/screens/credencial/widgets/tarjeta_frente.dart';
+import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:screenshot/screenshot.dart';
-import '../../utils.dart';
+import 'package:centralApp/utils.dart';
 import 'package:get/get.dart';
 
 class Credencial extends StatelessWidget {

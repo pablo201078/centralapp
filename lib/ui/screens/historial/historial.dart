@@ -1,16 +1,15 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/screens/historial/widgets/historial_card_detalles.dart';
-import 'package:centralApp/screens/historial/widgets/sin_historial.dart';
-import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
-import 'package:centralApp/widgets/app_bar.dart';
-import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen.dart';
-import 'package:centralApp/widgets/boton_buscar.dart';
-import 'package:centralApp/widgets/boton_carrito.dart';
-import 'package:centralApp/widgets/loading_list.dart';
+import 'package:centralApp/ui/screens/historial/widgets/historial_card_detalles.dart';
+import 'package:centralApp/ui/screens/historial/widgets/sin_historial.dart';
+import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
+import 'package:centralApp/ui/widgets/app_bar.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen.dart';
+import 'package:centralApp/ui/widgets/boton_buscar.dart';
+import 'package:centralApp/ui/widgets/boton_carrito.dart';
+import 'package:centralApp/ui/widgets/loading_list.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class Historial extends StatelessWidget {
   int idCliente;

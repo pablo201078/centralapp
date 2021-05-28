@@ -3,15 +3,13 @@ import 'package:centralApp/logic/scoped/carrito.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:centralApp/constantes.dart';
+import 'package:centralApp/notificaciones.dart';
 
-import '../constantes.dart';
-import '../notificaciones.dart';
-import '../utils.dart';
 
 class BotonCarrito extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
 
     final enCarrito =
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: true).cantidad;

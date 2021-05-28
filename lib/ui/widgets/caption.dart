@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../utils.dart';
 
 class Caption extends StatelessWidget {
   final String texto;

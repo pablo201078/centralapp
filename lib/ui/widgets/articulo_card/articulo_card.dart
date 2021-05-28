@@ -1,11 +1,10 @@
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_detalles.dart';
-import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen.dart';
-import 'package:centralApp/widgets/articulo_banner_oferta.dart';
-import 'package:centralApp/widgets/boton_like.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_detalles.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen.dart';
+import 'package:centralApp/ui/widgets/articulo_banner_oferta.dart';
+import 'package:centralApp/ui/widgets/boton_like.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class ArticuloCard extends StatelessWidget {
   final Articulo articulo;

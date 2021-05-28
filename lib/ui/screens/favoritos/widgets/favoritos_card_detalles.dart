@@ -1,8 +1,7 @@
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class FavoritosCardDetalles extends StatelessWidget {
   final Articulo articulo;

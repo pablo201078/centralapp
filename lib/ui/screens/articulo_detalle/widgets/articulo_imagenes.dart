@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/screens/articulo_detalle/widgets/numeracion_imagen.dart';
+import 'package:centralApp/ui/screens/articulo_detalle/widgets/numeracion_imagen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import '../../../widgets/articulo_banner_oferta.dart';
+import 'package:centralApp/ui/widgets/articulo_banner_oferta.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'boton_compartir.dart';
 

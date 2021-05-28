@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class DeudaVencidaListaVacia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

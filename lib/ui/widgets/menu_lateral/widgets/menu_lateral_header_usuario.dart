@@ -8,8 +8,8 @@ import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../../../constantes.dart';
-import '../../../notificaciones.dart';
+import 'package:centralApp/constantes.dart';
+import 'package:centralApp/notificaciones.dart';
 
 class MenuLateralHeaderUsuario extends StatefulWidget {
   Usuario usuario;

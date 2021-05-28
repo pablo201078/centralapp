@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/widgets/app_bar.dart';
-import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
-import 'package:centralApp/widgets/boton_buscar.dart';
-import 'package:centralApp/widgets/boton_carrito.dart';
+import 'package:centralApp/ui/widgets/app_bar.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
+import 'package:centralApp/ui/widgets/boton_buscar.dart';
+import 'package:centralApp/ui/widgets/boton_carrito.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class DestacadosHogar extends StatelessWidget {
   List<Articulo> lista;

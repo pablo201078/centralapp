@@ -3,8 +3,8 @@ import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/scoped/categoria_comercial_actual.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
-import 'package:centralApp/widgets/articulo_card/articulo_card.dart';
-import 'package:centralApp/widgets/loading_list.dart';
+import 'package:centralApp/ui/widgets/articulo_card/articulo_card.dart';
+import 'package:centralApp/ui/widgets/loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 

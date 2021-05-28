@@ -3,7 +3,7 @@ import 'package:centralApp/logic/scoped/carrito.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class BotonAgregarAlCarrito extends StatelessWidget {
   final Articulo articulo;

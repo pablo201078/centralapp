@@ -2,8 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
-
-import '../../../constantes.dart';
+import 'package:centralApp/constantes.dart';
 
 class ArticuloCardImagen extends StatelessWidget {
   final Articulo articulo;

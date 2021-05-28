@@ -4,7 +4,7 @@ import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 import 'numeracion_imagen.dart';
 
 class ArticuloDetalleGaleria extends StatelessWidget {
@@ -24,7 +24,6 @@ class ArticuloDetalleGaleria extends StatelessWidget {
 
     return Scaffold(
       body: Stack(children: [
-        //  GradientBack(),
         Galeria(articulo: this.articulo, actual: this.actual),
         Positioned(
           top: 40,

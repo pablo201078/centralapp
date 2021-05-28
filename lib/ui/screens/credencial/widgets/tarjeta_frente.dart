@@ -2,8 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 import 'imagen_socio.dart';
 
 class TarjetaFrente extends StatelessWidget {

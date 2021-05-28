@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class BotonEmpezarAComprar extends StatelessWidget {
   @override

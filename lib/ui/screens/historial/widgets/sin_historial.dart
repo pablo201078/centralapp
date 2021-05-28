@@ -1,7 +1,6 @@
-import 'package:centralApp/widgets/boton_empezar_a_comprar.dart';
+import 'package:centralApp/ui/widgets/boton_empezar_a_comprar.dart';
 import 'package:flutter/material.dart';
-
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 
 class SinHistorial extends StatelessWidget {

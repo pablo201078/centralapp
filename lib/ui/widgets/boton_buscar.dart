@@ -2,8 +2,7 @@ import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/ui/screens/search/custom_search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-import '../constantes.dart';
+import 'package:centralApp/constantes.dart';
 
 class BotonBuscar extends StatelessWidget {
   @override

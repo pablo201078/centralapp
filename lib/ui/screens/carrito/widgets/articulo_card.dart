@@ -6,9 +6,9 @@ import 'package:centralApp/notificaciones.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../../../constantes.dart';
-import '../../../theme.dart';
-import '../../../utils.dart';
+import 'package:centralApp/constantes.dart';
+import 'package:centralApp/theme.dart';
+import 'package:centralApp/utils.dart';
 import 'articulo_card_detalles.dart';
 import 'articulo_card_imagen.dart';
 

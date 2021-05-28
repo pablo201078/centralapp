@@ -1,6 +1,6 @@
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class CarritoAtributo extends StatelessWidget {
   final Articulo articulo;

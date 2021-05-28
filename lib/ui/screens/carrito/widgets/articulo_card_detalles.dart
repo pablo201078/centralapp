@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/screens/carrito/widgets/carrito_atributo.dart';
+import 'package:centralApp/ui/screens/carrito/widgets/carrito_atributo.dart';
 import 'package:flutter/material.dart';
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 import 'carrito_cantidad_actual.dart';
 
 class ArticuloCardDetalles extends StatelessWidget {

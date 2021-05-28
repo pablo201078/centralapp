@@ -5,9 +5,7 @@ import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class ListaCategorias extends StatelessWidget {
   Future<List<ArticuloCategoria>> futuro;

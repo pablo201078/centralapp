@@ -1,11 +1,9 @@
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
-import '../../../utils.dart';
+import 'package:centralApp/utils.dart';
 
 class DestacadosCardDetalles extends StatelessWidget {
   final Articulo articulo;
-  // final formatCurrency = NumberFormat.simpleCurrency(decimalDigits: 0);
-
   DestacadosCardDetalles({Key key, @required this.articulo});
 
   @override
