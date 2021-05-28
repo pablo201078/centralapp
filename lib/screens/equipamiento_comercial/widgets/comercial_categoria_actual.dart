@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/categoria_comercial_actual.dart';
@@ -27,13 +27,13 @@ class ComercialCategoriaActual extends StatelessWidget {
 class _ListadoArticulos extends StatelessWidget {
   final ArticuloCategoria categoria;
   final int idCliente;
-
+  var articuloRepository = ArticuloRepository();
   _ListadoArticulos({this.categoria, this.idCliente});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Articulo>>(
-        future: getArticulosPorCategoria(idCliente, 8, categoria.idCategoria),
+        future: articuloRepository.getArticulosPorCategoria(idCliente, 8, categoria.idCategoria),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData

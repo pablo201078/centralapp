@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/data/api/usuario.dart';
+import 'package:centralApp/data/repositories/usuario.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';

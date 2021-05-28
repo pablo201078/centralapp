@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -13,13 +13,13 @@ import 'articulo_card_detalles.dart';
 import 'articulo_card_imagen.dart';
 
 class ArticuloCard extends StatelessWidget {
-  const ArticuloCard({Key key, this.index, this.articulo, this.listKey})
+  ArticuloCard({Key key, this.index, this.articulo, this.listKey})
       : super(key: key);
 
   final int index;
   final Articulo articulo;
   final GlobalKey<AnimatedListState> listKey;
-
+  var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
     CarritoModel carrito =
@@ -29,7 +29,7 @@ class ArticuloCard extends StatelessWidget {
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
 
     void eliminarDelCarrito() async {
-      bool rta = await actualizarCarrito(
+      bool rta = await articuloRepository.actualizarCarrito(
           articulo, loggedModel.getUser.idCliente, false, context);
 
       if (rta) {

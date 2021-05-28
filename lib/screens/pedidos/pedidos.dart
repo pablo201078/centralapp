@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/pedidos.dart';
+import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/pedido.dart';
 import 'package:centralApp/data/scoped/pedidos.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';

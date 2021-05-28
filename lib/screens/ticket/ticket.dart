@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/ticket.dart';
+import 'package:centralApp/data/repositories/ticket.dart';
 import 'package:centralApp/data/models/ticket_item.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/screens/ticket/widgets/ticket_caja.dart';

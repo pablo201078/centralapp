@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/screens/favoritos/widgets/favoritos_card_detalles.dart';
@@ -44,12 +44,12 @@ class _Body extends StatefulWidget {
 
 class __BodyState extends State<_Body> {
   Future<List<Articulo>> _futuro;
-
+  var articuloRepository = ArticuloRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _futuro = getFavoritos(widget.idCliente);
+    _futuro = articuloRepository.getFavoritos(widget.idCliente);
   }
 
   @override
@@ -212,9 +212,9 @@ class _ContenidoCard extends StatelessWidget {
 void _eliminar(BuildContext context, int index, Articulo articulo) async {
   LoggedModel model =
       ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
-
+  var articuloRepository = ArticuloRepository();
   bool rta =
-      await postFavorito(articulo, model.getUser.idCliente, false, context);
+      await articuloRepository.postFavorito(articulo, model.getUser.idCliente, false, context);
 
   if (rta) {
     HapticFeedback.lightImpact();

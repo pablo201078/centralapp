@@ -1,5 +1,5 @@
-import 'package:centralApp/data/api/articulos.dart';
-import 'package:centralApp/data/api/pedidos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
+import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -21,7 +21,7 @@ class BotonComprar extends StatefulWidget {
 
 class _BotonComprarState extends State<BotonComprar> {
   bool cargando = false;
-
+  var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
     final LoggedModel loggedModel =
@@ -36,7 +36,7 @@ class _BotonComprarState extends State<BotonComprar> {
       setState(() {
         cargando = true;
       });
-      bool rta = await comprarCarrito(loggedModel.getUser.idCliente, context);
+      bool rta = await articuloRepository.comprarCarrito(loggedModel.getUser.idCliente, context);
       pedidosModel.pedidos = await getPedidos(loggedModel.getUser.idCliente);
       setState(() {
         cargando = false;

@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,7 @@ class ArticuloCardImagen extends StatelessWidget {
   final Articulo articulo;
 
   ArticuloCardImagen({Key key, @required this.articulo});
-
+  var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
     return Hero(
@@ -34,7 +34,7 @@ class ArticuloCardImagen extends StatelessWidget {
         },
         fit: BoxFit.contain,
         image: CachedNetworkImageProvider(
-          url_img(articulo.idArticulo, 0),
+          articuloRepository.url_img(articulo.idArticulo, 0),
         ),
       ),
     );

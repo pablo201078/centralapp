@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
@@ -54,6 +54,7 @@ class Galeria extends StatefulWidget {
 }
 
 class _GaleriaState extends State<Galeria> {
+  var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -68,10 +69,9 @@ class _GaleriaState extends State<Galeria> {
                 builder: (BuildContext context, int index) {
                   return PhotoViewGalleryPageOptions(
                     imageProvider: CachedNetworkImageProvider(
-                      url_img(widget.articulo.idArticulo, index),
-                      //'http://amacar.com.ar/images/cache/product-page/articulo-${widget.articulo.idArticulo}_$index.png',
+                      articuloRepository.url_img(
+                          widget.articulo.idArticulo, index),
                     ),
-
                     initialScale: PhotoViewComputedScale.contained * 1,
                     minScale: PhotoViewComputedScale.contained * 1,
                     //  heroAttributes: HeroAttributes(tag: galleryItems[index].id),

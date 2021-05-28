@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -18,6 +18,8 @@ class ArticuloCantidad extends StatefulWidget {
 
 class _ArticuloCantidadState extends State<ArticuloCantidad> {
   int cantidad = 1;
+
+  var articuloRepository = ArticuloRepository();
 
   @override
   void initState() {
@@ -54,9 +56,12 @@ class _ArticuloCantidadState extends State<ArticuloCantidad> {
                     });
                     Navigator.pop(context);
                     if (enCarrito) {
-                      if (await actualizarCarrito(
-                          this.widget.articulo, idCliente, true, context))
-                        showSnackBar(context, 'Actualizaste el Carrito', null);
+                      if (await articuloRepository.actualizarCarrito(
+                        this.widget.articulo,
+                        idCliente,
+                        true,
+                        context,
+                      )) showSnackBar(context, 'Actualizaste el Carrito', null);
                     }
                   },
                   child: Container(

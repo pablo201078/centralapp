@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/numeracion_imagen.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +22,8 @@ class ArticuloImagenes extends StatefulWidget {
 
 class _ArticuloImagenesState extends State<ArticuloImagenes> {
   int imagenActual = 1;
+
+  var articuloRepository = ArticuloRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class _ArticuloImagenesState extends State<ArticuloImagenes> {
                 child: Hero(
                   tag: 'articulo-${widget.articulo.idArticulo}',
                   child: _Imagen(
-                    url: url_img(widget.articulo.idArticulo, i),
+                    url: articuloRepository.url_img(widget.articulo.idArticulo, i),
                     articulo: widget.articulo,
                   ),
                 ),

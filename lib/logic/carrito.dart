@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -14,7 +14,7 @@ void agregarAlCarrito(BuildContext context, Articulo articulo) async {
 
   final LoggedModel loggedModel =
       ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
-
+  var articuloRepository = ArticuloRepository();
   if (carritoModel.cargando) return;
 
   if (articulo.atributo.idAtributo == 0 && articulo.tieneAtributo) {
@@ -25,7 +25,7 @@ void agregarAlCarrito(BuildContext context, Articulo articulo) async {
 
   carritoModel.cargando = true;
 
-  bool rta = await actualizarCarrito(
+  bool rta = await articuloRepository.actualizarCarrito(
       articulo, loggedModel.getUser.idCliente, true, context);
 
   carritoModel.cargando = false;

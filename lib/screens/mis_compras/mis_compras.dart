@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/compras.dart';
+import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/data/scoped/creditos.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -89,12 +89,12 @@ class _Body extends StatefulWidget {
 
 class __BodyState extends State<_Body> {
   Future<List<Credito>> _futuro;
-
+  var comprasRepo = ComprasRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _futuro = getCreditos(widget.idCliente);
+    _futuro = comprasRepo.getCreditos(widget.idCliente);
   }
 
   @override

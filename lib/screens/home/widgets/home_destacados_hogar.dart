@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -152,7 +152,7 @@ Row _fila(List<Articulo> lista, int i, j) {
 class _Card extends StatelessWidget {
   final Articulo articulo;
   final int index;
-
+  var articuloRepository = ArticuloRepository();
   _Card({Key key, @required this.articulo, @required this.index});
 
   @override
@@ -204,7 +204,7 @@ class _Card extends StatelessWidget {
               },
               fit: BoxFit.fill,
               image: CachedNetworkImageProvider(
-                url_img( articulo.idArticulo, 0 ),
+                articuloRepository.url_img( articulo.idArticulo, 0 ),
               ),
             ),
             Padding(

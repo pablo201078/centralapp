@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/utils.dart';
@@ -40,9 +40,9 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoggedModel model =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
-
+    var articuloRepository = ArticuloRepository();
     return FutureBuilder<List<Articulo>>(
-      future: getSearch(model.isLogged ? model.getUser.idCliente : 0, query),
+      future: articuloRepository.getSearch(model.isLogged ? model.getUser.idCliente : 0, query),
       builder: (context, snapshot) {
         if (snapshot.hasError) print(snapshot.error);
 

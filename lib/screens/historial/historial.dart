@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/screens/historial/widgets/historial_card_detalles.dart';
 import 'package:centralApp/screens/historial/widgets/sin_historial.dart';
@@ -47,12 +47,12 @@ class _Body extends StatefulWidget {
 
 class __BodyState extends State<_Body> {
   Future<List<Articulo>> futuro;
-
+  var articuloRepository = ArticuloRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    futuro = getArticulosHistorial(widget.idCliente);
+    futuro = articuloRepository.getArticulosHistorial(widget.idCliente);
   }
 
   @override

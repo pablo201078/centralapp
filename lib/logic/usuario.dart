@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:centralApp/data/api/usuario.dart';
+import 'package:centralApp/data/repositories/usuario.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/data/models/usuario.dart';

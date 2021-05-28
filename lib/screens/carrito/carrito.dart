@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -132,9 +132,9 @@ class CarritoArticulos extends StatelessWidget {
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
     CarritoModel carrito =
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: false);
-
+    var articuloRepository = ArticuloRepository();
     return FutureBuilder<List<Articulo>>(
-      future: getCarrito(loggedModel.getUser.idCliente),
+      future: articuloRepository.getCarrito(loggedModel.getUser.idCliente),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           print(snapshot.error);

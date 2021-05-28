@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:centralApp/data/api/articulos.dart';
-import 'package:centralApp/data/api/ofertas.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
+import 'package:centralApp/data/repositories/ofertas.dart';
 import 'package:centralApp/logic/efectivo.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/screens/home/widgets/accesos_directos.dart';
@@ -31,14 +31,15 @@ class _HomeBodyMain extends State<HomeBody> {
   Future<List<Articulo>> _ofertas;
   Future<List<Articulo>> _destacadosHogar;
   Future<List<Articulo>> _destacadosComercial;
+  var articuloRepository = ArticuloRepository();
 
   @override
   void initState() {
     super.initState();
     if (widget.idCliente != 0) comprobarVencimiento(context, widget.idCliente);
     _ofertas = getOfertas(widget.idCliente);
-    _destacadosHogar = getDestacados(widget.idCliente, 5);
-    _destacadosComercial = getDestacados(widget.idCliente, 6);
+    _destacadosHogar = articuloRepository.getDestacados(widget.idCliente, 5);
+    _destacadosComercial = articuloRepository.getDestacados(widget.idCliente, 6);
 /*    initConnectivity();
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);*/

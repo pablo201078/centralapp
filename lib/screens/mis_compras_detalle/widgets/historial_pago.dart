@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/compras.dart';
+import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
@@ -18,12 +18,12 @@ class HistorialPago extends StatefulWidget {
 
 class _HistorialPagoState extends State<HistorialPago> {
   Future<List<Pago>> _futuro;
-
+  var comprasRepo = ComprasRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _futuro = getPagos(widget.credito.idCredito);
+    _futuro = comprasRepo.getPagos(widget.credito.idCredito);
   }
 
   @override

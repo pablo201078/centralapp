@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/pedido.dart';
 import 'package:centralApp/screens/pedido_detalle/widgets/pedido_cantidad_.dart';
 import 'package:centralApp/utils.dart';
@@ -10,7 +10,7 @@ class DetallePedidoArticulo extends StatelessWidget {
   final Pedido pedido;
 
   DetallePedidoArticulo({this.pedido});
-
+  var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -66,7 +66,7 @@ class DetallePedidoArticulo extends StatelessWidget {
                 },
                 fit: BoxFit.fill,
                 image: CachedNetworkImageProvider(
-                  url_img(pedido.idArticulo, 0),
+                  articuloRepository.url_img(pedido.idArticulo, 0),
                 ),
               ),
             ),

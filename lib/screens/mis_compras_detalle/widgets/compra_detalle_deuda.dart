@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/compras.dart';
+import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
 import 'package:flutter/material.dart';
 import '../../../utils.dart';
@@ -14,11 +14,11 @@ class CompraDetalleDeuda extends StatefulWidget {
 
 class _CompraDetalleDeudaState extends State<CompraDetalleDeuda> {
   Future<List<Deuda>> _futuro;
-
+  var comprasRepo = ComprasRepository();
   @override
   void initState() {
     super.initState();
-    _futuro = getDeuda(widget.idCredito);
+    _futuro = comprasRepo.getDeuda(widget.idCredito);
   }
 
   Widget _buildLista(List<Deuda> lista) {

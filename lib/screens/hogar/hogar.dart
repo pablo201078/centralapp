@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/categorias.dart';
+import 'package:centralApp/data/repositories/categorias.dart';
 import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:centralApp/data/scoped/categoria_actual.dart';
 import 'package:centralApp/screens/hogar/widgets/hogar_categoria_actual.dart';
@@ -20,12 +20,12 @@ class Hogar extends StatefulWidget {
 
 class _HogarState extends State<Hogar> {
   Future<List<ArticuloCategoria>> futuro;
-
+  var categoriaRepository = CategoriaRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    futuro = getCategorias(widget.idCliente, 1);
+    futuro = categoriaRepository.getCategorias(widget.idCliente, 1);
   }
 
   @override

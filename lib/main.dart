@@ -1,3 +1,4 @@
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/articulo_detalle_galeria.dart';
 import 'package:centralApp/screens/carrito/carrito.dart';
 import 'package:centralApp/screens/destacados_hogar/destacados_hogar.dart';
@@ -19,10 +20,9 @@ import 'package:centralApp/screens/renovacion_efectivo/renovacion_efectivo.dart'
 import 'package:centralApp/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'data/api/articulos.dart';
-import 'data/api/pedidos.dart';
-import 'data/api/usuario.dart';
-import 'data/api/compras.dart';
+import 'data/repositories//pedidos.dart';
+import 'data/repositories/usuario.dart';
+import 'data/repositories/compras.dart';
 import 'utils.dart';
 import 'one_signal.dart';
 import 'data/scoped/carrito.dart';
@@ -40,6 +40,8 @@ void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
     PedidosModel pedidosModel) async {
   print('inicializar app');
   var idCliente = await getIdCliente();
+  var articuloRepo = ArticuloRepository();
+  var comprasRepo = ComprasRepository();
 
   //inicializo oneSignal aunque no este logueado
   await inicializarOneSignal();
@@ -50,9 +52,9 @@ void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
       print('sesion ok');
       String qr = await getQr(loggedModel, idCliente);
       if ((qr ?? '') != '') {
-        loggedModel.favoritos = await getFavoritos(idCliente);
-        loggedModel.deudaVencida = await getCreditosDeudaContador(idCliente);
-        carritoModel.articulos = await getCarrito(idCliente);
+        loggedModel.favoritos = await articuloRepo.getFavoritos(idCliente);
+        loggedModel.deudaVencida = await comprasRepo.getCreditosDeudaContador(idCliente);
+        carritoModel.articulos = await articuloRepo.getCarrito(idCliente);
         pedidosModel.pedidos = await getPedidos(idCliente);
       }
     } else {

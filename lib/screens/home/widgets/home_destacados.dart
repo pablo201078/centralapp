@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
@@ -162,6 +162,7 @@ class _Card extends StatelessWidget {
   final formatCurrency = NumberFormat.simpleCurrency(decimalDigits: 0);
 
   _Card({Key key, @required this.articulo, @required this.index});
+  var articuloRepository = ArticuloRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -214,7 +215,7 @@ class _Card extends StatelessWidget {
                 },
                 fit: BoxFit.fill,
                 image: CachedNetworkImageProvider(
-                  url_img(articulo.idArticulo, 0),
+                  articuloRepository.url_img(articulo.idArticulo, 0),
                 ),
               ),
             ),

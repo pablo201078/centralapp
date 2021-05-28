@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +30,7 @@ class _BotonLikeState extends State<BotonLike> {
   Widget build(BuildContext context) {
     final LoggedModel model =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
-
+    var articuloRepository = ArticuloRepository();
     return IconButton(
       color: widget.color,
       icon: Icon(
@@ -38,9 +38,13 @@ class _BotonLikeState extends State<BotonLike> {
         size: 28,
       ),
       onPressed: () async {
-        if (model.isLogged  && model.getUser.idTipo == 1 ) {
-          bool rta = await postFavorito(
-              widget.articulo, model.getUser.idCliente, !activo, context);
+        if (model.isLogged && model.getUser.idTipo == 1) {
+          bool rta = await articuloRepository.postFavorito(
+            widget.articulo,
+            model.getUser.idCliente,
+            !activo,
+            context,
+          );
 
           if (rta) {
             if (activo)

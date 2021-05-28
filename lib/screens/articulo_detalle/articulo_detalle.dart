@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/carrito.dart';
 import 'package:centralApp/data/scoped/logged_model.dart';
@@ -45,13 +45,14 @@ class ArticuloDetalle extends StatelessWidget {
 class _Futuro extends StatelessWidget {
   final int idArticulo;
   _Futuro({this.idArticulo});
+  var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
     final LoggedModel loggedModel =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
 
     return FutureBuilder<Articulo>(
-      future: getArticulo(loggedModel.getUser.idCliente, 9, this.idArticulo),
+      future: articuloRepository.getArticulo(loggedModel.getUser.idCliente, 9, this.idArticulo),
       builder: (context, snapshot) {
         if (snapshot.hasError) print(snapshot.error);
         return snapshot.hasData
@@ -72,7 +73,7 @@ class _Futuro extends StatelessWidget {
 class _Scaffold extends StatelessWidget {
   final Articulo articulo;
   final bool agregarAlCarrito;
-
+  var articuloRepository = ArticuloRepository();
   _Scaffold({this.articulo, this.agregarAlCarrito});
 
   List<Widget> _buildActions() {
@@ -95,7 +96,7 @@ class _Scaffold extends StatelessWidget {
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
 
     if (loggedModel.isLogged) {
-      postHistorial(loggedModel.getUser.idCliente, this.articulo.idArticulo);
+      articuloRepository.postHistorial(loggedModel.getUser.idCliente, this.articulo.idArticulo);
     }
 
     return Scaffold(

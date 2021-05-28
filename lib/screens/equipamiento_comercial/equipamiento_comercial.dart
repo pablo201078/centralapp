@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/categorias.dart';
+import 'package:centralApp/data/repositories/categorias.dart';
 import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:centralApp/data/scoped/categoria_comercial_actual.dart';
 import 'package:centralApp/screens/equipamiento_comercial/widgets/comercial_categoria_actual.dart';
@@ -20,12 +20,12 @@ class EquipamientoComercial extends StatefulWidget {
 
 class _EquipamientoComercial extends State<EquipamientoComercial> {
   Future<List<ArticuloCategoria>> futuro;
-
+  var categoriaRepository = CategoriaRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    futuro = getCategorias(widget.idCliente, 2);
+    futuro = categoriaRepository.getCategorias(widget.idCliente, 2);
   }
 
   @override

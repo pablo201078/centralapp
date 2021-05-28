@@ -1,4 +1,4 @@
-import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/scoped/usados.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
@@ -33,7 +33,8 @@ class __ScaffoldState extends State<_Scaffold> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _futuro = getUsados(0);
+    var articuloRepository = ArticuloRepository();
+    _futuro = articuloRepository.getUsados(0);
   }
 
   @override
