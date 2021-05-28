@@ -1,5 +1,5 @@
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/widgets/articulo_card/articulo_card.dart';
+import 'package:centralApp/ui/widgets/articulo_card/articulo_card.dart';
 import 'package:flutter/material.dart';
 
 class ListaResultadoBusqueda extends StatelessWidget {

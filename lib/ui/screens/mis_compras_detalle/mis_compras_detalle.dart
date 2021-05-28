@@ -6,8 +6,7 @@ import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_estado.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_cuota_actual.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/historial_pago.dart';
-import 'package:centralApp/widgets/app_bar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 

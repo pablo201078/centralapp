@@ -1,4 +1,4 @@
-import 'package:centralApp/widgets/gradient_back.dart';
+import 'package:centralApp/ui/widgets/gradient_back.dart';
 import 'package:flutter/material.dart';
 import 'loggin_bar.dart';
 import 'login_form.dart';

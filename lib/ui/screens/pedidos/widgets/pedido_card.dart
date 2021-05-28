@@ -1,5 +1,5 @@
 import 'package:centralApp/data/models/pedido.dart';
-import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/utils.dart';
 

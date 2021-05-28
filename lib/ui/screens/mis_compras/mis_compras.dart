@@ -5,8 +5,8 @@ import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/ui/screens/mis_compras/widgets/mis_compras_body.dart';
 import 'package:centralApp/ui/screens/mis_compras/widgets/mis_compras_lista_vacia.dart';
-import 'package:centralApp/widgets/app_bar.dart';
-import 'package:centralApp/widgets/loading_list.dart';
+import 'package:centralApp/ui/widgets/app_bar.dart';
+import 'package:centralApp/ui/widgets/loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 

@@ -4,7 +4,7 @@ import 'package:barcode_scan/model/scan_result.dart';
 import 'package:barcode_scan/platform_wrapper.dart';
 import 'package:centralApp/logic/usuario.dart';
 import 'package:centralApp/ui/screens/loggin/widgets/loggin_cargando.dart';
-import 'package:centralApp/widgets/gradient_back.dart';
+import 'package:centralApp/ui/widgets/gradient_back.dart';
 import 'package:centralApp/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

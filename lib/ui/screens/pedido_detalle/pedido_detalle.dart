@@ -5,7 +5,7 @@ import 'package:centralApp/ui/screens/pedido_detalle/widgets/detalle_pedido_dest
 import 'package:centralApp/ui/screens/pedido_detalle/widgets/boton_anular_pedido.dart';
 import 'package:centralApp/ui/screens/pedido_detalle/widgets/detalle_pedido_articulo.dart';
 import 'package:centralApp/ui/screens/pedido_detalle/widgets/detalle_pedido_timeline.dart';
-import 'package:centralApp/widgets/app_bar.dart';
+import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 

@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/pedido.dart';
-import 'package:centralApp/widgets/loading_list.dart';
+import 'package:centralApp/ui/widgets/loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:centralApp/utils.dart';
