@@ -1,5 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/pedido.dart';
+import 'package:centralApp/data/models/pedido.dart';
 import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:flutter/material.dart';
 

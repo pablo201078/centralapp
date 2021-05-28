@@ -1,6 +1,6 @@
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/models/articulo.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/widgets/app_bar.dart';
 import 'package:centralApp/widgets/boton_buscar.dart';

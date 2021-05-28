@@ -1,5 +1,4 @@
-import 'package:centralApp/models/articulo.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils.dart';

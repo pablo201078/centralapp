@@ -1,8 +1,8 @@
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/models/articulo.dart';
-import 'package:centralApp/models/scoped/carrito.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
-import 'package:centralApp/models/scoped/pedidos.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/scoped/carrito.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/data/scoped/pedidos.dart';
 import 'package:centralApp/screens/carrito/widgets/articulo_card.dart';
 import 'package:centralApp/screens/carrito/widgets/boton_comprar.dart';
 import 'package:centralApp/screens/carrito/widgets/boton_seguir_comprando.dart';

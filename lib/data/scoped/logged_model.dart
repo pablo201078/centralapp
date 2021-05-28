@@ -1,10 +1,9 @@
 import 'dart:convert';
-import 'package:centralApp/models/usuario.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-import '../articulo.dart';
 
 class LoggedModel extends Model {
   LoggedModel() {

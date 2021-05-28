@@ -1,4 +1,4 @@
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';

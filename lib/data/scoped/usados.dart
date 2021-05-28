@@ -1,10 +1,9 @@
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-import '../articulo.dart';
-
 class UsadosModel extends Model {
-  List<Articulo> _destacados = List<Articulo>();
+  List<Articulo> _destacados = <Articulo>[];
   int _tipo = 1; /*1=destacados, 2 = hogar, 3 = equipamiento comercial*/
 
   UsadosModel._privateConstructor();

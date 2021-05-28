@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:centralApp/models/usuario.dart';
+import 'package:centralApp/data/models/usuario.dart';
 import 'package:centralApp/one_signal.dart';
 import 'package:http/http.dart' as http;
 import 'package:centralApp/constantes.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
-import '../utils.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
+import '../../utils.dart';
 
 Future<Usuario> getUsuario(
     String codigo, bool validarDispositivo, int idTipo) async {

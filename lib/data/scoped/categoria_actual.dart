@@ -1,4 +1,4 @@
-import 'package:centralApp/models/articulo_categoria.dart';
+import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CategoriaActualModel extends Model {

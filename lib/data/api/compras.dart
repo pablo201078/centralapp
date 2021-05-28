@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:centralApp/models/credito.dart';
+import 'package:centralApp/data/models/credito.dart';
 import 'package:http/http.dart' as http;
-import '../constantes.dart';
+import '../../constantes.dart';
 
 Future<List<Credito>> getCreditos(int idCliente) async {
   var url = Uri.parse('${URL}compras.php?idCliente=$idCliente');

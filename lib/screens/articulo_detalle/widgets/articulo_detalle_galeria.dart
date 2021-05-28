@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-
 import '../../../utils.dart';
 import 'numeracion_imagen.dart';
 
@@ -68,7 +68,8 @@ class _GaleriaState extends State<Galeria> {
                 builder: (BuildContext context, int index) {
                   return PhotoViewGalleryPageOptions(
                     imageProvider: CachedNetworkImageProvider(
-                      'http://amacar.com.ar/images/cache/product-page/articulo-${widget.articulo.idArticulo}_$index.png',
+                      url_img(widget.articulo.idArticulo, index),
+                      //'http://amacar.com.ar/images/cache/product-page/articulo-${widget.articulo.idArticulo}_$index.png',
                     ),
 
                     initialScale: PhotoViewComputedScale.contained * 1,

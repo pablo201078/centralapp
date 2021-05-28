@@ -1,8 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/screens/carrito/widgets/carrito_atributo.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../../../utils.dart';
 import 'carrito_cantidad_actual.dart';
 

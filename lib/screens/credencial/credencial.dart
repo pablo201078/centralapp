@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:animate_do/animate_do.dart';
-import 'package:centralApp/api/usuario.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+ import 'package:centralApp/data/api/usuario.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/screens/credencial/widgets/qr_actualizado.dart';
 import 'package:centralApp/screens/credencial/widgets/boton_compartir_qr.dart';
 import 'package:centralApp/screens/credencial/widgets/boton_actualizar_qr.dart';

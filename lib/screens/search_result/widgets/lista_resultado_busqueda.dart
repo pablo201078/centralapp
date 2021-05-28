@@ -1,4 +1,4 @@
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/widgets/articulo_card/articulo_card.dart';
 import 'package:flutter/material.dart';
 

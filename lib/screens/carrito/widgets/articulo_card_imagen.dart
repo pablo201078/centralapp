@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 
 class ArticuloCardImagen extends StatelessWidget {
-
   final Articulo articulo;
 
   ArticuloCardImagen({Key key, @required this.articulo});
@@ -17,19 +17,21 @@ class ArticuloCardImagen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(7.0),
         child: Image(
-            loadingBuilder: (
-              BuildContext context,
-              Widget child,
-              ImageChunkEvent loadingProgress,
-            ) {
-              if (loadingProgress == null) return child;
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            },
-            fit: BoxFit.fill,
-            image: CachedNetworkImageProvider(
-                'https://amacar.com.ar/images/cache/product-page/articulo-${articulo.idArticulo}_0.png')),
+          loadingBuilder: (
+            BuildContext context,
+            Widget child,
+            ImageChunkEvent loadingProgress,
+          ) {
+            if (loadingProgress == null) return child;
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+          fit: BoxFit.fill,
+          image: CachedNetworkImageProvider(
+            url_img(articulo.idArticulo, 0),
+          ),
+        ),
       ),
     );
   }

@@ -1,5 +1,5 @@
-import 'package:centralApp/api/usuario.dart';
-import 'package:centralApp/models/usuario.dart';
+import 'package:centralApp/data/api/usuario.dart';
+import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/notificaciones.dart';
 import 'package:get/get.dart';

@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/credito.dart';
+import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/screens/mis_compras_detalle/widgets/compra_detalle_cantidad_.dart';
 import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:flutter/material.dart';

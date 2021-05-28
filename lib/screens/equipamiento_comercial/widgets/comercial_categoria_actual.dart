@@ -1,8 +1,8 @@
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/models/articulo_categoria.dart';
-import 'package:centralApp/models/articulo.dart';
-import 'package:centralApp/models/scoped/categoria_comercial_actual.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo_categoria.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/scoped/categoria_comercial_actual.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/widgets/articulo_card/articulo_card.dart';
 import 'package:centralApp/widgets/loading_list.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -203,7 +204,8 @@ class _Card extends StatelessWidget {
               },
               fit: BoxFit.fill,
               image: CachedNetworkImageProvider(
-                  'https://amacar.com.ar/images/cache/product-page/articulo-${articulo.idArticulo}_0.png'),
+                url_img( articulo.idArticulo, 0 ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),

@@ -1,6 +1,6 @@
-import 'package:centralApp/api/pedidos.dart';
-import 'package:centralApp/models/pedido.dart';
-import 'package:centralApp/models/scoped/pedidos.dart';
+import 'package:centralApp/data/api/pedidos.dart';
+import 'package:centralApp/data/models/pedido.dart';
+import 'package:centralApp/data/scoped/pedidos.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/screens/pedidos/widgets/pedido_card.dart';
 import 'package:centralApp/widgets/app_bar.dart';

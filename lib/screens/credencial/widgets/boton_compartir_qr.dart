@@ -1,5 +1,5 @@
 import 'package:centralApp/logic/usuario.dart';
-import 'package:centralApp/models/usuario.dart';
+import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils.dart';

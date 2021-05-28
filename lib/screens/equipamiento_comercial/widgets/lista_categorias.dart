@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/models/scoped/categoria_comercial_actual.dart';
+import 'package:centralApp/data/scoped/categoria_comercial_actual.dart';
 import 'package:flutter/material.dart';
-import 'package:centralApp/models/articulo_categoria.dart';
+import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scoped_model/scoped_model.dart';

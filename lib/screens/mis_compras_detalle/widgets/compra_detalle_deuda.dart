@@ -1,5 +1,5 @@
-import 'package:centralApp/api/compras.dart';
-import 'package:centralApp/models/credito.dart';
+import 'package:centralApp/data/api/compras.dart';
+import 'package:centralApp/data/models/credito.dart';
 import 'package:flutter/material.dart';
 import '../../../utils.dart';
 

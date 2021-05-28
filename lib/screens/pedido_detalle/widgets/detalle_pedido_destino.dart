@@ -1,4 +1,4 @@
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 

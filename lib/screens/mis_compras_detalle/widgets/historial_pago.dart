@@ -1,5 +1,5 @@
-import 'package:centralApp/api/compras.dart';
-import 'package:centralApp/models/credito.dart';
+import 'package:centralApp/data/api/compras.dart';
+import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
 import 'package:flutter/material.dart';

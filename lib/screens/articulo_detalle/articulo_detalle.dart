@@ -1,7 +1,7 @@
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/models/articulo.dart';
-import 'package:centralApp/models/scoped/carrito.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/scoped/carrito.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/articulo_atributos.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/articulo_banner_usado.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/articulo_cantidad.dart';

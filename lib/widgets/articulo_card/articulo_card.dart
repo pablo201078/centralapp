@@ -1,4 +1,4 @@
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_detalles.dart';
 import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen.dart';
 import 'package:centralApp/widgets/articulo_banner_oferta.dart';

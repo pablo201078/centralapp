@@ -1,5 +1,5 @@
-import 'package:centralApp/api/pedidos.dart';
-import 'package:centralApp/models/pedido.dart';
+import 'package:centralApp/data/api/pedidos.dart';
+import 'package:centralApp/data/models/pedido.dart';
 import 'package:centralApp/widgets/loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';

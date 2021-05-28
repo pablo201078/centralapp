@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/screens/articulo_detalle/widgets/numeracion_imagen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -51,8 +52,7 @@ class _ArticuloImagenesState extends State<ArticuloImagenes> {
                 child: Hero(
                   tag: 'articulo-${widget.articulo.idArticulo}',
                   child: _Imagen(
-                    url:
-                        'http://amacar.com.ar/images/cache/product-page/articulo-${widget.articulo.idArticulo}_$i.png',
+                    url: url_img(widget.articulo.idArticulo, i),
                     articulo: widget.articulo,
                   ),
                 ),

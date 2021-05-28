@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:centralApp/models/articulo_categoria.dart';
+import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:http/http.dart' as http;
-import '../constantes.dart';
+import '../../constantes.dart';
 
 Future<List<ArticuloCategoria>> getCategorias(int idCliente, int idTipo) async {
   var url =

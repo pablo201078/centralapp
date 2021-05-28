@@ -6,7 +6,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:flutter/material.dart';
-import 'models/usuario.dart';
+import 'data/models/usuario.dart';
 
 void mostrarOverlayBienvenida(BuildContext context, Usuario user) async {
   SizeConfig().init(context);

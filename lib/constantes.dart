@@ -2,7 +2,6 @@ import 'package:centralApp/utils.dart';
 import 'package:flutter/material.dart';
 
 const String URL = 'http://mutualamacar.no-ip.org/app/';
-
 const String txtIniciarSesion = 'Tenes que ser Socio de la Mutual para usar esta opción';
 const String txtEliminasteDelCarrito = 'Eliminaste del Carrito';
 

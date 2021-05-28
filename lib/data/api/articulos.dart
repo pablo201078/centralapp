@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../constantes.dart';
-import '../notificaciones.dart';
+import '../../constantes.dart';
+import '../../notificaciones.dart';
+
+String url_img(int idArticulo, int orden) {
+  return 'http://amacar.com.ar/images/cache/product-page/articulo-{$idArticulo}_$orden.png';
+}
 
 Future<bool> postFavorito(
     Articulo articulo, int idCliente, bool favorito, BuildContext ctx) async {

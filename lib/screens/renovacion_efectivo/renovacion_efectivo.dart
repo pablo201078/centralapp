@@ -1,11 +1,11 @@
-import 'package:centralApp/models/usuario.dart';
+import 'package:centralApp/data/models/usuario.dart';
 import 'package:centralApp/screens/renovacion_efectivo/widgets/renovacion_efectivo_opcion.dart';
 import 'package:centralApp/screens/renovacion_efectivo/widgets/renovacion_efectivo_titulo.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/logic/efectivo.dart';
 
 class RenovacionEfectivo extends StatelessWidget {

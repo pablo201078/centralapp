@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:http/http.dart' as http;
-import '../constantes.dart';
-import '../utils.dart';
+import '../../constantes.dart';
+import '../../utils.dart';
 
 Future<List<Articulo>> getOfertas(int idCliente) async {
   var id = await getDeviceId();

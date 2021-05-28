@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
-import 'package:centralApp/api/usuario.dart';
-import 'package:centralApp/models/scoped/carrito.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
-import 'package:centralApp/models/usuario.dart';
+import 'package:centralApp/data/api/usuario.dart';
+import 'package:centralApp/data/scoped/carrito.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:path_provider/path_provider.dart';

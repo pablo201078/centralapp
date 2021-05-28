@@ -1,5 +1,5 @@
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/models/articulo.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/screens/historial/widgets/historial_card_detalles.dart';
 import 'package:centralApp/screens/historial/widgets/sin_historial.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';

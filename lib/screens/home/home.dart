@@ -1,4 +1,4 @@
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/widgets/app_bar.dart';
 import 'package:centralApp/widgets/boton_buscar.dart';
 import 'package:flutter/cupertino.dart';

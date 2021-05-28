@@ -1,4 +1,4 @@
-import 'package:centralApp/models/credito.dart';
+import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:centralApp/screens/mis_compras/widgets/compra_card_detalle.dart';
 

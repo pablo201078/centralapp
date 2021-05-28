@@ -1,4 +1,4 @@
-import 'package:centralApp/models/credito.dart';
+import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/screens/mis_compras_detalle/widgets/compra_detalle_deuda.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

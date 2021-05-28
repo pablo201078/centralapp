@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'models/usuario.dart';
+import 'data/models/usuario.dart';
 
 class SizeConfig {
   static MediaQueryData _mediaQueryData;

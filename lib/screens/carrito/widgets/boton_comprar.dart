@@ -1,11 +1,9 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/api/pedidos.dart';
-import 'package:centralApp/models/articulo.dart';
-import 'package:centralApp/models/scoped/carrito.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
-import 'package:centralApp/models/scoped/pedidos.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/api/pedidos.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/scoped/carrito.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/data/scoped/pedidos.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 

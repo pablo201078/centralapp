@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:centralApp/models/ticket_item.dart';
+import 'package:centralApp/data/models/ticket_item.dart';
 import 'package:http/http.dart' as http;
-import '../constantes.dart';
+import '../../constantes.dart';
 
 Future<List<TicketItem>> getTicket(int idCliente) async {
   var response = await http.get(

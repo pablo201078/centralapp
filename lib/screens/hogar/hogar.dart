@@ -1,6 +1,6 @@
-import 'package:centralApp/api/categorias.dart';
-import 'package:centralApp/models/articulo_categoria.dart';
-import 'package:centralApp/models/scoped/categoria_actual.dart';
+import 'package:centralApp/data/api/categorias.dart';
+import 'package:centralApp/data/models/articulo_categoria.dart';
+import 'package:centralApp/data/scoped/categoria_actual.dart';
 import 'package:centralApp/screens/hogar/widgets/hogar_categoria_actual.dart';
 import 'package:centralApp/screens/hogar/widgets/lista_categorias.dart';
 import 'package:centralApp/widgets/app_bar.dart';

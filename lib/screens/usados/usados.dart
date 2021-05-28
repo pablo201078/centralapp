@@ -1,6 +1,6 @@
-import 'package:centralApp/api/articulos.dart';
-import 'package:centralApp/models/articulo.dart';
-import 'package:centralApp/models/scoped/usados.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/scoped/usados.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/screens/usados/widgets/usados_body.dart';
 import 'package:centralApp/screens/usados/widgets/usados_lista_categorias.dart';

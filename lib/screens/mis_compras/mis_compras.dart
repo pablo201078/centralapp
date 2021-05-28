@@ -1,7 +1,7 @@
-import 'package:centralApp/api/compras.dart';
-import 'package:centralApp/models/credito.dart';
-import 'package:centralApp/models/scoped/creditos.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/api/compras.dart';
+import 'package:centralApp/data/models/credito.dart';
+import 'package:centralApp/data/scoped/creditos.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/screens/mis_compras/widgets/mis_compras_body.dart';
 import 'package:centralApp/screens/mis_compras/widgets/mis_compras_lista_vacia.dart';

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:centralApp/models/pedido.dart';
+import 'package:centralApp/data/api/articulos.dart';
+import 'package:centralApp/data/models/pedido.dart';
 import 'package:centralApp/screens/pedido_detalle/widgets/pedido_cantidad_.dart';
 import 'package:centralApp/utils.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,8 @@ class DetallePedidoArticulo extends StatelessWidget {
                 },
                 fit: BoxFit.fill,
                 image: CachedNetworkImageProvider(
-                    'https://amacar.com.ar/images/cache/product-page/articulo-${pedido.idArticulo}_0.png'),
+                  url_img(pedido.idArticulo, 0),
+                ),
               ),
             ),
           ],

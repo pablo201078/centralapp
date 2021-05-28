@@ -11,7 +11,7 @@ import 'custom_surfix_icon.dart';
 import 'default_button.dart';
 import 'form_error.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/models/scoped/logged_model.dart';
+import 'package:centralApp/data/scoped/logged_model.dart';
 
 class LoginForm extends StatefulWidget {
   @override
