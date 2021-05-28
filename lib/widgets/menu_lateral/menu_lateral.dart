@@ -1,6 +1,6 @@
 import 'package:centralApp/logic/efectivo.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
-import 'package:centralApp/data/scoped/pedidos.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/pedidos.dart';
 import 'package:centralApp/widgets/menu_lateral/widgets/menu_lateral_header_usuario.dart';
 import 'package:centralApp/screens/ticket/ticket.dart';
 import 'package:centralApp/widgets/contador.dart';

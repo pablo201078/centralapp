@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/data/models/ticket_item.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/widgets/elevated_card.dart';

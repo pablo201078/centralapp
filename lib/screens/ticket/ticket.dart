@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/ticket.dart';
 import 'package:centralApp/data/models/ticket_item.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/screens/ticket/widgets/ticket_caja.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/widgets/app_bar.dart';
@@ -34,12 +34,12 @@ class _Body extends StatefulWidget {
 
 class __BodyState extends State<_Body> {
   Future<List<TicketItem>> _futuro;
-
+ var ticketRepo = TicketRepository();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _futuro = getTicket(widget.idCliente);
+    _futuro = ticketRepo.getTicket(widget.idCliente);
   }
 
   @override

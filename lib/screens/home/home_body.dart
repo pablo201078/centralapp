@@ -32,14 +32,16 @@ class _HomeBodyMain extends State<HomeBody> {
   Future<List<Articulo>> _destacadosHogar;
   Future<List<Articulo>> _destacadosComercial;
   var articuloRepository = ArticuloRepository();
+  var ofertasRepo = OfertasRepository();
 
   @override
   void initState() {
     super.initState();
     if (widget.idCliente != 0) comprobarVencimiento(context, widget.idCliente);
-    _ofertas = getOfertas(widget.idCliente);
+    _ofertas = ofertasRepo.getOfertas(widget.idCliente);
     _destacadosHogar = articuloRepository.getDestacados(widget.idCliente, 5);
-    _destacadosComercial = articuloRepository.getDestacados(widget.idCliente, 6);
+    _destacadosComercial =
+        articuloRepository.getDestacados(widget.idCliente, 6);
 /*    initConnectivity();
     _connectivitySubscription =
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);*/

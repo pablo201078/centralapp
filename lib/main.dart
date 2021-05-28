@@ -25,13 +25,13 @@ import 'data/repositories/usuario.dart';
 import 'data/repositories/compras.dart';
 import 'utils.dart';
 import 'one_signal.dart';
-import 'data/scoped/carrito.dart';
-import 'data/scoped/pedidos.dart';
+import 'logic/scoped/carrito.dart';
+import 'logic/scoped/pedidos.dart';
 import 'screens/articulo_detalle/articulo_detalle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'data/scoped/logged_model.dart';
+import 'logic/scoped/logged_model.dart';
 import 'screens/credencial/credencial.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'screens/home/home.dart';
@@ -40,6 +40,7 @@ void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
     PedidosModel pedidosModel) async {
   print('inicializar app');
   var idCliente = await getIdCliente();
+  var usuarioRepo = UsuarioRepository();
   var articuloRepo = ArticuloRepository();
   var comprasRepo = ComprasRepository();
 
@@ -47,10 +48,10 @@ void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
   await inicializarOneSignal();
 
   if (idCliente != 0) {
-    bool rta = await checkLogin(idCliente);
+    bool rta = await usuarioRepo.checkLogin(idCliente);
     if (rta) {
       print('sesion ok');
-      String qr = await getQr(loggedModel, idCliente);
+      String qr = await usuarioRepo.getQr(loggedModel, idCliente);
       if ((qr ?? '') != '') {
         loggedModel.favoritos = await articuloRepo.getFavoritos(idCliente);
         loggedModel.deudaVencida = await comprasRepo.getCreditosDeudaContador(idCliente);
@@ -61,7 +62,7 @@ void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
       loggedModel.logged = false;
     }
   }
-  loggedModel.busquedas = await getBusquedas(idCliente);
+  loggedModel.busquedas = await usuarioRepo.getBusquedas(idCliente);
 }
 
 void main() async {

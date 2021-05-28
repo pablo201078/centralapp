@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/widgets/elevated_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

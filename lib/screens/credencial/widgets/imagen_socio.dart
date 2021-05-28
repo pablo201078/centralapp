@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import '../../../utils.dart';
 
 class ImagenSocio extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:animate_do/animate_do.dart';
  import 'package:centralApp/data/repositories/usuario.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/screens/credencial/widgets/qr_actualizado.dart';
 import 'package:centralApp/screens/credencial/widgets/boton_compartir_qr.dart';
 import 'package:centralApp/screens/credencial/widgets/boton_actualizar_qr.dart';
@@ -47,7 +47,7 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
   bool _mostrarBotonActualizarQr = false;
   bool _qrOk = false;
   bool _actualizando = false;
-
+  var usuarioRepo = UsuarioRepository();
   ScreenshotController _screenshotController = ScreenshotController();
 
   Timer timer;
@@ -58,7 +58,7 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
     setState(() {
       _actualizando = true;
     });
-    int rta = await checkQr(widget.usuario);
+    int rta = await usuarioRepo.checkQr(widget.usuario);
     setState(() {
       _actualizando = false;
     });

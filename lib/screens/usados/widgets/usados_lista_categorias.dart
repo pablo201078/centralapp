@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/data/scoped/usados.dart';
+import 'package:centralApp/logic/scoped/usados.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:scoped_model/scoped_model.dart';

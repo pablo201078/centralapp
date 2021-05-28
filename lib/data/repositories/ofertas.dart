@@ -1,33 +1,31 @@
 import 'dart:convert';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:http/http.dart' as http;
-import '../../constantes.dart';
-import '../../utils.dart';
+import 'package:centralApp/constantes.dart';
+import 'package:centralApp/utils.dart';
 
-Future<List<Articulo>> getOfertas(int idCliente) async {
-  var id = await getDeviceId();
-  var url = Uri.parse(
-      '${URL}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
-  var response = await http.get(url);
-  if (response.statusCode == 200) {
-    // If the server did return a 2 00 OK response,
-    // then parse the JSON.
+class OfertasRepository {
+  Future<List<Articulo>> getOfertas(int idCliente) async {
+    var id = await getDeviceId();
+    var url = Uri.parse(
+        '${URL}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      // Use the compute function to run parsePhotos in a separate isolate.
+      // return compute(parseOfertas, response.body);
 
-    // Use the compute function to run parsePhotos in a separate isolate.
-    // return compute(parseOfertas, response.body);
+      var jsonData = json.decode(response.body);
+      List<Articulo> lista = List<Articulo>();
 
-    var jsonData = json.decode(response.body);
-    List<Articulo> lista = List<Articulo>();
+      for (var o in jsonData) {
+        lista.add(Articulo.fromJson(o));
+      }
 
-    for (var o in jsonData) {
-      lista.add(Articulo.fromJson(o));
+      return lista;
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Error de conexion');
     }
-
-    return lista;
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Error de conexion');
   }
-  // });
 }

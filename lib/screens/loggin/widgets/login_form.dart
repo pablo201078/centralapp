@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:centralApp/logic/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -11,7 +10,7 @@ import 'custom_surfix_icon.dart';
 import 'default_button.dart';
 import 'form_error.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 
 class LoginForm extends StatefulWidget {
   @override

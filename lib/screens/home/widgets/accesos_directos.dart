@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -3,12 +3,12 @@ import 'dart:io';
 import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/data/repositories/usuario.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
-
+import '../../../constantes.dart';
 import '../../../notificaciones.dart';
 
 class MenuLateralHeaderUsuario extends StatefulWidget {
@@ -76,9 +76,6 @@ class _MenuLateralHeaderUsuarioState extends State<MenuLateralHeaderUsuario> {
               maxHeight: 400,
               maxWidth: 400);
           if (pickedFile != null) {
-            // Directory appDocDir = await getApplicationDocumentsDirectory();
-            //   String appDocPath = appDocDir.path;
-
             setState(() {
               _image = File(pickedFile.path);
             });
@@ -88,13 +85,13 @@ class _MenuLateralHeaderUsuarioState extends State<MenuLateralHeaderUsuario> {
             );
 
             String fileName = pickedFile.path.split('/').last;
-
-            if (await postImagen(
+            var usuarioRepo = UsuarioRepository();
+            if (await usuarioRepo.postImagen(
                 fileName, base64Image, widget.usuario.idCliente)) {
               print('imagen subida ok');
               imageCache.clear();
               loggedModel.actualizarUrlImagen(
-                  'http://mutualamacar.no-ip.org/app/getProfileImg.php?idCliente=${widget.usuario.idCliente}');
+                  '${URL}getProfileImg.php?idCliente=${widget.usuario.idCliente}');
             }
           }
         },

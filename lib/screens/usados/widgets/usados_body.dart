@@ -1,5 +1,5 @@
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/data/scoped/usados.dart';
+import 'package:centralApp/logic/scoped/usados.dart';
 import 'package:centralApp/widgets/articulo_card/articulo_card.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';

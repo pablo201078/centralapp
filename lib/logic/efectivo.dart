@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'package:centralApp/utils.dart';
 
 void comprobarVencimiento(BuildContext context, int idCliente) async {
-  Vencimiento vencimiento = await checkVencimiento(idCliente);
+  var usuarioRepo = UsuarioRepository();
+  Vencimiento vencimiento = await usuarioRepo.checkVencimiento(idCliente);
   /*
   * ok = 1 esta entre el 90 y el 100
   *
@@ -22,7 +23,8 @@ void comprobarVencimiento(BuildContext context, int idCliente) async {
 }
 
 void comprobarVencimiento2(BuildContext context, int idCliente) async {
-  Vencimiento vencimiento = await checkVencimiento(idCliente);
+  var usuarioRepo = UsuarioRepository();
+  Vencimiento vencimiento = await usuarioRepo.checkVencimiento(idCliente);
 
   if (vencimiento.ok > 0) {
     Navigator.of(context).pushNamed('/renovacion_efectivo',
@@ -56,7 +58,8 @@ void confirmarRenovacion(
     confirmTextColor: Colors.white,
     textCancel: 'Cancelar',
     onConfirm: () async {
-      bool rta = await postRenovacionEfectivo(idCliente, fecha);
+      var usuarioRepo = UsuarioRepository();
+      bool rta = await usuarioRepo.postRenovacionEfectivo(idCliente, fecha);
       if (rta) {
         Navigator.of(context).pop();
         Navigator.pushNamed(context, '/pedidos',
@@ -119,7 +122,8 @@ Future contactarAsesor(BuildContext context, int idCliente) async {
     confirmTextColor: Colors.white,
     textCancel: 'Por ahora no',
     onConfirm: () async {
-      bool rta = await postContactarAsesor(idCliente);
+      var usuarioRepo = UsuarioRepository();
+      bool rta = await usuarioRepo.postContactarAsesor(idCliente);
       if (rta) {
         Navigator.of(context).pop();
         Navigator.pushNamed(context, '/pedidos',

@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/widgets/app_bar.dart';
 import 'package:centralApp/widgets/boton_buscar.dart';

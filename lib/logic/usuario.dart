@@ -1,8 +1,7 @@
 import 'dart:typed_data';
-
 import 'package:centralApp/data/repositories/usuario.dart';
-import 'package:centralApp/data/scoped/carrito.dart';
-import 'package:centralApp/data/scoped/logged_model.dart';
+import 'package:centralApp/logic/scoped/carrito.dart';
+import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
@@ -17,7 +16,9 @@ import '../one_signal.dart';
 
 Future<bool> validarUsuario(
     String dni, String clave, BuildContext context) async {
-  Usuario usr = await getUsuarioClave(dni, clave, true, 1);
+  var usuarioRepo = UsuarioRepository();
+
+  Usuario usr = await usuarioRepo.getUsuarioClave(dni, clave, true, 1);
 
   //-1 = usuario o contraseñas incorrectas
   if (usr.idCliente == -1) {
@@ -36,7 +37,8 @@ Future<bool> validarUsuario(
 }
 
 Future validarUsuarioScan(String codigo, BuildContext context) async {
-  Usuario usr = await getUsuario(codigo, true, 1);
+  var usuarioRepo = UsuarioRepository();
+  Usuario usr = await usuarioRepo.getUsuario(codigo, true, 1);
   //-1 = usuario o contraseñas incorrectas
   if (usr.idCliente == -1) {
     showWarning(context, () {}, usr.nombre);
@@ -54,10 +56,10 @@ Future validarUsuarioScan(String codigo, BuildContext context) async {
 
 void cuentaAbierta(String dni, String clave, BuildContext context) async {
   var rta = await dialogoOpcionesInicioSesion(context);
-
+  var usuarioRepo = UsuarioRepository();
   if (rta == 0) return;
   //rta:  1 =  cuenta normal, 2 = solo tarjeta
-  Usuario usr = await getUsuarioClave(dni, clave, false, rta);
+  Usuario usr = await usuarioRepo.getUsuarioClave(dni, clave, false, rta);
   loginOk(usr, rta, context);
 }
 
@@ -66,7 +68,8 @@ void cuentaAbiertaScan(String codigo, BuildContext context) async {
 
   if (rta == 0) return;
   //rta:  1 =  cuenta normal, 2 = solo tarjeta
-  Usuario usr = await getUsuario(codigo, false, rta);
+  var usuarioRepo = UsuarioRepository();
+  Usuario usr = await usuarioRepo.getUsuario(codigo, false, rta);
   loginOk(usr, rta, context);
 }
 
@@ -110,7 +113,8 @@ void enviarSms(BuildContext context) {
 
 Future<void> compartirQr(ScreenshotController screenshotController,
     BuildContext context, int idCliente) async {
-  bool rta = await postCompartirQr(idCliente);
+  var usuarioRepo = UsuarioRepository();
+  bool rta = await usuarioRepo.postCompartirQr(idCliente);
 
   if (!rta) {
     showSnackBar(context, 'No se pudo compartir el QR.', Colors.redAccent);
@@ -121,7 +125,7 @@ Future<void> compartirQr(ScreenshotController screenshotController,
     final directory = (await getApplicationDocumentsDirectory()).path;
     File imgFile = File('$directory/screenshot.png');
     await imgFile.writeAsBytes(image, flush: true);
-    List<String> lista = List<String>();
+    List<String> lista = <String>[];
     lista.add(imgFile.path);
     Share.shareFiles(lista, text: 'QR válido  solo para hoy.');
   });
