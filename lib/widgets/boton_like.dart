@@ -1,11 +1,9 @@
-import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-import '../constantes.dart';
-import '../notificaciones.dart';
+import 'package:centralApp/logic/articulo.dart';
+/*
 
 class BotonLike extends StatefulWidget {
   final Articulo articulo;
@@ -18,46 +16,52 @@ class BotonLike extends StatefulWidget {
 }
 
 class _BotonLikeState extends State<BotonLike> {
-  bool activo;
+  bool _activo;
 
   @override
   void initState() {
     super.initState();
-    activo = widget.articulo.favorito;
+    _activo = widget.articulo.favorito;
   }
 
   @override
   Widget build(BuildContext context) {
     final LoggedModel model =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
-    var articuloRepository = ArticuloRepository();
+
     return IconButton(
       color: widget.color,
       icon: Icon(
-        activo ? Icons.favorite : Icons.favorite_border,
+        _activo ? Icons.favorite : Icons.favorite_border,
         size: 28,
       ),
       onPressed: () async {
-        if (model.isLogged && model.getUser.idTipo == 1) {
-          bool rta = await articuloRepository.postFavorito(
-            widget.articulo,
-            model.getUser.idCliente,
-            !activo,
-            context,
-          );
+        clickFavorito(widget.articulo, model);
+      },
+    );
+  }
+}
+*/
 
-          if (rta) {
-            if (activo)
-              model.eliminarFavorito(widget.articulo);
-            else
-              model.agregarFavorito(widget.articulo);
-            widget.articulo.setFav = !activo;
-            setState(() {
-              activo = !activo;
-            });
-          }
-        } else
-          showSnackBar(context, txtIniciarSesion, Colors.redAccent);
+class BotonLike extends StatelessWidget {
+  final Articulo articulo;
+  final color;
+
+  BotonLike({Key key, @required this.articulo, @required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    final LoggedModel model =
+        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+
+    return IconButton(
+      color: color,
+      icon: Icon(
+        articulo.favorito ? Icons.favorite : Icons.favorite_border,
+        size: 28,
+      ),
+      onPressed: () async {
+        clickFavorito(articulo, model);
       },
     );
   }

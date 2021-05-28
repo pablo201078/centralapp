@@ -26,14 +26,12 @@ class ComprasRepository {
   }
 
   Future<Credito> getCredito(int idCliente, int idCredito) async {
-    var url = Uri.parse(
-        '${URL}compras.php?idCredito=$idCredito&idCliente=$idCliente');
     var response = await http
         .get('${URL}compras.php?idCredito=$idCredito&idCliente=$idCliente');
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
-      List<Credito> lista = List<Credito>();
+      List<Credito> lista = <Credito>[];
       for (var item in jsonData) {
         lista.add(Credito.fromJson(item));
       }
@@ -52,7 +50,7 @@ class ComprasRepository {
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
-      List<Pago> lista = List<Pago>();
+      List<Pago> lista = <Pago>[];
       for (var item in jsonData) {
         lista.add(Pago.fromJson(item));
       }
@@ -71,7 +69,7 @@ class ComprasRepository {
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
-      List<Deuda> lista = List<Deuda>();
+      List<Deuda> lista = <Deuda>[];
       for (var item in jsonData) {
         lista.add(Deuda.fromJson(item));
       }
@@ -117,7 +115,7 @@ class ComprasRepository {
 
   Future<int> getCreditosDeudaContador(int idCliente) async {
     var client = http.Client();
-    List<Credito> lista = List<Credito>();
+    List<Credito> lista = <Credito>[];
     int timeout = 2;
     try {
       var url = Uri.parse('${URL}compras.php?idCliente=$idCliente&soloDeuda=1');

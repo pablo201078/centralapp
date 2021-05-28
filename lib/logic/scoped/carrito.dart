@@ -1,6 +1,12 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/data/repositories/articulos.dart';
+import 'package:centralApp/data/repositories/pedidos.dart';
+import 'package:centralApp/logic/scoped/pedidos.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:centralApp/notificaciones.dart';
+import 'logged_model.dart';
 
 class CarritoModel extends Model {
   List<Articulo> _carrito = <Articulo>[];
@@ -71,5 +77,55 @@ class CarritoModel extends Model {
         ._carrito
         .where((element) => element.idArticulo == articulo.idArticulo);
     return !contain.isEmpty;
+  }
+
+  void agregarAlCarrito(BuildContext context, Articulo articulo) async {
+    final LoggedModel loggedModel =
+        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    var articuloRepository = ArticuloRepository();
+    if (this.cargando) return;
+
+    if (articulo.atributo.idAtributo == 0 && articulo.tieneAtributo) {
+      showMessage(
+          context, 'Tenés que elegir de que tipo es.', DialogType.WARNING);
+      return;
+    }
+
+    this.cargando = true;
+
+    bool rta = await articuloRepository.actualizarCarrito(
+        articulo, loggedModel.getUser.idCliente, true);
+
+    this.cargando = false;
+
+    if (rta) {
+      this.agregar(articulo);
+      Navigator.pushNamed(context, '/carrito');
+    } else
+      showSnackBar(context, 'Oops, algo salio mal.', Colors.red);
+  }
+
+  void comprarCarrito(BuildContext context) async {
+    if (cargando) return;
+    cargando = true;
+    final LoggedModel loggedModel =
+        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final PedidosModel pedidosModel =
+        ScopedModel.of<PedidosModel>(context, rebuildOnChange: false);
+
+    var articuloRepository = ArticuloRepository();
+    bool rta =
+        await articuloRepository.comprarCarrito(loggedModel.getUser.idCliente);
+    pedidosModel.pedidos = await getPedidos(loggedModel.getUser.idCliente);
+    cargando = false;
+
+    if (rta) {
+      VoidCallback ok = () async {
+        vaciar();
+        Navigator.popUntil(context, ModalRoute.withName('/'));
+      };
+      showFinCompra(context, ok);
+    } else
+      showSnackBar(context, 'Algo salio mal', Colors.redAccent);
   }
 }

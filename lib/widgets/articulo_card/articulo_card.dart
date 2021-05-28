@@ -52,7 +52,7 @@ class ArticuloCard extends StatelessWidget {
 class _ContenidoCard extends StatelessWidget {
   final Articulo articulo;
 
-  _ContenidoCard({Key key, @required this.articulo});
+  _ContenidoCard({@required this.articulo});
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +60,20 @@ class _ContenidoCard extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
         children: [
-          Expanded(flex: 1, child: ArticuloCardImagen(articulo: articulo)),
-          Expanded(flex: 2, child: ArticuloCardDetalles(articulo: articulo)),
+          Expanded(
+            flex: 1,
+            child: ArticuloCardImagen(articulo: articulo),
+          ),
+          Expanded(
+            flex: 2,
+            child: ArticuloCardDetalles(articulo: articulo),
+          ),
           Visibility(
             visible: !this.articulo.usado,
             child: BotonLike(
-                articulo: articulo, color: Theme.of(context).accentColor),
+              articulo: articulo,
+              color: Theme.of(context).accentColor,
+            ),
           ),
         ],
       ),

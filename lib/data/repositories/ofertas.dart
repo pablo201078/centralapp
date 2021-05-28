@@ -15,7 +15,7 @@ class OfertasRepository {
       // return compute(parseOfertas, response.body);
 
       var jsonData = json.decode(response.body);
-      List<Articulo> lista = List<Articulo>();
+      List<Articulo> lista = <Articulo>[];
 
       for (var o in jsonData) {
         lista.add(Articulo.fromJson(o));

@@ -2,19 +2,19 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../constantes.dart';
-import '../../notificaciones.dart';
 
-class ArticuloRepository{
 
+class ArticuloRepository {
   String url_img(int idArticulo, int orden) {
-    return 'http://amacar.com.ar/images/cache/product-page/articulo-' + idArticulo.toString() + '_$orden.png';
+    return 'http://amacar.com.ar/images/cache/product-page/articulo-' +
+        idArticulo.toString() +
+        '_$orden.png';
   }
 
   Future<bool> postFavorito(
-      Articulo articulo, int idCliente, bool favorito, BuildContext ctx) async {
+      Articulo articulo, int idCliente, bool favorito) async {
     var client = http.Client();
 
     int timeout = 3;
@@ -29,15 +29,13 @@ class ArticuloRepository{
       return (response.statusCode == 200);
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
+
       return false;
     } on SocketException catch (e) {
       print('Socket Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     } on Error catch (e) {
       print('General Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     }
   }
@@ -47,9 +45,10 @@ class ArticuloRepository{
     List<Articulo> lista = <Articulo>[];
     int timeout = 3;
     try {
-      var url = Uri.parse('${URL}articulosV2.php?idTipo=2&idCliente=$idCliente');
+      var url =
+          Uri.parse('${URL}articulosV2.php?idTipo=2&idCliente=$idCliente');
       http.Response response =
-      await client.get(url).timeout(Duration(seconds: timeout));
+          await client.get(url).timeout(Duration(seconds: timeout));
 
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
@@ -73,8 +72,8 @@ class ArticuloRepository{
     }
   }
 
-  Future<bool> actualizarCarrito(
-      Articulo articulo, int idCliente, bool enCarrito, BuildContext ctx) async {
+  Future<bool> actualizarCarrito(Articulo articulo, int idCliente,
+      bool enCarrito) async {
     var client = http.Client();
     int timeout = 5;
     try {
@@ -92,20 +91,17 @@ class ArticuloRepository{
       return (response.statusCode == 200);
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     } on SocketException catch (e) {
       print('Socket Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     } on Error catch (e) {
       print('General Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     }
   }
 
-  Future<bool> comprarCarrito(int idCliente, BuildContext ctx) async {
+  Future<bool> comprarCarrito(int idCliente) async {
     var client = http.Client();
     int timeout = 8;
     try {
@@ -113,21 +109,15 @@ class ArticuloRepository{
       http.Response response = await client.post(url, body: {
         'idCliente': idCliente.toString(),
       }).timeout(Duration(seconds: timeout));
-
-      print(response.body.toString());
-
       return (response.statusCode == 200);
     } on TimeoutException catch (e) {
       print('Timeout Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     } on SocketException catch (e) {
       print('Socket Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     } on Error catch (e) {
       print('General Error: $e');
-      showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
       return false;
     }
   }
@@ -143,9 +133,8 @@ class ArticuloRepository{
       for (var o in jsonData) {
         art = Articulo.fromJson(o);
         lista.add(art);
-        //  print( o );
-      }
 
+      }
       return lista;
     } else {
       // If the server did not return a 200 OK response,
@@ -159,9 +148,10 @@ class ArticuloRepository{
     List<Articulo> lista = <Articulo>[];
     int timeout = 2;
     try {
-      var url = Uri.parse('${URL}articulosV2.php?idTipo=3&idCliente=$idCliente');
+      var url =
+          Uri.parse('${URL}articulosV2.php?idTipo=3&idCliente=$idCliente');
       http.Response response =
-      await client.get(url).timeout(Duration(seconds: timeout));
+          await client.get(url).timeout(Duration(seconds: timeout));
 
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
@@ -187,7 +177,7 @@ class ArticuloRepository{
 
   Future<List<Articulo>> getDestacados(int idCliente, int idTipo) async {
     var url =
-    Uri.parse('${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
+        Uri.parse('${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -297,7 +287,8 @@ class ArticuloRepository{
     }
   }
 
-  Future<Articulo> getArticulo(int idCliente, int idTipo, int idArticulo) async {
+  Future<Articulo> getArticulo(
+      int idCliente, int idTipo, int idArticulo) async {
     var url = Uri.parse(
         '${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idArticulo=$idArticulo');
     var response = await http.get(url);
@@ -316,8 +307,4 @@ class ArticuloRepository{
       throw Exception('Error de conexion');
     }
   }
-
-
 }
-
-

@@ -2,7 +2,7 @@ import 'package:centralApp/logic/efectivo.dart';
 import 'package:centralApp/logic/scoped/logged_model.dart';
 import 'package:centralApp/logic/scoped/pedidos.dart';
 import 'package:centralApp/widgets/menu_lateral/widgets/menu_lateral_header_usuario.dart';
-import 'package:centralApp/screens/ticket/ticket.dart';
+import 'package:centralApp/ui/screens/ticket/ticket.dart';
 import 'package:centralApp/widgets/contador.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

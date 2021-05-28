@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:centralApp/constantes.dart';
 import 'package:centralApp/notificaciones.dart';
-                    
+
 
 Future<Pedido> getPedido(int idPedido) async {
   var client = http.Client();
@@ -42,7 +42,7 @@ Future<Pedido> getPedido(int idPedido) async {
 
 Future<List<Pedido>> getPedidos(int idCliente) async {
   var client = http.Client();
-  List<Pedido> lista = List<Pedido>();
+  List<Pedido> lista = <Pedido>[];
   int timeout = 3;
   try {
     http.Response response = await client
@@ -51,14 +51,12 @@ Future<List<Pedido>> getPedidos(int idCliente) async {
         )
         .timeout(Duration(seconds: timeout));
 
-    print('${URL}pedidosV2.php?idCliente=$idCliente');
+
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
-      List<Pedido> lista = List<Pedido>();
       for (var item in jsonData) {
         lista.add(Pedido.fromJson(item));
       }
-
       return lista;
     }
   } on TimeoutException catch (e) {
@@ -80,7 +78,7 @@ Future<List<PedidoEtapa>> getPedidoEtapas(int idPim) async {
 
   if (response.statusCode == 200) {
     var jsonData = json.decode(response.body);
-    List<PedidoEtapa> lista = List<PedidoEtapa>();
+    List<PedidoEtapa> lista = <PedidoEtapa>[];
     for (var item in jsonData) {
       lista.add(PedidoEtapa.fromJson(item));
     }
@@ -93,26 +91,23 @@ Future<List<PedidoEtapa>> getPedidoEtapas(int idPim) async {
   }
 }
 
-Future<bool> anularPedido(int id, BuildContext ctx) async {
+Future<bool> anularPedido(int id) async {
   int timeout = 10;
   try {
     http.Response response =
         await http.post(Uri.parse('${URL}anularPedido.php'), body: {
       'id': id.toString(),
     }).timeout(Duration(seconds: timeout));
-    print(response.body);
+
     return (response.statusCode == 200);
   } on TimeoutException catch (e) {
     print('Timeout Error: $e');
-    showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
     return false;
   } on SocketException catch (e) {
     print('Socket Error: $e');
-    showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
     return false;
   } on Error catch (e) {
     print('General Error: $e');
-    showSnackBar(ctx, 'Oops, algo salio mal.', Colors.red);
     return false;
   }
 }
