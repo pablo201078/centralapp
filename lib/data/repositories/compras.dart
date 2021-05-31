@@ -7,12 +7,12 @@ import 'package:centralApp/constantes.dart';
 
 class ComprasRepository {
   Future<List<Credito>> getCreditos(int idCliente) async {
-    var url = Uri.parse('${URL}compras.php?idCliente=$idCliente');
+    var url = Uri.parse('${url_base}compras.php?idCliente=$idCliente');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
-      List<Credito> lista = List<Credito>();
+      List<Credito> lista = <Credito>[];
       for (var item in jsonData) {
         lista.add(Credito.fromJson(item));
       }
@@ -27,7 +27,7 @@ class ComprasRepository {
 
   Future<Credito> getCredito(int idCliente, int idCredito) async {
     var response = await http
-        .get('${URL}compras.php?idCredito=$idCredito&idCliente=$idCliente');
+        .get('${url_base}compras.php?idCredito=$idCredito&idCliente=$idCliente');
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
@@ -45,7 +45,7 @@ class ComprasRepository {
   }
 
   Future<List<Pago>> getPagos(int idCredito) async {
-    var url = Uri.parse('${URL}historial_pago.php?idCredito=$idCredito');
+    var url = Uri.parse('${url_base}historial_pago.php?idCredito=$idCredito');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -64,7 +64,7 @@ class ComprasRepository {
   }
 
   Future<List<Deuda>> getDeuda(int idCredito) async {
-    var url = Uri.parse('${URL}cuotasAdeudadas.php?idCredito=$idCredito');
+    var url = Uri.parse('${url_base}cuotasAdeudadas.php?idCredito=$idCredito');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -84,10 +84,10 @@ class ComprasRepository {
 
   Future<List<Credito>> getCreditosDeuda(int idCliente) async {
     var client = http.Client();
-    List<Credito> lista = List<Credito>();
+    List<Credito> lista = <Credito>[];
     int timeout = 5;
     try {
-      var url = Uri.parse('${URL}compras.php?idCliente=$idCliente&soloDeuda=1');
+      var url = Uri.parse('${url_base}compras.php?idCliente=$idCliente&soloDeuda=1');
       http.Response response =
           await client.get(url).timeout(Duration(seconds: timeout));
 
@@ -118,7 +118,7 @@ class ComprasRepository {
     List<Credito> lista = <Credito>[];
     int timeout = 2;
     try {
-      var url = Uri.parse('${URL}compras.php?idCliente=$idCliente&soloDeuda=1');
+      var url = Uri.parse('${url_base}compras.php?idCliente=$idCliente&soloDeuda=1');
       http.Response response =
           await client.get(url).timeout(Duration(seconds: timeout));
 

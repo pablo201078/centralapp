@@ -6,7 +6,7 @@ import 'package:centralApp/constantes.dart';
 class TicketRepository {
   Future<List<TicketItem>> getTicket(int idCliente) async {
     var response = await http.get(
-      Uri.parse('${URL}ticketV2.php?idCliente=$idCliente'),
+      Uri.parse('${url_base}ticketV2.php?idCliente=$idCliente'),
     );
 
     if (response.statusCode == 200) {

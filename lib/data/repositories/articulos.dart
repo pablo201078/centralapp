@@ -19,7 +19,7 @@ class ArticuloRepository {
 
     int timeout = 3;
     try {
-      var url = Uri.parse(URL + 'postFavorito.php');
+      var url = Uri.parse(url_base + 'postFavorito.php');
       http.Response response = await client.post(url, body: {
         'idCliente': idCliente.toString(),
         'idArticulo': articulo.idArticulo.toString(),
@@ -46,7 +46,7 @@ class ArticuloRepository {
     int timeout = 3;
     try {
       var url =
-          Uri.parse('${URL}articulosV2.php?idTipo=2&idCliente=$idCliente');
+          Uri.parse('${url_base}articulosV2.php?idTipo=2&idCliente=$idCliente');
       http.Response response =
           await client.get(url).timeout(Duration(seconds: timeout));
 
@@ -77,7 +77,7 @@ class ArticuloRepository {
     var client = http.Client();
     int timeout = 5;
     try {
-      var url = Uri.parse(URL + 'postCarrito.php');
+      var url = Uri.parse(url_base + 'postCarrito.php');
       http.Response response = await client.post(url, body: {
         'idCliente': idCliente.toString(),
         'idArticulo': articulo.idArticulo.toString(),
@@ -105,7 +105,7 @@ class ArticuloRepository {
     var client = http.Client();
     int timeout = 8;
     try {
-      var url = Uri.parse(URL + 'comprarCarrito.php');
+      var url = Uri.parse(url_base + 'comprarCarrito.php');
       http.Response response = await client.post(url, body: {
         'idCliente': idCliente.toString(),
       }).timeout(Duration(seconds: timeout));
@@ -124,7 +124,7 @@ class ArticuloRepository {
 
   Future<List<Articulo>> getSearch(int idCliente, String searchQuery) async {
     var url = Uri.parse(
-        '${URL}articulosV2.php?idTipo=4&idCliente=$idCliente&searchQuery=$searchQuery');
+        '${url_base}articulosV2.php?idTipo=4&idCliente=$idCliente&searchQuery=$searchQuery');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       List<Articulo> lista = <Articulo>[];
@@ -149,7 +149,7 @@ class ArticuloRepository {
     int timeout = 2;
     try {
       var url =
-          Uri.parse('${URL}articulosV2.php?idTipo=3&idCliente=$idCliente');
+          Uri.parse('${url_base}articulosV2.php?idTipo=3&idCliente=$idCliente');
       http.Response response =
           await client.get(url).timeout(Duration(seconds: timeout));
 
@@ -177,7 +177,7 @@ class ArticuloRepository {
 
   Future<List<Articulo>> getDestacados(int idCliente, int idTipo) async {
     var url =
-        Uri.parse('${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
+        Uri.parse('${url_base}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -200,7 +200,7 @@ class ArticuloRepository {
   Future<List<Articulo>> getArticulosPorCategoria(
       int idCliente, int idTipo, int idCategoria) async {
     var url = Uri.parse(
-        '${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idCategoria=$idCategoria');
+        '${url_base}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idCategoria=$idCategoria');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -224,7 +224,7 @@ class ArticuloRepository {
     var client = http.Client();
     int timeout = 10;
     try {
-      var url = Uri.parse(URL + 'postHistorial.php');
+      var url = Uri.parse(url_base + 'postHistorial.php');
       http.Response response = await client.post(url, body: {
         'idCliente': idCliente.toString(),
         'idArticulo': idArticulo.toString(),
@@ -244,7 +244,7 @@ class ArticuloRepository {
   }
 
   Future<List<Articulo>> getArticulosHistorial(int idCliente) async {
-    var url = Uri.parse('${URL}articulosV2.php?idTipo=10&idCliente=$idCliente');
+    var url = Uri.parse('${url_base}articulosV2.php?idTipo=10&idCliente=$idCliente');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -265,7 +265,7 @@ class ArticuloRepository {
   }
 
   Future<List<Articulo>> getUsados(int idCliente) async {
-    var url = Uri.parse('${URL}articulosV2.php?idTipo=11&idCliente=$idCliente');
+    var url = Uri.parse('${url_base}articulosV2.php?idTipo=11&idCliente=$idCliente');
 
     var response = await http.get(url);
 
@@ -290,7 +290,7 @@ class ArticuloRepository {
   Future<Articulo> getArticulo(
       int idCliente, int idTipo, int idArticulo) async {
     var url = Uri.parse(
-        '${URL}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idArticulo=$idArticulo');
+        '${url_base}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente&idArticulo=$idArticulo');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {

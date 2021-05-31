@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:get/get.dart';
+import 'keys.dart';
 
-const APP_ID = "4fc09c65-34e7-483b-ab14-15dbb8343add";
+final APP_ID = Keys().oneSignalApiKey;
 
 void inicializarOneSignal() async {
   // OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);

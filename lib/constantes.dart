@@ -1,11 +1,10 @@
 import 'package:centralApp/utils.dart';
 import 'package:flutter/material.dart';
+import 'keys.dart';
 
-const String URL = 'http://mutualamacar.no-ip.org/app/';
+final String url_base = Keys().url;
 const String txtIniciarSesion = 'Tenes que ser Socio de la Mutual para usar esta opción';
 const String txtEliminasteDelCarrito = 'Eliminaste del Carrito';
-
-
 
 // Form Error
 final RegExp emailValidatorRegExp =

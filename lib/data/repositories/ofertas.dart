@@ -8,7 +8,7 @@ class OfertasRepository {
   Future<List<Articulo>> getOfertas(int idCliente) async {
     var id = await getDeviceId();
     var url = Uri.parse(
-        '${URL}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
+        '${url_base}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       // Use the compute function to run parsePhotos in a separate isolate.

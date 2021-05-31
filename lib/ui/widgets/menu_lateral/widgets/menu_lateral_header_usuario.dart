@@ -8,8 +8,8 @@ import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/constantes.dart';
 import 'package:centralApp/notificaciones.dart';
+import 'package:centralApp/constantes.dart';
 
 class MenuLateralHeaderUsuario extends StatefulWidget {
   Usuario usuario;
@@ -91,7 +91,7 @@ class _MenuLateralHeaderUsuarioState extends State<MenuLateralHeaderUsuario> {
               print('imagen subida ok');
               imageCache.clear();
               loggedModel.actualizarUrlImagen(
-                  '${URL}getProfileImg.php?idCliente=${widget.usuario.idCliente}');
+                  '${url_base}getProfileImg.php?idCliente=${widget.usuario.idCliente}');
             }
           }
         },

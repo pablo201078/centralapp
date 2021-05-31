@@ -13,7 +13,7 @@ class UsuarioRepository {
       String codigo, bool validarDispositivo, int idTipo) async {
     var id = await getDeviceId();
 
-    final response = await http.post(Uri.parse(URL + 'loginV2.php'), body: {
+    final response = await http.post(Uri.parse(url_base + 'loginV2.php'), body: {
       'tipoLogin': '1', //scan
       'pdf417': codigo,
       'deviceId': id,
@@ -37,7 +37,7 @@ class UsuarioRepository {
   Future<Usuario> getUsuarioClave(
       String dni, String clave, bool validarDispositivo, int idTipo) async {
     var id = await getDeviceId();
-    final response = await http.post(Uri.parse(URL + 'loginV2.php'), body: {
+    final response = await http.post(Uri.parse(url_base + 'loginV2.php'), body: {
       'tipoLogin': '2', //dni  clave
       'clave': clave,
       'dni': dni,
@@ -66,7 +66,7 @@ class UsuarioRepository {
     try {
       http.Response response = await client
           .get(
-              Uri.parse('${URL}busquedasAnteriores.php?idCliente=${idCliente}'))
+              Uri.parse('${url_base}busquedasAnteriores.php?idCliente=${idCliente}'))
           .timeout(Duration(seconds: timeout));
 
       if (response.statusCode == 200) {
@@ -96,7 +96,7 @@ class UsuarioRepository {
     try {
       http.Response response = await client
           .get(
-            Uri.parse('${URL}getQrV3.php?idCliente=${idCliente}'),
+            Uri.parse('${url_base}getQrV3.php?idCliente=${idCliente}'),
           )
           .timeout(
             Duration(seconds: timeout),
@@ -139,7 +139,7 @@ class UsuarioRepository {
       http.Response response = await client
           .get(
             Uri.parse(
-                '${URL}getQrV2.php?idCliente=${loggedModel.getUser.idCliente}'),
+                '${url_base}getQrV2.php?idCliente=${loggedModel.getUser.idCliente}'),
           )
           .timeout(Duration(seconds: timeout));
 
@@ -172,7 +172,7 @@ class UsuarioRepository {
     try {
       http.Response response = await client
           .get(
-            Uri.parse('${URL}checkLogin.php?idCliente=$idCliente&deviceId=$id'),
+            Uri.parse('${url_base}checkLogin.php?idCliente=$idCliente&deviceId=$id'),
           )
           .timeout(Duration(seconds: timeout));
 
@@ -195,7 +195,7 @@ class UsuarioRepository {
     int timeout = 3;
     try {
       http.Response response = await client.post(
-        Uri.parse('${URL}postRenovarEfectivoV2.php'),
+        Uri.parse('${url_base}postRenovarEfectivoV2.php'),
         body: {
           'idCliente': idCliente.toString(),
           'fecha': fecha.toString(),
@@ -225,7 +225,7 @@ class UsuarioRepository {
     try {
       http.Response response = await client
           .get(
-            Uri.parse('${URL}contactarAsesor.php?idCliente=$idCliente'),
+            Uri.parse('${url_base}contactarAsesor.php?idCliente=$idCliente'),
           )
           .timeout(Duration(seconds: timeout));
 
@@ -251,11 +251,9 @@ class UsuarioRepository {
     try {
       http.Response response = await client
           .get(
-            Uri.parse('${URL}checkVencimiento.php?idCliente=$idCliente'),
+            Uri.parse('${url_base}checkVencimiento.php?idCliente=$idCliente'),
           )
           .timeout(Duration(seconds: timeout));
-
-      print('${URL}checkVencimiento.php?idCliente=$idCliente');
 
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
@@ -276,7 +274,7 @@ class UsuarioRepository {
 
   Future<bool> postImagen(
       String fileName, String base64Image, int idCliente) async {
-    final response = await http.post(Uri.parse('${URL}postImagen.php'),
+    final response = await http.post(Uri.parse('${url_base}postImagen.php'),
         // headers: {"Content-Type": "multipart/form-data"},
         encoding: Encoding.getByName("utf-8"),
         body: {
@@ -294,7 +292,7 @@ class UsuarioRepository {
     int timeout = 3;
     try {
       http.Response response = await client.post(
-        Uri.parse('${URL}postCompartirQr.php'),
+        Uri.parse('${url_base}postCompartirQr.php'),
         body: {
           'idCliente': idCliente.toString(),
         },

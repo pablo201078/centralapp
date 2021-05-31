@@ -51,7 +51,7 @@ class _HomeBodyMain extends State<HomeBody> {
       updateButtonText: 'Actualizar',
       laterButtonText: 'Despues',
       body: '¿Queres Actualizarla ahora?',
-      jsonUrl: URL + 'version.json',
+      jsonUrl: url_base + 'version.json',
     ).checkVersion();
   }
 

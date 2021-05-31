@@ -2,10 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:centralApp/data/models/pedido.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:centralApp/constantes.dart';
-import 'package:centralApp/notificaciones.dart';
 
 
 Future<Pedido> getPedido(int idPedido) async {
@@ -16,7 +14,7 @@ Future<Pedido> getPedido(int idPedido) async {
   try {
     http.Response response = await client
         .get(
-          Uri.parse('${URL}pedidosV2.php?idPedido=$idPedido'),
+          Uri.parse('${url_base}pedidosV2.php?idPedido=$idPedido'),
         )
         .timeout(Duration(seconds: timeout));
 
@@ -47,7 +45,7 @@ Future<List<Pedido>> getPedidos(int idCliente) async {
   try {
     http.Response response = await client
         .get(
-          Uri.parse('${URL}pedidosV2.php?idCliente=$idCliente'),
+          Uri.parse('${url_base}pedidosV2.php?idCliente=$idCliente'),
         )
         .timeout(Duration(seconds: timeout));
 
@@ -73,7 +71,7 @@ Future<List<Pedido>> getPedidos(int idCliente) async {
 
 Future<List<PedidoEtapa>> getPedidoEtapas(int idPim) async {
   var response = await http.get(
-    Uri.parse('${URL}pedido_etapas.php?idPim=$idPim'),
+    Uri.parse('${url_base}pedido_etapas.php?idPim=$idPim'),
   );
 
   if (response.statusCode == 200) {
@@ -95,7 +93,7 @@ Future<bool> anularPedido(int id) async {
   int timeout = 10;
   try {
     http.Response response =
-        await http.post(Uri.parse('${URL}anularPedido.php'), body: {
+        await http.post(Uri.parse('${url_base}anularPedido.php'), body: {
       'id': id.toString(),
     }).timeout(Duration(seconds: timeout));
 
