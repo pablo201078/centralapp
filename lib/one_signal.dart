@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:get/get.dart';
 

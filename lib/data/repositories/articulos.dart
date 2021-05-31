@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:http/http.dart' as http;
-import '../../constantes.dart';
+import 'package:centralApp/constantes.dart';
 
 
 class ArticuloRepository {
