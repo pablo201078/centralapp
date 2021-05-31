@@ -8,7 +8,6 @@
 .buildlog/
 .history
 .svn/
-/lib/keys.dart
 keystore.jks
 
 # IntelliJ related
