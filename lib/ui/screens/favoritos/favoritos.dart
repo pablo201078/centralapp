@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/ui/screens/favoritos/widgets/favoritos_card_detalles.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/utils.dart';

@@ -1,7 +1,8 @@
-import 'package:centralApp/logic/usuario.dart';
 import 'package:centralApp/data/models/usuario.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/utils.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class BotonCompartirQr extends StatefulWidget {
   final Usuario usuario;
@@ -18,6 +19,10 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
 
   @override
   Widget build(BuildContext context) {
+
+    final LoggedModel modelo =
+    ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: MaterialButton(
@@ -26,7 +31,7 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
           setState(() {
             _cargando = true;
           });
-          await compartirQr(
+          await modelo.compartirQr(
             widget.screenshotController,
             context,
             widget.usuario.idCliente,

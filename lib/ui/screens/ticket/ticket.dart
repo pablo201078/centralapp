@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/ticket.dart';
 import 'package:centralApp/data/models/ticket_item.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/ui/screens/ticket/widgets/ticket_caja.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';

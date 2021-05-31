@@ -1,6 +1,5 @@
-import 'package:centralApp/logic/efectivo.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
-import 'package:centralApp/logic/scoped/pedidos.dart';
+import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/widgets/menu_lateral/widgets/menu_lateral_header_usuario.dart';
 import 'package:centralApp/ui/screens/ticket/ticket.dart';
 import 'package:centralApp/ui/widgets/contador.dart';
@@ -30,7 +29,6 @@ class MenuLateral extends StatelessWidget {
                     ? MenuLateralHeaderUsuario(usuario: model.getUser)
                     : MenuLateralHeader(),
                 CustomListTile(
-                  heroTag: 'micredencial',
                   title: 'Tarjeta Socio',
                   iconColor: model.isLogged ? Colors.black : Colors.grey,
                   icon: Icons.credit_card,
@@ -41,7 +39,6 @@ class MenuLateral extends StatelessWidget {
                       dialogoDebeIniciarSesion(context);
                   },
                 ),
-                //Divider(),
                 CustomListTile(
                   title: 'Ticket de Pago',
                   iconColor: model.isLogged ? Colors.black : Colors.grey,
@@ -54,8 +51,6 @@ class MenuLateral extends StatelessWidget {
                           page: Ticket(),
                         ),
                       );
-                    // Navigator.pushNamed(context, '/ticket',
-                    //  arguments: {'idCliente': model.getUser.idCliente});
                     else
                       dialogoDebeIniciarSesion(context);
                   },
@@ -66,8 +61,9 @@ class MenuLateral extends StatelessWidget {
                   icon: Icons.monetization_on_outlined,
                   onTap: () {
                     if (model.isLogged) {
+                      PedidoBloc pedidobloc = PedidoBloc();
                       if (model.getUser.idTipo == 1)
-                        comprobarVencimiento2(context, model.getUser.idCliente);
+                        pedidobloc.comprobarVencimiento2(context, model.getUser.idCliente);
                       else
                         showWarning(context, () {},
                             'Tu usuario no esta Autorizado para realizar esta operación');
@@ -75,8 +71,8 @@ class MenuLateral extends StatelessWidget {
                       dialogoDebeIniciarSesion(context);
                   },
                 ),
-                ScopedModel<PedidosModel>(
-                  model: PedidosModel(),
+                ScopedModel<PedidoBloc>(
+                  model: PedidoBloc(),
                   child: _ItemPedidosActuales(),
                 ),
                 CustomListTile(
@@ -142,8 +138,8 @@ class _ItemPedidosActuales extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoggedModel model =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
-    final PedidosModel pedidosModel =
-        ScopedModel.of<PedidosModel>(context, rebuildOnChange: true);
+    final PedidoBloc pedidosModel =
+        ScopedModel.of<PedidoBloc>(context, rebuildOnChange: true);
 
     return CustomListTile(
       title: 'Pedidos Actuales',

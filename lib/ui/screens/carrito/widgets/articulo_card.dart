@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/scoped/carrito.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/carrito.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/notificaciones.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

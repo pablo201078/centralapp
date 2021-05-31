@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/pedido.dart';
-import 'package:centralApp/logic/scoped/pedidos.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/notificaciones.dart';
@@ -40,8 +40,8 @@ class _BotonAnularPedidoState extends State<BotonAnularPedido> {
         this.cargando = false;
       });
       if (rta) {
-        PedidosModel pedidos =
-            ScopedModel.of<PedidosModel>(context, rebuildOnChange: false);
+        PedidoBloc pedidos =
+            ScopedModel.of<PedidoBloc>(context, rebuildOnChange: false);
         pedidos.eliminar(widget.pedido);
         showMessage(context, 'Tu Pedido fué cancelado', null);
         Navigator.popUntil(context, ModalRoute.withName('/pedidos'));

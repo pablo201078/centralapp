@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/logic/scoped/categoria_actual.dart';
+import 'package:centralApp/logic/categoria_actual.dart';
 import 'package:centralApp/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/data/models/articulo_categoria.dart';

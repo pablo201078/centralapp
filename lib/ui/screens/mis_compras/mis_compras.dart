@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
-import 'package:centralApp/logic/scoped/creditos.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/creditos.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/ui/screens/mis_compras/widgets/mis_compras_body.dart';
 import 'package:centralApp/ui/screens/mis_compras/widgets/mis_compras_lista_vacia.dart';
@@ -29,12 +29,6 @@ class __ScaffoldState extends State<_Scaffold> {
   int _index = 0;
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     CreditosModel creditosModel =
         ScopedModel.of<CreditosModel>(context, rebuildOnChange: false);
@@ -42,8 +36,6 @@ class __ScaffoldState extends State<_Scaffold> {
     setState(() {
       _index = creditosModel.tipo - 1;
     });
-    //creditosModel.tipo = 1 ;
-
     LoggedModel loggedModel =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
 

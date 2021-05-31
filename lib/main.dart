@@ -25,19 +25,19 @@ import 'data/repositories/usuario.dart';
 import 'data/repositories/compras.dart';
 import 'utils.dart';
 import 'one_signal.dart';
-import 'logic/scoped/carrito.dart';
-import 'logic/scoped/pedidos.dart';
+import 'logic/carrito.dart';
+import 'logic/pedidos.dart';
 import 'ui/screens/articulo_detalle/articulo_detalle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'logic/scoped/logged_model.dart';
+import 'logic/logged_model.dart';
 import 'ui/screens/credencial/credencial.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'ui/screens/home/home.dart';
 
 void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
-    PedidosModel pedidosModel) async {
+    PedidoBloc pedidosModel) async {
   print('inicializar app');
   var idCliente = await getIdCliente();
   var usuarioRepo = UsuarioRepository();
@@ -78,7 +78,7 @@ void main() async {
 
   LoggedModel loggedModel = LoggedModel();
   CarritoModel carritoModel = CarritoModel();
-  PedidosModel pedidosModel = PedidosModel();
+  PedidoBloc pedidosModel = PedidoBloc();
 
   inicializarApp(loggedModel, carritoModel, pedidosModel);
 

@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:centralApp/logic/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:centralApp/constantes.dart';
@@ -10,7 +9,7 @@ import 'custom_surfix_icon.dart';
 import 'default_button.dart';
 import 'form_error.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/logged_model.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -127,7 +126,7 @@ class _SignFormState extends State<SignForm> {
                   _cargando = true;
                 });
                 _formKey.currentState.save();
-                await validarUsuario(dni, password, context);
+                await modelo.validarUsuario(dni, password, context);
                 setState(() {
                   _cargando = false;
                 });

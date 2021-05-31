@@ -1,6 +1,6 @@
 import 'package:badges/badges.dart';
-import 'package:centralApp/logic/scoped/carrito.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/carrito.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/constantes.dart';

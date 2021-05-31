@@ -2,12 +2,13 @@ import 'package:barcode_scan/gen/protos/protos.pbenum.dart';
 import 'package:barcode_scan/model/scan_options.dart';
 import 'package:barcode_scan/model/scan_result.dart';
 import 'package:barcode_scan/platform_wrapper.dart';
-import 'package:centralApp/logic/usuario.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/ui/screens/loggin/widgets/loggin_cargando.dart';
 import 'package:centralApp/ui/widgets/gradient_back.dart';
 import 'package:centralApp/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'loggin_bar.dart';
 
 class ScannerBody extends StatelessWidget {
@@ -34,7 +35,9 @@ class __CamaraState extends State<_Camara> {
   String barcode;
 
   void codigoLeido(String code, BuildContext context) async {
-    await validarUsuarioScan(code, context);
+    final LoggedModel modelo =
+        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    await modelo.validarUsuarioScan(code, context);
     setState(() {
       _showLoading = false;
     });

@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
-import 'package:centralApp/logic/scoped/creditos.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/creditos.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/ui/screens/deuda_vencida/widgets/deuda_vencida_body.dart';
 import 'package:centralApp/ui/screens/deuda_vencida/widgets/deuda_vencida_lista_vacia.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';

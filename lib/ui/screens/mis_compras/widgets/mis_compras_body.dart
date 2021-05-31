@@ -1,4 +1,4 @@
-import 'package:centralApp/logic/scoped/creditos.dart';
+import 'package:centralApp/logic/creditos.dart';
 import 'package:centralApp/data/models/credito.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';

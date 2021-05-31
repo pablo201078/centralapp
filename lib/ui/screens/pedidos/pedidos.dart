@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/pedido.dart';
-import 'package:centralApp/logic/scoped/pedidos.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/ui/screens/pedidos/widgets/pedido_card.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
@@ -17,8 +17,8 @@ class Pedidos extends StatelessWidget {
     this.idCliente = arguments['idCliente'];
     // TODO: implement build
 
-    return ScopedModel<PedidosModel>(
-      model: PedidosModel(),
+    return ScopedModel<PedidoBloc>(
+      model: PedidoBloc(),
       child: Scaffold(
         appBar: buildAppBar(context, title: 'Mis Pedidos', actions: []),
         body: _Body(idCliente: idCliente),
@@ -47,8 +47,8 @@ class __BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    PedidosModel pedidos =
-        ScopedModel.of<PedidosModel>(context, rebuildOnChange: false);
+    PedidoBloc pedidos =
+        ScopedModel.of<PedidoBloc>(context, rebuildOnChange: false);
 
     return FutureBuilder<List<Pedido>>(
       future: _futuro,
@@ -74,26 +74,21 @@ class _SinPedidos extends StatelessWidget {
           child: Text(
             "No tenes ningún pedido",
             textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Theme.of(context).accentColor,
-                fontSize: 20),
+            style:
+                TextStyle(color: Theme.of(context).accentColor, fontSize: 20),
           ),
         ),
-     //   BotonEmpezarAComprar(),
+        //   BotonEmpezarAComprar(),
       ],
     );
   }
 }
 
 class _Lista extends StatelessWidget {
-  // final List<Pedido> pedidos;
-
-  //_Lista({this.pedidos});
-
   @override
   Widget build(BuildContext context) {
-    PedidosModel pedidos =
-        ScopedModel.of<PedidosModel>(context, rebuildOnChange: true);
+    PedidoBloc pedidos =
+        ScopedModel.of<PedidoBloc>(context, rebuildOnChange: true);
 
     return ListView.builder(
       itemBuilder: (context, index) {

@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_cuotas_restantes.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_descripcion.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_estado.dart';

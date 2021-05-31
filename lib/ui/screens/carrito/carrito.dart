@@ -1,8 +1,8 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/scoped/carrito.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
-import 'package:centralApp/logic/scoped/pedidos.dart';
+import 'package:centralApp/logic/carrito.dart';
+import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/screens/carrito/widgets/articulo_card.dart';
 import 'package:centralApp/ui/screens/carrito/widgets/boton_comprar.dart';
 import 'package:centralApp/ui/screens/carrito/widgets/boton_seguir_comprando.dart';
@@ -115,8 +115,8 @@ class BotonesCarrito extends StatelessWidget {
         Visibility(
           visible: carrito.articulos.isNotEmpty,
           //el boton comprar tiene el pedidosModel, porq despues de hacer la compra. Tengo que actualizar los pedidos para el contador de pedidos del menu
-          child: ScopedModel<PedidosModel>(
-            model: PedidosModel(),
+          child: ScopedModel<PedidoBloc>(
+            model: PedidoBloc(),
             child: BotonComprar(),
           ),
         ),

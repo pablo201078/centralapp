@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/repositories/pedidos.dart';
-import 'package:centralApp/logic/scoped/pedidos.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/notificaciones.dart';
@@ -110,8 +110,8 @@ class CarritoModel extends Model {
     cargando = true;
     final LoggedModel loggedModel =
         ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
-    final PedidosModel pedidosModel =
-        ScopedModel.of<PedidosModel>(context, rebuildOnChange: false);
+    final PedidoBloc pedidosModel =
+        ScopedModel.of<PedidoBloc>(context, rebuildOnChange: false);
 
     var articuloRepository = ArticuloRepository();
     bool rta =

@@ -1,6 +1,5 @@
-import 'package:centralApp/logic/usuario.dart';
-import 'package:centralApp/logic/scoped/carrito.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/carrito.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'custom_list_tile.dart';
@@ -36,7 +35,7 @@ Future<void> createDialog(
                 borderRadius: BorderRadius.circular(12),
               ),
               onPressed: () {
-                cerrarSesion(model, carritoModel);
+                model.cerrarSesion(carritoModel);
                 Navigator.of(context).pop();
               },
               textColor: Theme.of(context).primaryColor,

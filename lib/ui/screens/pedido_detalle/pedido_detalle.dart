@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/pedido.dart';
-import 'package:centralApp/logic/scoped/pedidos.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/screens/pedido_detalle/widgets/detalle_pedido_destino.dart';
 import 'package:centralApp/ui/screens/pedido_detalle/widgets/boton_anular_pedido.dart';
 import 'package:centralApp/ui/screens/pedido_detalle/widgets/detalle_pedido_articulo.dart';
@@ -59,8 +59,8 @@ class _Scaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<PedidosModel>(
-      model: PedidosModel(),
+    return ScopedModel<PedidoBloc>(
+      model: PedidoBloc(),
       child: Scaffold(
         appBar: buildAppBar(context, title: 'Estado del Pedido', actions: []),
         body: Stack(

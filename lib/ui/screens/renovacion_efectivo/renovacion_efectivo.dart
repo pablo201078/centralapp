@@ -1,12 +1,12 @@
 import 'package:centralApp/data/models/usuario.dart';
+import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/screens/renovacion_efectivo/widgets/renovacion_efectivo_opcion.dart';
 import 'package:centralApp/ui/screens/renovacion_efectivo/widgets/renovacion_efectivo_titulo.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
-import 'package:centralApp/logic/efectivo.dart';
+import 'package:centralApp/logic/logged_model.dart';
 
 class RenovacionEfectivo extends StatelessWidget {
   Vencimiento vencimiento;
@@ -73,7 +73,8 @@ class __OpcionesState extends State<_Opciones> {
                       setState(() {
                         _cargando1 = true;
                       });
-                      await renovarEfectivo(
+                      PedidoBloc pedidosBloc = PedidoBloc();
+                      await pedidosBloc.renovarEfectivo(
                           context,
                           loggedModel.getUser.idCliente,
                           widget.vencimiento.monto);
@@ -99,7 +100,7 @@ class __OpcionesState extends State<_Opciones> {
                       setState(() {
                         _cargando2 = true;
                       });
-                      await contactarAsesor(
+                      await loggedModel.contactarAsesor(
                           context, loggedModel.getUser.idCliente);
                       setState(() {
                         _cargando2 = false;

@@ -5,7 +5,7 @@ import 'package:centralApp/data/models/usuario.dart';
 import 'package:centralApp/one_signal.dart';
 import 'package:http/http.dart' as http;
 import 'package:centralApp/constantes.dart';
-import 'package:centralApp/logic/scoped/logged_model.dart';
+import 'package:centralApp/logic/logged_model.dart';
 import 'package:centralApp/utils.dart';
 
 class UsuarioRepository {
@@ -61,7 +61,7 @@ class UsuarioRepository {
 
   Future<List<String>> getBusquedas(int idCliente) async {
     var client = http.Client();
-    List<String> lista = List<String>();
+    List<String> lista = <String>[];
     int timeout = 2;
     try {
       http.Response response = await client
@@ -112,7 +112,6 @@ class UsuarioRepository {
           jsonData['nroSocio'] ?? '',
           jsonData['rubro'] ?? '',
         );
-
         abrirSesionOneSignal(idCliente, jsonData['hash']);
 
         return jsonData['qr'];
@@ -222,8 +221,6 @@ class UsuarioRepository {
     var client = http.Client();
 
     int timeout = 2;
-
-    print('${URL}contactarAsesor.php?idCliente=$idCliente');
 
     try {
       http.Response response = await client
