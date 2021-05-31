@@ -25,7 +25,6 @@ dependencies:
     sdk: flutter
 
   badges:
-  #contador en el boton del carrito
   http:
   barcode_scan: ^3.0.1
   shared_preferences:
@@ -114,13 +113,7 @@ flutter:
     - family: Lato
       fonts:
         - asset: fonts/Lato-Regular.ttf
-    - family: Muli
-      fonts:
-       - asset: fonts/muli/Muli.ttf
-       - asset: fonts/muli/Muli-Bold.ttf
-         weight: 700
-       - asset: fonts/muli/Muli-Light.ttf
-         weight: 300
+
   assets:
     - assets/imagenes/
     - assets/imagenes/pedidos/

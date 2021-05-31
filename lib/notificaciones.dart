@@ -101,7 +101,7 @@ showMessage(BuildContext context, String texto, DialogType type) {
     ..show();
 }
 
-showFinCompra(BuildContext context, VoidCallback click) {
+showFinCompra(BuildContext context, Function click) {
   Widget bt = MaterialButton(
     onPressed: click,
     height: SizeConfig.safeBlockVertical * 5.5,
@@ -130,12 +130,7 @@ showFinCompra(BuildContext context, VoidCallback click) {
     animType: AnimType.SCALE,
     title: 'Central App',
     onDissmissCallback: click,
-    // dismissOnTouchOutside: false,
-    //dismissOnBackKeyPress: true,
     btnOk: bt,
-    // btnOkOnPress: click,
-    // btnOkText: 'Aceptar',
-    // btnOkColor: Theme.of(context).accentColor,
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -233,14 +228,14 @@ dialogoCerrarApp(BuildContext context, GlobalKey<ScaffoldState> _scaffoldKey) {
       ),
 //content: const Text(.'),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           onPressed: () => Navigator.of(context).pop(false),
           child: Text(
             'No',
             style: TextStyle(color: Theme.of(context).accentColor),
           ),
         ),
-        FlatButton(
+        MaterialButton(
           color: Theme.of(context).accentColor,
           onPressed: () {
             if (_scaffoldKey.currentState.isDrawerOpen) {
