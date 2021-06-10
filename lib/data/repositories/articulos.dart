@@ -8,7 +8,7 @@ import 'package:centralApp/constantes.dart';
 
 class ArticuloRepository {
   String url_img(int idArticulo, int orden) {
-    return 'http://amacar.com.ar/images/cache/product-page/articulo-' +
+    return 'https://amacar.com.ar/images/cache/product-page/articulo-' +
         idArticulo.toString() +
         '_$orden.png';
   }
