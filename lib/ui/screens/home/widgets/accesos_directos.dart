@@ -1,12 +1,13 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/responsive.dart';
+import 'package:centralApp/ui/screens/favoritos/favoritos.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:centralApp/transiciones.dart';
 
 class CircleButton extends StatelessWidget {
   final String caption;
@@ -61,7 +62,7 @@ class CircleButton extends StatelessWidget {
           SizedBox(
             height: 5,
           ),
-          AutoSizeText(
+          Text(
             this.caption,
             maxLines: 2,
             textAlign: TextAlign.center,
@@ -80,8 +81,8 @@ class CircleButton extends StatelessWidget {
 class AccesosDirectos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     // TODO: implement build
     return ConstrainedBox(
@@ -148,16 +149,19 @@ class AccesosDirectos extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               child: CircleButton(
-                  caption: 'Favoritos',
-                  shadowColor: Theme.of(context).accentColor,
-                  icon: Icons.favorite_border,
-                  onPress: () {
-                    if (model.isLogged && model.getUser.idTipo == 1)
-                      Navigator.pushNamed(context, '/favoritos', arguments: {
-                        'idCliente':
-                            model.isLogged ? model.getUser.idCliente : 0
-                      });
-                  }),
+                caption: 'Favoritos',
+                shadowColor: Theme.of(context).accentColor,
+                icon: Icons.favorite_border,
+                onPress: () {
+                  if (model.isLogged && model.getUser.idTipo == 1)
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(
+                        page: Favoritos(),
+                      ),
+                    );
+                },
+              ),
             ),
           ],
         ),

@@ -1,12 +1,12 @@
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class DetallePedidoDestino extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Column(
       children: [

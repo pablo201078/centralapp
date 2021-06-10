@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/utils.dart';
 
 class BotonActualizarQr extends StatelessWidget {
-  final LoggedModel usuario;
+  final UsuarioBloc usuario;
   final bool actualizando;
   VoidCallback click;
 

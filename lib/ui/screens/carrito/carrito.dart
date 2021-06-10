@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/carrito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/screens/carrito/widgets/articulo_card.dart';
 import 'package:centralApp/ui/screens/carrito/widgets/boton_comprar.dart';
@@ -128,8 +128,8 @@ class BotonesCarrito extends StatelessWidget {
 class CarritoArticulos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     CarritoModel carrito =
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: false);
     var articuloRepository = ArticuloRepository();

@@ -1,8 +1,7 @@
-import 'package:barcode_scan/gen/protos/protos.pbenum.dart';
-import 'package:barcode_scan/model/scan_options.dart';
-import 'package:barcode_scan/model/scan_result.dart';
-import 'package:barcode_scan/platform_wrapper.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:barcode_scan2/gen/protos/protos.pb.dart';
+import 'package:barcode_scan2/model/scan_options.dart';
+import 'package:barcode_scan2/platform_wrapper.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/loggin/widgets/loggin_cargando.dart';
 import 'package:centralApp/ui/widgets/gradient_back.dart';
 import 'package:centralApp/utils.dart';
@@ -35,8 +34,8 @@ class __CamaraState extends State<_Camara> {
   String barcode;
 
   void codigoLeido(String code, BuildContext context) async {
-    final LoggedModel modelo =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc modelo =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     await modelo.validarUsuarioScan(code, context);
     setState(() {
       _showLoading = false;

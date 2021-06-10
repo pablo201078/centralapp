@@ -1,4 +1,4 @@
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/search/custom_search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -7,8 +7,8 @@ import 'package:centralApp/constantes.dart';
 class BotonBuscar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     return IconButton(
       icon: const Icon(Icons.search, size: sizeActions ),

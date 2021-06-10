@@ -1,4 +1,4 @@
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,8 +8,8 @@ class BotonWhatsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    LoggedModel loggedModel =
-    ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     return MaterialButton(
       elevation: 10.0,
       child: Icon(

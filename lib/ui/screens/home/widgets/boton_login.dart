@@ -1,4 +1,4 @@
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -14,8 +14,8 @@ class _BotonLoginState extends State<BotonLogin> {
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     if (model.isLogged) {
       return Container();
@@ -27,7 +27,7 @@ class _BotonLoginState extends State<BotonLogin> {
       icon: Icon(MaterialCommunityIcons.qrcode),
       label: Text(
         'Iniciar Sesión',
-        style: TextStyle(fontSize: 20.sp),
+        style: Theme.of(context).textTheme.headline6,
       ),
       onPressed: () {
         Navigator.pushNamed(context, '/loggin');

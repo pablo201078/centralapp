@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/logic/creditos.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/ui/screens/mis_compras/widgets/mis_compras_body.dart';
 import 'package:centralApp/ui/screens/mis_compras/widgets/mis_compras_lista_vacia.dart';
@@ -36,8 +36,8 @@ class __ScaffoldState extends State<_Scaffold> {
     setState(() {
       _index = creditosModel.tipo - 1;
     });
-    LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Scaffold(
       appBar: buildAppBar(
@@ -50,11 +50,11 @@ class __ScaffoldState extends State<_Scaffold> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.check),
-            title: Text('Actuales'),
+            label: 'Actuales',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
-            title: Text('Anteriores'),
+            label: 'Anteriores',
           ),
         ],
         currentIndex: _index,

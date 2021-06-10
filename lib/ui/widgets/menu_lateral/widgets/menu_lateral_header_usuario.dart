@@ -1,9 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/data/repositories/usuario.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/data/models/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,8 +27,8 @@ class _MenuLateralHeaderUsuarioState extends State<MenuLateralHeaderUsuario> {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     if (loggedModel.getUser.imagen != '') {
       imagenPerfil = Image.network(
@@ -52,14 +51,14 @@ class _MenuLateralHeaderUsuarioState extends State<MenuLateralHeaderUsuario> {
       ),
       accountName: Padding(
         padding: const EdgeInsets.only(top: 15.0),
-        child: AutoSizeText(
+        child: Text(
           widget.usuario.nombre,
           maxLines: 1,
         ),
       ),
       accountEmail: Padding(
         padding: const EdgeInsets.only(right: 8.0),
-        child: AutoSizeText(
+        child: Text(
           widget.usuario.localidad,
           maxLines: 1,
         ),

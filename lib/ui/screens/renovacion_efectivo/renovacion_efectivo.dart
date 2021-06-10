@@ -6,7 +6,7 @@ import 'package:centralApp/utils.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 
 class RenovacionEfectivo extends StatelessWidget {
   Vencimiento vencimiento;
@@ -54,8 +54,8 @@ class __OpcionesState extends State<_Opciones> {
 
   @override
   Widget build(BuildContext context) {
-    LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
@@ -100,8 +100,7 @@ class __OpcionesState extends State<_Opciones> {
                       setState(() {
                         _cargando2 = true;
                       });
-                      await loggedModel.contactarAsesor(
-                          context, loggedModel.getUser.idCliente);
+                      await loggedModel.contactarAsesor(context);
                       setState(() {
                         _cargando2 = false;
                       });

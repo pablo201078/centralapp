@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/carrito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/notificaciones.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -122,8 +122,8 @@ class _ArticuloAtributosState extends State<ArticuloAtributos> {
     final CarritoModel carritoModel =
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: false);
 
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Padding(
       padding: const EdgeInsets.only(left: 15.0, right: 15.0),

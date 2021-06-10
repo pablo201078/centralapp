@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:centralApp/ui/widgets/boton_buscar.dart';
@@ -38,8 +38,8 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
     var articuloRepository = ArticuloRepository();
     return FutureBuilder<List<Articulo>>(
       future: articuloRepository.getSearch(model.isLogged ? model.getUser.idCliente : 0, query),

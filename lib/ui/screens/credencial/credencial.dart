@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'package:animate_do/animate_do.dart';
- import 'package:centralApp/data/repositories/usuario.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/data/repositories/usuario.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/credencial/widgets/qr_actualizado.dart';
 import 'package:centralApp/ui/screens/credencial/widgets/boton_compartir_qr.dart';
 import 'package:centralApp/ui/screens/credencial/widgets/boton_actualizar_qr.dart';
@@ -21,8 +20,8 @@ class Credencial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final LoggedModel modelo =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc modelo =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Scaffold(
       appBar: buildAppBar(
@@ -36,7 +35,7 @@ class Credencial extends StatelessWidget {
 }
 
 class _Body extends StatefulWidget {
-  final LoggedModel usuario;
+  final UsuarioBloc usuario;
 
   _Body({@required this.usuario});
   @override
@@ -122,9 +121,7 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
             SizedBox(
               height: 15,
             ),
-            ElasticInRight(
-              child: _Tarjeta(),
-            ),
+            _Tarjeta(),
             SizedBox(
               height: 15,
             ),
@@ -132,12 +129,10 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Pulse(
-                  child: _Qr(
-                    data: widget.usuario.getUser.qrCode,
-                    size: SizeConfig.safeBlockVertical * 25,
-                    screenshotController: _screenshotController,
-                  ),
+                _Qr(
+                  data: widget.usuario.getUser.qrCode,
+                  size: SizeConfig.safeBlockVertical * 25,
+                  screenshotController: _screenshotController,
                 ),
                 Visibility(
                   visible: _qrOk,

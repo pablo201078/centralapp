@@ -77,8 +77,6 @@ class _Body extends StatelessWidget {
     return FutureBuilder<List<Articulo>>(
       future: futuro,
       builder: (context, snapshot) {
-        //if ( snapshot.data  == null) return LoadingList(itemsCount: 5,);
-
         if (snapshot.hasError) {
           return SinConexion();
         }

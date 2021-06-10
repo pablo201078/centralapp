@@ -1,5 +1,9 @@
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/logic/pedidos.dart';
+import 'package:centralApp/ui/screens/credencial/credencial.dart';
+import 'package:centralApp/ui/screens/deuda_vencida/deuda_vencida.dart';
+import 'package:centralApp/ui/screens/mis_compras/mis_compras.dart';
+import 'package:centralApp/ui/screens/pedidos/pedidos.dart';
 import 'package:centralApp/ui/widgets/menu_lateral/widgets/menu_lateral_header_usuario.dart';
 import 'package:centralApp/ui/screens/ticket/ticket.dart';
 import 'package:centralApp/ui/widgets/contador.dart';
@@ -15,8 +19,8 @@ import 'widgets/menu_lateral_header.dart';
 class MenuLateral extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     return Drawer(
       child: Column(
@@ -34,7 +38,12 @@ class MenuLateral extends StatelessWidget {
                   icon: Icons.credit_card,
                   onTap: () {
                     if (model.isLogged) {
-                      Navigator.of(context).pushNamed('/credencial');
+                      Navigator.push(
+                        context,
+                        ScaleRoute(
+                          page: Credencial(),
+                        ),
+                      );
                     } else
                       dialogoDebeIniciarSesion(context);
                   },
@@ -63,7 +72,10 @@ class MenuLateral extends StatelessWidget {
                     if (model.isLogged) {
                       PedidoBloc pedidobloc = PedidoBloc();
                       if (model.getUser.idTipo == 1)
-                        pedidobloc.comprobarVencimiento2(context, model.getUser.idCliente);
+                        pedidobloc.comprobarVencimiento2(
+                          context,
+                          model.getUser.idCliente,
+                        );
                       else
                         showWarning(context, () {},
                             'Tu usuario no esta Autorizado para realizar esta operación');
@@ -84,8 +96,12 @@ class MenuLateral extends StatelessWidget {
                   onTap: () {
                     if (model.isLogged) {
                       if (model.getUser.idTipo == 1)
-                        Navigator.pushNamed(context, '/mis_compras',
-                            arguments: {'idCliente': model.getUser.idCliente});
+                        Navigator.push(
+                          context,
+                          ScaleRoute(
+                            page: MisCompras(),
+                          ),
+                        );
                       else
                         showWarning(context, () {},
                             'Tu usuario no esta Autorizado para ver las Compras');
@@ -111,8 +127,12 @@ class MenuLateral extends StatelessWidget {
                   onTap: () {
                     if (model.isLogged) {
                       if (model.getUser.idTipo == 1)
-                        Navigator.pushNamed(context, '/deuda_vencida',
-                            arguments: {'idCliente': model.getUser.idCliente});
+                        Navigator.push(
+                          context,
+                          ScaleRoute(
+                            page: DeudaVencida(),
+                          ),
+                        );
                       else
                         showWarning(context, () {},
                             'Tu usuario no esta Autorizado para ver la Deuda');
@@ -136,8 +156,8 @@ class MenuLateral extends StatelessWidget {
 class _ItemPedidosActuales extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
     final PedidoBloc pedidosModel =
         ScopedModel.of<PedidoBloc>(context, rebuildOnChange: true);
 
@@ -156,8 +176,14 @@ class _ItemPedidosActuales extends StatelessWidget {
       onTap: () {
         if (model.isLogged) {
           if (model.getUser.idTipo == 1)
-            Navigator.pushNamed(context, '/pedidos',
-                arguments: {'idCliente': model.getUser.idCliente});
+            Navigator.push(
+              context,
+              ScaleRoute(
+                page: Pedidos(),
+              ),
+            );
+            //Navigator.pushNamed(context, '/pedidos',
+            //    arguments: {'idCliente': model.getUser.idCliente});
           else
             showWarning(context, () {},
                 'Tu usuario no esta Autorizado para ver Pedidos');

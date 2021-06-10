@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/logic/usados.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -73,7 +72,7 @@ class _Boton extends StatelessWidget {
                   ? Colors.white
                   : Theme.of(context).accentColor,
             ),
-            AutoSizeText(
+            Text(
               txt,
               maxLines: 1,
               textAlign: TextAlign.center,

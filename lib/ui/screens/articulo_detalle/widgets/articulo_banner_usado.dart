@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/utils.dart';
 
@@ -25,7 +24,7 @@ class ArticuloBannerUsado extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AutoSizeText(
+            Text(
               'Producto USADO',
               maxLines: 1,
               textAlign: TextAlign.center,

@@ -3,8 +3,8 @@ import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/ui/screens/articulo_detalle/widgets/numeracion_imagen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:centralApp/ui/widgets/articulo_banner_oferta.dart';
+import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'boton_compartir.dart';
 
@@ -33,11 +33,12 @@ class _ArticuloImagenesState extends State<ArticuloImagenes> {
           height: 0.3.sh,
           width: 1.sw,
           child: Swiper(
-            autoplayDisableOnInteraction: true,
+            layout: SwiperLayout.STACK,
+            viewportFraction: 0.9,
             autoplay: true,
-            autoplayDelay: 15000,
-            layout: SwiperLayout.DEFAULT,
-            loop: false,
+            autoplayDelay: 4500,
+            autoplayDisableOnInteraction: true,
+            itemWidth: 0.9.sw,
             itemCount: this.widget.articulo.imagenes,
             onIndexChanged: (index) {
               setState(() {

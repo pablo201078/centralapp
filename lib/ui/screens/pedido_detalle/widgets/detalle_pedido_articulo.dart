@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/pedido.dart';
@@ -29,7 +28,7 @@ class DetallePedidoArticulo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AutoSizeText(
+                  Text(
                     pedido.descripcion,
                     style: TextStyle(
                         color: Colors.blueGrey,

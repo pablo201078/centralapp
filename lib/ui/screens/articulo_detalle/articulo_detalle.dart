@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/carrito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/articulo_detalle/widgets/articulo_atributos.dart';
 import 'package:centralApp/ui/screens/articulo_detalle/widgets/articulo_banner_usado.dart';
 import 'package:centralApp/ui/screens/articulo_detalle/widgets/articulo_cantidad.dart';
@@ -48,8 +48,8 @@ class _Futuro extends StatelessWidget {
   var articuloRepository = ArticuloRepository();
   @override
   Widget build(BuildContext context) {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return FutureBuilder<Articulo>(
       future: articuloRepository.getArticulo(
@@ -95,8 +95,8 @@ class _Scaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     if (loggedModel.isLogged) {
       articuloRepository.postHistorial(

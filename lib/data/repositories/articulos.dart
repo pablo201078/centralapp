@@ -61,7 +61,7 @@ class ArticuloRepository {
         return lista;
       }
     } on TimeoutException catch (e) {
-      print('Timeout Error: $e');
+      print('Timeout Error carrito: $e');
       return lista;
     } on SocketException catch (e) {
       print('Socket Error: $e');
@@ -164,7 +164,8 @@ class ArticuloRepository {
         return lista;
       }
     } on TimeoutException catch (e) {
-      print('Timeout Error: $e');
+      print('Timeout Error favs: $e');
+
       return lista;
     } on SocketException catch (e) {
       print('Socket Error: $e');

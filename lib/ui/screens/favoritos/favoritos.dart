@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/favoritos/widgets/favoritos_card_detalles.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/utils.dart';
@@ -18,19 +18,15 @@ import 'package:centralApp/notificaciones.dart';
 final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
 class Favoritos extends StatelessWidget {
-  int idCliente;
-  Favoritos({Key key, this.idCliente});
-
   @override
   Widget build(BuildContext context) {
-    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-    this.idCliente = arguments['idCliente'];
-
+    UsuarioBloc usuarioBloc =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     return Scaffold(
       appBar: buildAppBar(context,
           title: 'Favoritos', actions: [BotonBuscar(), BotonCarrito()]),
       body: _Body(
-        idCliente: this.idCliente,
+        idCliente: usuarioBloc.getUser.idCliente,
       ),
     );
   }
@@ -55,8 +51,8 @@ class __BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return FutureBuilder<List<Articulo>>(
       future: _futuro,
@@ -72,7 +68,7 @@ class __BodyState extends State<_Body> {
 
   Widget _buildResultado(BuildContext context) {
     List<Articulo> favoritos =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false).favoritos;
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false).favoritos;
 
     if (favoritos.length == 0) {
       return Column(
@@ -106,7 +102,7 @@ class _Lista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Articulo> favoritos =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false).favoritos;
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false).favoritos;
 
     return AnimatedList(
       key: listKey,
@@ -211,8 +207,8 @@ class _ContenidoCard extends StatelessWidget {
 }
 
 void _eliminar(BuildContext context, int index, Articulo articulo) async {
-  LoggedModel model =
-      ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+  UsuarioBloc model =
+      ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
   var articuloRepository = ArticuloRepository();
   bool rta = await articuloRepository.postFavorito(
       articulo, model.getUser.idCliente, false);

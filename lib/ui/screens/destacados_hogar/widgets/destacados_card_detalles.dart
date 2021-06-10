@@ -21,7 +21,7 @@ class DestacadosCardDetalles extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(articulo.descripcion,
-            style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 3.0),
+            style: Theme.of(context).textTheme.caption,
             maxLines: 2),
         SizedBox(
           height: 7.0,

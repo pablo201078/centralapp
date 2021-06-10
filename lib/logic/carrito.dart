@@ -6,7 +6,7 @@ import 'package:centralApp/logic/pedidos.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/notificaciones.dart';
-import 'logged_model.dart';
+import 'usuario_bloc.dart';
 
 class CarritoModel extends Model {
   List<Articulo> _carrito = <Articulo>[];
@@ -80,8 +80,8 @@ class CarritoModel extends Model {
   }
 
   void agregarAlCarrito(BuildContext context, Articulo articulo) async {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     var articuloRepository = ArticuloRepository();
     if (this.cargando) return;
 
@@ -108,8 +108,8 @@ class CarritoModel extends Model {
   void comprarCarrito(BuildContext context) async {
     if (cargando) return;
     cargando = true;
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     final PedidoBloc pedidosModel =
         ScopedModel.of<PedidoBloc>(context, rebuildOnChange: false);
 
@@ -120,7 +120,7 @@ class CarritoModel extends Model {
     cargando = false;
 
     if (rta) {
-      VoidCallback ok = () async {
+      Function ok = () async {
         vaciar();
         Navigator.popUntil(context, ModalRoute.withName('/'));
       };

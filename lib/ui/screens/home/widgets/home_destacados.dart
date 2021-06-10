@@ -1,8 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/widgets/elevated_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -221,7 +220,7 @@ class _Card extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: AutoSizeText(
+              child: Text(
                 articulo.descripcion,
                 maxLines: 2,
                 textAlign: TextAlign.center,
@@ -251,7 +250,7 @@ class _Encabezado extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15),
-      child: AutoSizeText(
+      child: Text(
         titulo,
         maxLines: 1,
         textAlign: TextAlign.left,
@@ -283,8 +282,8 @@ class _Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     return Material(
       color: Colors.white,

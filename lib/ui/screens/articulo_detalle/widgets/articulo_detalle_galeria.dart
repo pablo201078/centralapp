@@ -73,7 +73,6 @@ class _GaleriaState extends State<Galeria> {
                     ),
                     initialScale: PhotoViewComputedScale.contained * 1,
                     minScale: PhotoViewComputedScale.contained * 1,
-                    //  heroAttributes: HeroAttributes(tag: galleryItems[index].id),
                   );
                 },
                 itemCount: widget.articulo.imagenes,

@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/ticket.dart';
 import 'package:centralApp/data/models/ticket_item.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/ticket/widgets/ticket_caja.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
@@ -13,8 +13,8 @@ import 'package:scoped_model/scoped_model.dart';
 class Ticket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     // TODO: implement build
     return Scaffold(
       appBar: buildAppBar(context, title: 'Ticket de Pago', actions: []),

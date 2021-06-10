@@ -2,7 +2,7 @@ import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo_categoria.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/categoria_comercial_actual.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/widgets/articulo_card/articulo_card.dart';
 import 'package:centralApp/ui/widgets/loading_list.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +15,8 @@ class ComercialCategoriaActual extends StatelessWidget {
         ScopedModel.of<CategoriaComercialActualModel>(context,
             rebuildOnChange: true);
 
-    LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return _ListadoArticulos(
         categoria: model.categoriaActual,

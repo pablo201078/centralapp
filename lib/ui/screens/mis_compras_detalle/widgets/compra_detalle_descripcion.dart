@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/data/models/credito.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_cantidad_.dart';
 import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
@@ -27,7 +26,7 @@ class CompraDetalleDescripcion extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AutoSizeText(
+                Text(
                   credito.descripcion,
                   style: TextStyle(
                       color: Colors.blueGrey,

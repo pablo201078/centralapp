@@ -26,8 +26,10 @@ class ComprasRepository {
   }
 
   Future<Credito> getCredito(int idCliente, int idCredito) async {
-    var response = await http
-        .get('${url_base}compras.php?idCredito=$idCredito&idCliente=$idCliente');
+    var url = Uri.parse(
+        '${url_base}compras.php?idCredito=$idCredito&idCliente=$idCliente');
+
+    var response = await http.get(url);
 
     if (response.statusCode == 200) {
       var jsonData = json.decode(response.body);
@@ -87,7 +89,8 @@ class ComprasRepository {
     List<Credito> lista = <Credito>[];
     int timeout = 5;
     try {
-      var url = Uri.parse('${url_base}compras.php?idCliente=$idCliente&soloDeuda=1');
+      var url =
+          Uri.parse('${url_base}compras.php?idCliente=$idCliente&soloDeuda=1');
       http.Response response =
           await client.get(url).timeout(Duration(seconds: timeout));
 
@@ -118,7 +121,8 @@ class ComprasRepository {
     List<Credito> lista = <Credito>[];
     int timeout = 2;
     try {
-      var url = Uri.parse('${url_base}compras.php?idCliente=$idCliente&soloDeuda=1');
+      var url =
+          Uri.parse('${url_base}compras.php?idCliente=$idCliente&soloDeuda=1');
       http.Response response =
           await client.get(url).timeout(Duration(seconds: timeout));
 
@@ -133,7 +137,7 @@ class ComprasRepository {
         return lista.length;
       }
     } on TimeoutException catch (e) {
-      print('Timeout Error: $e');
+      print('Timeout Error deuda: $e');
       return 0;
     } on SocketException catch (e) {
       print('Socket Error: $e');

@@ -1,7 +1,7 @@
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'lista_ofertas_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -56,7 +56,6 @@ class _Container extends StatelessWidget {
         autoplayDelay: 8500,
         autoplayDisableOnInteraction: true,
         itemWidth: 0.9.sw,
-        // itemHeight: 0.22.sh,
         itemCount: ofertas.length,
         itemBuilder: (context, i) {
           return ofertas[i] != null

@@ -4,15 +4,13 @@ import 'caption.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar(BuildContext context,
-    {String title, double size, bool drawer, List<Widget> actions}) {
+    {String title, bool drawer, List<Widget> actions}) {
   return AppBar(
     title: Caption(
       texto: title,
-      size: size??17.sp,
     ),
     centerTitle: false,
-
-    leading: drawer??false ? _Leading(): null,
+    leading: drawer ?? false ? _Leading() : null,
     flexibleSpace: (Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -27,7 +25,6 @@ AppBar buildAppBar(BuildContext context,
     actions: actions,
   );
 }
-
 
 class _Leading extends StatelessWidget {
   @override

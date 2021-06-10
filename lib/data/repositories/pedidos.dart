@@ -58,7 +58,7 @@ Future<List<Pedido>> getPedidos(int idCliente) async {
       return lista;
     }
   } on TimeoutException catch (e) {
-    print('Timeout Error: $e');
+    print('Timeout Error pedidos: $e');
     return lista;
   } on SocketException catch (e) {
     print('Socket Error: $e');

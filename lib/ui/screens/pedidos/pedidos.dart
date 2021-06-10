@@ -1,6 +1,7 @@
 import 'package:centralApp/data/repositories/pedidos.dart';
 import 'package:centralApp/data/models/pedido.dart';
 import 'package:centralApp/logic/pedidos.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/ui/screens/pedidos/widgets/pedido_card.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
@@ -9,19 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class Pedidos extends StatelessWidget {
-  int idCliente;
-
   @override
   Widget build(BuildContext context) {
-    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-    this.idCliente = arguments['idCliente'];
-    // TODO: implement build
+    UsuarioBloc usuarioBloc =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return ScopedModel<PedidoBloc>(
       model: PedidoBloc(),
       child: Scaffold(
         appBar: buildAppBar(context, title: 'Mis Pedidos', actions: []),
-        body: _Body(idCliente: idCliente),
+        body: _Body(idCliente: usuarioBloc.getUser.idCliente),
       ),
     );
   }
@@ -29,7 +27,6 @@ class Pedidos extends StatelessWidget {
 
 class _Body extends StatefulWidget {
   final int idCliente;
-
   _Body({this.idCliente});
 
   @override

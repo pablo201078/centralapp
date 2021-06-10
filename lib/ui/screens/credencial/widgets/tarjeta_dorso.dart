@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/logic/varios.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/utils.dart';
@@ -83,7 +82,7 @@ class TarjetaDorso extends StatelessWidget {
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 0.3,
                 ),
-                AutoSizeText(
+                Text(
                   'Mutual A.M.A.C.A.R ',
                   //Sarmiento y Güemes - Roberts (Buenos Aires) Argentina.',
                   maxLines: 1,
@@ -95,7 +94,7 @@ class TarjetaDorso extends StatelessWidget {
                   height: SizeConfig.safeBlockVertical * 0.3,
                 ),
                 FittedBox(
-                  child: AutoSizeText(
+                  child: Text(
                     'Sarmiento y Güemes - Roberts Buenos Aires, Argentina',
                     maxLines: 2,
                     style: TextStyle(

@@ -9,7 +9,7 @@ import 'custom_surfix_icon.dart';
 import 'default_button.dart';
 import 'form_error.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -98,8 +98,8 @@ class _SignFormState extends State<SignForm> {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel modelo =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc modelo =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
     return Form(
       key: _formKey,
       child: Column(

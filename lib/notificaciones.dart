@@ -1,15 +1,14 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:centralApp/utils.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:flutter/material.dart';
 import 'data/models/usuario.dart';
 
 void mostrarOverlayBienvenida(BuildContext context, Usuario user) async {
-  SizeConfig().init(context);
   showOverlayNotification(
     (context) {
       return SafeArea(
@@ -65,13 +64,14 @@ void mostrarOverlayBienvenida(BuildContext context, Usuario user) async {
   );
 }
 
-showSnackBar(BuildContext context, String texto, Color color) {
-  Flushbar(
-    //title: "Hey Ninja",
-    message: texto,
+void showSnackBar(BuildContext context, String texto, Color color) {
+  Get.snackbar(
+    'Central App',
+    texto,
+    colorText: Colors.white,
     backgroundColor: color ?? Theme.of(context).accentColor,
     duration: Duration(seconds: 3),
-  )..show(context);
+  );
 }
 
 showWarning(BuildContext context, onPress, String texto) {
@@ -129,7 +129,8 @@ showFinCompra(BuildContext context, Function click) {
     headerAnimationLoop: false,
     animType: AnimType.SCALE,
     title: 'Central App',
-    onDissmissCallback: click,
+    dismissOnTouchOutside: false,
+    // onDissmissCallback: click,
     btnOk: bt,
     body: Center(
       child: Column(
@@ -226,7 +227,6 @@ dialogoCerrarApp(BuildContext context, GlobalKey<ScaffoldState> _scaffoldKey) {
         '¿Queres cerrar?',
         style: TextStyle(color: Theme.of(context).accentColor),
       ),
-//content: const Text(.'),
       actions: <Widget>[
         TextButton(
           onPressed: () => Navigator.of(context).pop(false),
@@ -241,9 +241,7 @@ dialogoCerrarApp(BuildContext context, GlobalKey<ScaffoldState> _scaffoldKey) {
             if (_scaffoldKey.currentState.isDrawerOpen) {
               _scaffoldKey.currentState.openEndDrawer();
             }
-
             Navigator.of(context).pop(true);
-
             SystemChannels.platform.invokeMethod('SystemNavigator.pop');
           },
           child: Text(
@@ -334,132 +332,131 @@ dialogoOpcionesInicioSesion(BuildContext context) {
 
 dialogoInicioSesionTipoUsuario(BuildContext context) {
   return showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            '¿Que Tipo de Cuenta vas a usar en este celular?',
-            style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: SizeConfig.safeBlockHorizontal * 4.0),
+    barrierDismissible: false,
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(
+          '¿Que Tipo de Cuenta vas a usar en este celular?',
+          style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+              fontSize: SizeConfig.safeBlockHorizontal * 4.0),
+        ),
+        actions: [
+          MaterialButton(
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: Theme.of(context).accentColor),
+            ),
+            onPressed: () {
+              Navigator.pop(context, 1);
+            },
+            child: RichText(
+              text: TextSpan(
+                text: 'Cuenta del ',
+                style: TextStyle(color: Theme.of(context).accentColor),
+                children: [
+                  TextSpan(
+                    text: 'TITULAR',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).accentColor),
+                  )
+                ],
+              ),
+            ),
           ),
-          actions: [
-            MaterialButton(
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Theme.of(context).accentColor),
-              ),
-              onPressed: () {
-                Navigator.pop(context, 1);
-              },
-              child: RichText(
-                text: TextSpan(
-                  text: 'Cuenta del ',
-                  style: TextStyle(color: Theme.of(context).accentColor),
-                  children: [
-                    TextSpan(
-                      text: 'TITULAR',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).accentColor),
-                    )
-                  ],
+          MaterialButton(
+            elevation: 10.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: Theme.of(context).accentColor),
+            ),
+            onPressed: () {
+              Navigator.pop(context, 2);
+            },
+            child: RichText(
+              text: TextSpan(
+                text: 'SOLO',
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.bold,
                 ),
+                children: [
+                  TextSpan(
+                    text: ' Tarjeta Cobranza',
+                    style: TextStyle(
+                        color: Theme.of(context).accentColor,
+                        fontWeight: FontWeight.normal,
+                        decoration: TextDecoration.none),
+                  )
+                ],
               ),
             ),
-            MaterialButton(
-              elevation: 10.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color: Theme.of(context).accentColor),
-              ),
-              onPressed: () {
-                Navigator.pop(context, 2);
-              },
-              child: RichText(
-                text: TextSpan(
-                  text: 'SOLO',
-                  style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: ' Tarjeta Cobranza',
-                      style: TextStyle(
-                          color: Theme.of(context).accentColor,
-                          fontWeight: FontWeight.normal,
-                          decoration: TextDecoration.none),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        );
-      });
+          ),
+        ],
+      );
+    },
+  );
 }
 
 dialogoDebeIniciarSesion(BuildContext context) {
   return showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            'Antes tenes que iniciar sesión.',
-            style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: SizeConfig.safeBlockHorizontal * 4.0),
+    barrierDismissible: false,
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(
+          'Antes tenes que iniciar sesión.',
+          style: Theme.of(context).textTheme.subtitle1.copyWith(
+                color: Theme.of(context).accentColor,
+              ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Cancelar',
+              style: TextStyle(color: Colors.blueAccent),
+            ),
           ),
-          actions: [
-            MaterialButton(
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/loggin');
-              },
-              color: Colors.blueAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(MaterialCommunityIcons.qrcode),
-                  SizedBox(
-                    width: 7,
-                  ),
-                  Text(
-                    'Iniciar Sesión',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
+          MaterialButton(
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
-            MaterialButton(
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.blueAccent),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              color: Colors.white,
-              child: Text(
-                'Cancelar',
-                style: TextStyle(color: Colors.blueAccent),
-              ),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/loggin');
+            },
+            color: Colors.blueAccent,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  MaterialCommunityIcons.qrcode,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 7,
+                ),
+                Text(
+                  'Iniciar Sesión',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-          ],
-        );
-      });
+          ),
+        ],
+      );
+    },
+  );
 }
 
 Future<DateTime> seleccionFecha(

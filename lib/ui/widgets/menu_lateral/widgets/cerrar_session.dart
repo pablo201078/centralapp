@@ -1,11 +1,11 @@
 import 'package:centralApp/logic/carrito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'custom_list_tile.dart';
 
 Future<void> createDialog(
-    BuildContext context, LoggedModel model, CarritoModel carritoModel) {
+    BuildContext context, UsuarioBloc model, CarritoModel carritoModel) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -50,7 +50,7 @@ Future<void> createDialog(
 }
 
 class CerrarSesion extends StatelessWidget {
-  LoggedModel model;
+  UsuarioBloc model;
 
   CerrarSesion({Key key, this.model});
 

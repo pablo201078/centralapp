@@ -4,6 +4,11 @@ ThemeData theme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Lato',
+    textTheme: TextTheme(
+      headline1: TextStyle(color: Colors.white),
+      headline2: TextStyle(color: Colors.white),
+      headline6: TextStyle(color: Colors.white),
+    ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primaryColor: Colors.indigo,
     accentColor: Colors.indigoAccent,

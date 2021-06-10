@@ -1,4 +1,4 @@
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:centralApp/ui/widgets/boton_buscar.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +7,6 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/responsive.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/notificaciones.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home_body.dart';
 import 'package:centralApp/ui/widgets/menu_lateral/menu_lateral.dart';
 import 'package:centralApp/ui/widgets/boton_carrito.dart';
@@ -25,8 +24,8 @@ class Home extends StatelessWidget {
         return dialogoCerrarApp(context, _scaffoldKey) ?? false;
     }
 
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: true);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: true);
 
     print('home build');
 
@@ -37,7 +36,6 @@ class Home extends StatelessWidget {
       appBar: buildAppBar(
         context,
         title: 'Central  App',
-        size: 20.sp,
         drawer: true,
         actions: [
           BotonBuscar(),

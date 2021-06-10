@@ -31,12 +31,12 @@ import 'ui/screens/articulo_detalle/articulo_detalle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'logic/logged_model.dart';
+import 'logic/usuario_bloc.dart';
 import 'ui/screens/credencial/credencial.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'ui/screens/home/home.dart';
 
-void inicializarApp(LoggedModel loggedModel, CarritoModel carritoModel,
+void inicializarApp(UsuarioBloc loggedModel, CarritoModel carritoModel,
     PedidoBloc pedidosModel) async {
   print('inicializar app');
   var idCliente = await getIdCliente();
@@ -76,7 +76,7 @@ void main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  LoggedModel loggedModel = LoggedModel();
+  UsuarioBloc loggedModel = UsuarioBloc();
   CarritoModel carritoModel = CarritoModel();
   PedidoBloc pedidosModel = PedidoBloc();
 
@@ -92,7 +92,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  final LoggedModel loggedModel;
+  final UsuarioBloc loggedModel;
   final CarritoModel carritoModel;
 
   const MyApp({Key key, this.loggedModel, this.carritoModel}) : super(key: key);
@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
 
     return ScreenUtilInit(
       designSize: Size(360, 690),
-      builder: () => ScopedModel<LoggedModel>(
+      builder: () => ScopedModel<UsuarioBloc>(
         model: loggedModel,
         child: ScopedModel<CarritoModel>(
           model: carritoModel,

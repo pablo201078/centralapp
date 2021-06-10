@@ -1,7 +1,7 @@
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/carrito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/notificaciones.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,12 +25,15 @@ class ArticuloCard extends StatelessWidget {
     CarritoModel carrito =
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: true);
 
-    LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     void eliminarDelCarrito() async {
       bool rta = await articuloRepository.actualizarCarrito(
-          articulo, loggedModel.getUser.idCliente, false);
+        articulo,
+        loggedModel.getUser.idCliente,
+        false,
+      );
 
       if (rta) {
         showSnackBar(context, txtEliminasteDelCarrito, Colors.blueAccent);

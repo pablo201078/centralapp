@@ -1,5 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/utils.dart';
@@ -52,15 +51,15 @@ class _Arriba extends StatelessWidget {
 class _Socio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel modelo =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc modelo =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Padding(
       padding: const EdgeInsets.only(left: 12.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AutoSizeText(
+          Text(
             modelo.getUser.nombre,
             maxLines: 1,
             style: TextStyle(
@@ -97,8 +96,8 @@ class _Logo extends StatelessWidget {
 class _Abajo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final LoggedModel modelo =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc modelo =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
       child: Row(
@@ -143,7 +142,7 @@ Widget _buildFilaInfo(IconData iconData, String info) {
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: Container(
           width: SizeConfig.safeBlockHorizontal * 45,
-          child: AutoSizeText(
+          child: Text(
             info,
             maxLines: 1,
             style: TextStyle(color: Colors.white),

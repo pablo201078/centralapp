@@ -1,8 +1,8 @@
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 
-void clickFavorito(Articulo articulo, LoggedModel loggedModel) async {
+void clickFavorito(Articulo articulo, UsuarioBloc loggedModel) async {
   var articuloRepository = ArticuloRepository();
 
   if (loggedModel.isLogged && loggedModel.getUser.idTipo == 1) {

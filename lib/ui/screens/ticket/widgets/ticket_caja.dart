@@ -1,5 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/data/models/ticket_item.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/ui/widgets/elevated_card.dart';
@@ -67,7 +66,7 @@ class _WarningTicket extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    AutoSizeText(
+                    Text(
                       'Este Ticket no es de Hoy.',
                       maxLines: 1,
                       textAlign: TextAlign.center,
@@ -146,8 +145,8 @@ class _Detalle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return ListView.separated(
       shrinkWrap: true,
@@ -312,7 +311,7 @@ class _VerMas extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AutoSizeText(
+              Text(
                 'Ver más',
                 style: TextStyle(fontSize: 10),
               ),

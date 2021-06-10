@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/ui/screens/carrito/widgets/carrito_atributo.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +17,8 @@ class ArticuloCardDetalles extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AutoSizeText(articulo.descripcion,
-              style: TextStyle(fontSize: SizeConfig.blockSizeHorizontal * 2.0),
+          Text(articulo.descripcion,
+              style: Theme.of(context).textTheme.subtitle2.copyWith(),
               maxLines: 3),
           Visibility(
             visible: articulo.tieneAtributo,
@@ -35,7 +34,7 @@ class ArticuloCardDetalles extends StatelessWidget {
                   articulo: articulo,
                 ),
                 /*plan actual*/
-                AutoSizeText(
+                Text(
                   '${articulo.cc} de ${formatearNumero(articulo.planActual)}',
                   style: TextStyle(
                       fontSize: SizeConfig.blockSizeHorizontal * 2.7,

@@ -16,10 +16,20 @@ class ArticuloDescripcion extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(this.articulo.descripcion,
-              style: Theme.of(context).textTheme.headline6),
-          Text('Código: ${this.articulo.codArticulo}',
-              style: Theme.of(context).textTheme.caption),
+          Text(
+            this.articulo.descripcion,
+            style: Theme.of(context)
+                .textTheme
+                .headline6
+                .copyWith(color: Colors.black54),
+          ),
+          Text(
+            'Código: ${this.articulo.codArticulo}',
+            style: Theme.of(context)
+                .textTheme
+                .caption
+                .copyWith(color: Colors.blueGrey),
+          ),
         ],
       ),
     );

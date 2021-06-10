@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/logic/categoria_comercial_actual.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/data/models/articulo_categoria.dart';
@@ -152,9 +151,8 @@ class _BotonCategoria extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _ImagenCategoria(url: lista[index].url, color: colorTexto),
-          AutoSizeText(
+          Text(
             lista[index].nombreCorto,
-            //    overflowReplacement: Text('....'),
             maxLines: 2,
             textAlign: TextAlign.center,
             style: TextStyle(

@@ -1,6 +1,6 @@
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/carrito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/utils.dart';
@@ -15,8 +15,8 @@ class BotonAgregarAlCarrito extends StatelessWidget {
     final CarritoModel carritoModel =
         ScopedModel.of<CarritoModel>(context, rebuildOnChange: true);
 
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Padding(
       padding:

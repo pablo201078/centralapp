@@ -1,6 +1,6 @@
 import 'package:centralApp/data/repositories/compras.dart';
 import 'package:centralApp/data/models/credito.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_cuotas_restantes.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_descripcion.dart';
 import 'package:centralApp/ui/screens/mis_compras_detalle/widgets/compra_detalle_estado.dart';
@@ -36,7 +36,6 @@ class _Scaffold extends StatelessWidget {
   _Scaffold({this.credito});
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: buildAppBar(
         context,
@@ -83,11 +82,12 @@ class _Futuro extends StatelessWidget {
   _Futuro({this.idCredito});
   @override
   Widget build(BuildContext context) {
-    final LoggedModel loggedModel =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc loggedModel =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return FutureBuilder<Credito>(
-      future: comprasRepo.getCredito(loggedModel.getUser.idCliente, this.idCredito),
+      future:
+          comprasRepo.getCredito(loggedModel.getUser.idCliente, this.idCredito),
       builder: (context, snapshot) {
         if (snapshot.hasError) print(snapshot.error);
         return snapshot.hasData

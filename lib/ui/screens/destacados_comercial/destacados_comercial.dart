@@ -1,8 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/screens/home/widgets/sin_conexion.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:centralApp/ui/widgets/boton_buscar.dart';
@@ -51,8 +50,8 @@ class _DestacadosComercialHomeState extends State<DestacadosComercialHome> {
   Widget build(BuildContext context) {
     String txt = 'Para tu Comercio';
 
-    final LoggedModel model =
-        ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
+    final UsuarioBloc model =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     if (model.isLogged) txt = 'Para  ${model.getUser.rubro ?? 'Comercio'}';
 
@@ -168,11 +167,11 @@ class _Card extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: AutoSizeText(
+              child: Text(
                 articulo.descripcion,
-                maxLines: 1,
+                maxLines: 2,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 2),
+                style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
             SizedBox(
@@ -180,10 +179,10 @@ class _Card extends StatelessWidget {
             ),
             Text(
               plan,
-              style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 3.0,
-                  color: Theme.of(context).accentColor,
-                  fontWeight: FontWeight.w500),
+              style: Theme.of(context).textTheme.caption.copyWith(
+                color: Theme.of(context).accentColor,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),

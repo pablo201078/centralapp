@@ -25,45 +25,40 @@ dependencies:
     sdk: flutter
 
   badges:
-  http:
-  barcode_scan: ^3.0.1
-  shared_preferences:
-  scoped_model:
-  cached_network_image: ^2.2.0+1
-  animate_do: ^1.7.2
-  overlay_support: ^1.2.1 #mostrar overlay de bienvenida despues del login
-  awesome_dialog:
-  flip_card: #para la tarjeta
-  qr_flutter: #genera el QR del cliente para la tarjeta
-  flutter_swiper: ^1.1.6
-  auto_size_text: ^2.1.0
-  photo_view:
-  url_launcher:
-  intl: ^0.17.0 #formatear numeros
-  #connectivity: ^0.4.9+2
-  flutter_icons: ^1.1.0
-  font_awesome_flutter: ^8.8.1
-  share: ^0.6.5 #compartir por whatsapp
-  flushbar: #snackBars mas lindas
-  shimmer: ^1.1.1
-  bubble_bottom_bar: ^1.2.0
-  flutter_svg: ^0.22.0
-  timeline_tile: #las etapas del pedido
-  image_picker: ^0.6.7+17
-  device_info: # para sacar el ID de android
-  get: ^3.25.4
-  check_app_version: ^0.0.8
-  flutter_sms: ^2.1.1
-  flutter_datetime_picker: ^1.5.1
+  http: #^0.13.3
+  check_app_version: ^0.3.0
+  image_picker: 0.8.0+3
+  barcode_scan2: ^4.1.3
+  shared_preferences: ^2.0.6
+  scoped_model: ^2.0.0-nullsafety.0
+  cached_network_image: ^3.0.0
   onesignal_flutter: ^2.6.3
-  screenshot: ^0.3.0
-  path_provider:
-  firebase_core: "0.7.0"
+  overlay_support: 1.2.1 #mostrar overlay de bienvenida despues del login
+  awesome_dialog: ^2.1.0
+  flip_card: ^0.5.0 #para la tarjeta
+  qr_flutter: ^4.0.0 #genera el QR del cliente para la tarjeta
+  photo_view: ^0.11.1
+  url_launcher: ^6.0.6
+  intl: ^0.17.0 #formatear numeros
+  font_awesome_flutter: ^9.1.0
+  share: ^2.0.4 #^0.6.5 #compartir por whatsapp
+  shimmer: ^2.0.0 #shimmer: ^1.1.1
+  flutter_svg: ^0.22.0
+  timeline_tile: 2.0.0 #las etapas del pedido
+  device_info: ^2.0.2 # para sacar el ID de android
+  get: ^4.1.4
+  flutter_sms: ^2.3.1
+  flutter_datetime_picker: ^1.5.1
+  screenshot: ^1.0.0-nullsafety.1 #^0.3.0
   flutter_screenutil: ^5.0.0+2
-
+  firebase_core: ^1.2.1
+  flutter_card_swipper: ^0.4.0
+  flutter_icons: ^1.1.0
+  bottom_navy_bar: ^6.0.0
+  #bubble_bottom_bar: ^1.2.0
 
 dev_dependencies:
-  test:
+
   flutter_test:
     sdk: flutter
 

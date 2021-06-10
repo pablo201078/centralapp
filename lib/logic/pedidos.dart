@@ -6,8 +6,7 @@ import 'package:get/get.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/utils.dart';
 import 'package:centralApp/notificaciones.dart';
-
-import 'logged_model.dart';
+import 'usuario_bloc.dart';
 
 class PedidoBloc extends Model {
   List<Pedido> _pedidos = <Pedido>[];
@@ -64,9 +63,9 @@ class PedidoBloc extends Model {
           arguments: {'vencimiento': vencimiento});
     } else {
       if (vencimiento.ok == 0) {
-        final LoggedModel modelo =
-            ScopedModel.of<LoggedModel>(context, rebuildOnChange: false);
-        modelo.contactarAsesor(context, idCliente);
+        final UsuarioBloc modelo =
+            ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
+        modelo.contactarAsesor(context);
       } else {
         showWarning(context, () {}, 'Actualmente existe un crédito vigente.');
       }

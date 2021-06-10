@@ -19,8 +19,8 @@ import 'package:centralApp/utils.dart';
 import 'carrito.dart';
 
 
-class LoggedModel extends Model {
-  LoggedModel() {
+class UsuarioBloc extends Model {
+  UsuarioBloc() {
     _init();
   }
 
@@ -31,8 +31,8 @@ class LoggedModel extends Model {
   List<String> _busquedas;
   List<Articulo> _favoritos = [];
 
-  static LoggedModel of(BuildContext context) =>
-      ScopedModel.of<LoggedModel>(context);
+  static UsuarioBloc of(BuildContext context) =>
+      ScopedModel.of<UsuarioBloc>(context);
 
   void _init() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -207,9 +207,9 @@ class LoggedModel extends Model {
   }
 
   Future<void> compartirQr(ScreenshotController screenshotController,
-      BuildContext context, int idCliente) async {
+      BuildContext context) async {
     var usuarioRepo = UsuarioRepository();
-    bool rta = await usuarioRepo.postCompartirQr(idCliente);
+    bool rta = await usuarioRepo.postCompartirQr(this.getUser.idCliente);
 
     if (!rta) {
       showSnackBar(context, 'No se pudo compartir el QR.', Colors.redAccent);
@@ -253,7 +253,7 @@ class LoggedModel extends Model {
     }
   }
 
-  Future contactarAsesor(BuildContext context, int idCliente) async {
+  Future contactarAsesor(BuildContext context) async {
     Get.defaultDialog(
       radius: 10,
       titleStyle: TextStyle(
@@ -272,11 +272,11 @@ class LoggedModel extends Model {
       textCancel: 'Por ahora no',
       onConfirm: () async {
         var usuarioRepo = UsuarioRepository();
-        bool rta = await usuarioRepo.postContactarAsesor(idCliente);
+        bool rta = await usuarioRepo.postContactarAsesor(this.getUser.idCliente);
         if (rta) {
           Navigator.of(context).pop();
           Navigator.pushNamed(context, '/pedidos',
-              arguments: {'idCliente': idCliente});
+              arguments: {'idCliente': this.getUser.idCliente});
         } else
           showSnackBar(context, 'Oops, algo salió mal', Colors.redAccent);
       },

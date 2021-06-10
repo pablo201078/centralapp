@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 class Caption extends StatelessWidget {
   final String texto;
-  final double size;
 
   Caption({
     Key key,
-    this.texto,
-    this.size,
+    @required this.texto,
   });
 
   @override
@@ -15,10 +13,10 @@ class Caption extends StatelessWidget {
     return Container(
       child: Text(
         this.texto,
-        style: TextStyle(
-          fontSize: size,
+        style: Theme.of(context).textTheme.headline6.copyWith(
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,
+          color: Colors.white,
           shadows: [
             const BoxShadow(
               color: Colors.black54,

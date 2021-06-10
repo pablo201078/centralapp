@@ -5,7 +5,7 @@ import 'package:centralApp/data/models/usuario.dart';
 import 'package:centralApp/one_signal.dart';
 import 'package:http/http.dart' as http;
 import 'package:centralApp/constantes.dart';
-import 'package:centralApp/logic/logged_model.dart';
+import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/utils.dart';
 
 class UsuarioRepository {
@@ -89,7 +89,7 @@ class UsuarioRepository {
     }
   }
 
-  Future<String> getQr(LoggedModel loggedModel, int idCliente) async {
+  Future<String> getQr(UsuarioBloc loggedModel, int idCliente) async {
     var client = http.Client();
 
     int timeout = 3;
@@ -128,7 +128,7 @@ class UsuarioRepository {
     }
   }
 
-  Future<int> checkQr(LoggedModel loggedModel) async {
+  Future<int> checkQr(UsuarioBloc loggedModel) async {
     var client = http.Client();
     //aca chequeo si el QR que tengo en la App es el mismo que el del servidor:
     //1 - si es el mismo devuelvo 1
