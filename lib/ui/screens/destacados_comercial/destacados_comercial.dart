@@ -169,7 +169,7 @@ class _Card extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 articulo.descripcion,
-                maxLines: 2,
+                maxLines: 1,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
