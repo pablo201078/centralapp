@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:centralApp/data/repositories/articulos.dart';
-import 'package:centralApp/data/repositories/ofertas.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/logic/pedidos.dart';
 import 'package:centralApp/ui/screens/home/widgets/accesos_directos.dart';
@@ -29,7 +28,6 @@ class _HomeBodyMain extends State<HomeBody> {
   Future<List<Articulo>> _destacadosHogar;
   Future<List<Articulo>> _destacadosComercial;
   var articuloRepository = ArticuloRepository();
-  var ofertasRepo = OfertasRepository();
 
   @override
   void initState() {
@@ -39,7 +37,7 @@ class _HomeBodyMain extends State<HomeBody> {
       pedidoBloc.comprobarVencimiento(context, widget.idCliente);
     }
 
-    _ofertas = ofertasRepo.getOfertas(widget.idCliente);
+    _ofertas = articuloRepository.getOfertas(widget.idCliente);
     _destacadosHogar = articuloRepository.getDestacados(widget.idCliente, 5);
     _destacadosComercial =
         articuloRepository.getDestacados(widget.idCliente, 6);

@@ -49,8 +49,6 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
   var usuarioRepo = UsuarioRepository();
   ScreenshotController _screenshotController = ScreenshotController();
 
-  Timer timer;
-
   void verificarQr() async {
     if (_actualizando) return;
 
@@ -91,9 +89,9 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     WidgetsBinding.instance.addObserver(this);
     verificarQr();
+    super.initState();
   }
 
   @override
@@ -130,7 +128,7 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _Qr(
-                  data: widget.usuario.getUser.qrCode,
+                  data: widget.usuario.getUser.qrCode + '*',
                   size: SizeConfig.safeBlockVertical * 25,
                   screenshotController: _screenshotController,
                 ),
@@ -145,13 +143,14 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
         Visibility(
           visible: _mostrarBotonActualizarQr,
           child: Positioned(
-              bottom: 12,
-              left: SizeConfig.safeBlockHorizontal * 5.5,
-              child: BotonActualizarQr(
-                usuario: widget.usuario,
-                actualizando: _actualizando,
-                click: verificarQr, //clickActualizarQr,
-              )),
+            bottom: 12,
+            left: SizeConfig.safeBlockHorizontal * 5.5,
+            child: BotonActualizarQr(
+              usuario: widget.usuario,
+              actualizando: _actualizando,
+              click: verificarQr, //clickActualizarQr,
+            ),
+          ),
         ),
         Visibility(
           visible: !_mostrarBotonActualizarQr,
@@ -196,18 +195,15 @@ class _Qr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Screenshot(
-      controller: screenshotController,
-      child: QrImage(
-        data: data,
-        embeddedImage: Image.asset(
-          'assets/imagenes/amacar01.png',
-        ).image,
-        padding: EdgeInsets.all(4.5),
-        backgroundColor: Colors.white,
-        version: QrVersions.auto,
-        size: size,
-      ),
+    return QrImage(
+      data: data,
+      embeddedImage: Image.asset(
+        'assets/imagenes/amacar01.png',
+      ).image,
+      padding: EdgeInsets.all(4.5),
+      backgroundColor: Colors.white,
+      version: QrVersions.auto,
+      size: size,
     );
   }
 }

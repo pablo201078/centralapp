@@ -37,7 +37,7 @@ void cerrarSesionOneSignal() {
 
 void abrirNotificacion(OSNotificationOpenedResult result) {
   //esto campos que estan en additionalData los creo yo desde el server
-  //Map<String, dynamic> datos = result.notification.additionalData;
+ // Map<String, dynamic> datos = result.notification.additionalData;
   Map<String, dynamic> datos = result.notification.payload.additionalData;
   int idTipo = datos['idTipo'];
   int idItem = datos['idItem'];

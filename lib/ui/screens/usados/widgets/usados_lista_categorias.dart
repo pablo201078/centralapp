@@ -81,7 +81,7 @@ class _Boton extends StatelessWidget {
                     ? Theme.of(context).accentColor.withOpacity(0.6)
                     : Colors.white70,
                 fontWeight: FontWeight.normal,
-                fontSize: tipo == usadosModel.tipo ? 12 : 8,
+                fontSize: tipo == usadosModel.tipo ? 15 : 13,
               ),
             ),
           ],

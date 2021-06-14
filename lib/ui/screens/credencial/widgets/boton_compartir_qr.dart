@@ -19,9 +19,8 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
 
   @override
   Widget build(BuildContext context) {
-
-    final UsuarioBloc modelo =
-    ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
+    final UsuarioBloc usuarioBloc =
+        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
@@ -31,7 +30,7 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
           setState(() {
             _cargando = true;
           });
-          await modelo.compartirQr(
+          await usuarioBloc.compartirQr(
             widget.screenshotController,
             context,
           );
@@ -55,8 +54,13 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
                           fontSize: SizeConfig.safeBlockHorizontal * 4.0,
                         ),
                       ),
-                      SizedBox(width: 10,),
-                      Icon(Icons.share, color: Theme.of(context).accentColor,),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.share,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ],
                   )
                 : CircularProgressIndicator(),
