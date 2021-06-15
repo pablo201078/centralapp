@@ -22,7 +22,7 @@ class _BotonLoginState extends State<BotonLogin> {
     }
     return FloatingActionButton.extended(
       elevation: 10.0,
-      tooltip: 'Abre la Cámara para identificarte como Socio',
+      tooltip: '',
       backgroundColor: Theme.of(context).accentColor,
       icon: Icon(MaterialCommunityIcons.qrcode),
       label: Text(

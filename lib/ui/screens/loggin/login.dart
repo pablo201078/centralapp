@@ -22,34 +22,22 @@ class LogginState extends State<Loggin> {
 
     return Platform.isAndroid
         ? Scaffold(
-            bottomNavigationBar: BottomNavyBar /*BubbleBottomBar*/ (
-              // opacity: .2,
+            bottomNavigationBar: BottomNavyBar(
               selectedIndex: _tipoLogin,
               onItemSelected: (value) {
                 setState(() {
                   _tipoLogin = value;
                 });
               },
-              //borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-              //elevation: 8,
               showElevation: true,
               itemCornerRadius: 24,
               curve: Curves.easeInToLinear,
-              // fabLocation: BubbleBottomBarFabLocation.end, //new
-              // hasNotch: true, //new
-              //  hasInk: true, //new, gives a cute ink effect
-              //  inkColor:    Colors.black12, //optional, uses theme color if not specified
               items: <BottomNavyBarItem>[
                 BottomNavyBarItem(
-                  // backgroundColor: Colors.deepPurple,
                   icon: Icon(
                     FontAwesomeIcons.qrcode,
                     color: Theme.of(context).primaryColor,
                   ),
-                  /*  activeIcon: Icon(
-                    FontAwesomeIcons.qrcode,
-                    color: Colors.deepPurple,
-                  ),*/
                   textAlign: TextAlign.center,
                   title: Text("Scanear DNI"),
                 ),
@@ -61,10 +49,6 @@ class LogginState extends State<Loggin> {
                     color: Colors.grey,
                     //size: 35,
                   ),
-                  /*activeIcon: Icon(
-                    Icons.format_align_center,
-                    color: Colors.green,
-                  ),*/
                   title: Text("Con Clave"),
                 )
               ],

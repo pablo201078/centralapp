@@ -7,7 +7,6 @@ import 'package:centralApp/constantes.dart';
 
 import '../../utils.dart';
 
-
 class ArticuloRepository {
   String url_img(int idArticulo, int orden) {
     return 'https://amacar.com.ar/images/cache/product-page/articulo-' +
@@ -20,23 +19,16 @@ class ArticuloRepository {
     var url = Uri.parse(
         '${url_base}articulosV2.php?idTipo=1&idCliente=$idCliente&deviceId=$id');
     var response = await http.get(url);
+    List<Articulo> lista = <Articulo>[];
     if (response.statusCode == 200) {
       // Use the compute function to run parsePhotos in a separate isolate.
       // return compute(parseOfertas, response.body);
-
       var jsonData = json.decode(response.body);
-      List<Articulo> lista = <Articulo>[];
-
       for (var o in jsonData) {
         lista.add(Articulo.fromJson(o));
       }
-
-      return lista;
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Error de conexion');
     }
+    return lista;
   }
 
   Future<bool> postFavorito(
@@ -98,8 +90,8 @@ class ArticuloRepository {
     }
   }
 
-  Future<bool> actualizarCarrito(Articulo articulo, int idCliente,
-      bool enCarrito) async {
+  Future<bool> actualizarCarrito(
+      Articulo articulo, int idCliente, bool enCarrito) async {
     var client = http.Client();
     int timeout = 5;
     try {
@@ -159,7 +151,6 @@ class ArticuloRepository {
       for (var o in jsonData) {
         art = Articulo.fromJson(o);
         lista.add(art);
-
       }
       return lista;
     } else {
@@ -203,8 +194,8 @@ class ArticuloRepository {
   }
 
   Future<List<Articulo>> getDestacados(int idCliente, int idTipo) async {
-    var url =
-        Uri.parse('${url_base}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
+    var url = Uri.parse(
+        '${url_base}articulosV2.php?idTipo=$idTipo&idCliente=$idCliente');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -271,7 +262,8 @@ class ArticuloRepository {
   }
 
   Future<List<Articulo>> getArticulosHistorial(int idCliente) async {
-    var url = Uri.parse('${url_base}articulosV2.php?idTipo=10&idCliente=$idCliente');
+    var url =
+        Uri.parse('${url_base}articulosV2.php?idTipo=10&idCliente=$idCliente');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -292,7 +284,8 @@ class ArticuloRepository {
   }
 
   Future<List<Articulo>> getUsados(int idCliente) async {
-    var url = Uri.parse('${url_base}articulosV2.php?idTipo=11&idCliente=$idCliente');
+    var url =
+        Uri.parse('${url_base}articulosV2.php?idTipo=11&idCliente=$idCliente');
 
     var response = await http.get(url);
 

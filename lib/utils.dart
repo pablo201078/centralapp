@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:io';
@@ -63,11 +63,16 @@ Future<int> getIdCliente() async {
 
 Future<String> getDeviceId() async {
   var deviceInfo = DeviceInfoPlugin();
+
   if (Platform.isAndroid) {
     var androidDeviceInfo = await deviceInfo.androidInfo;
     return androidDeviceInfo.androidId; // unique ID on Android
-  } else
-    return 'ios';
+  }
+  if (Platform.isIOS) {
+    var iosInfo = await deviceInfo.iosInfo;
+    return iosInfo.identifierForVendor;
+  }
+  return '';
 }
 
 Future<String> getAndroidVersion() async {
@@ -107,5 +112,3 @@ String formatearFechaStr(DateTime fecha) {
 
   return '$dia  ${DateFormat('dd').format(fecha)}';
 }
-
-

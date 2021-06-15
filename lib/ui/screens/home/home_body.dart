@@ -31,11 +31,8 @@ class _HomeBodyMain extends State<HomeBody> {
 
   @override
   void initState() {
-    super.initState();
-    if (widget.idCliente != 0) {
-      PedidoBloc pedidoBloc = PedidoBloc();
-      pedidoBloc.comprobarVencimiento(context, widget.idCliente);
-    }
+    PedidoBloc pedidoBloc = PedidoBloc();
+    pedidoBloc.comprobarVencimiento(context, widget.idCliente);
 
     _ofertas = articuloRepository.getOfertas(widget.idCliente);
     _destacadosHogar = articuloRepository.getDestacados(widget.idCliente, 5);
@@ -51,6 +48,8 @@ class _HomeBodyMain extends State<HomeBody> {
       body: '¿Queres Actualizarla ahora?',
       jsonUrl: url_base + 'version.json',
     ).checkVersion();
+
+    super.initState();
   }
 
   @override

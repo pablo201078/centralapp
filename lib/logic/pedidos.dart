@@ -38,12 +38,10 @@ class PedidoBloc extends Model {
   }
 
   void comprobarVencimiento(BuildContext context, int idCliente) async {
+    if (idCliente == 0) return;
     var usuarioRepo = UsuarioRepository();
     Vencimiento vencimiento = await usuarioRepo.checkVencimiento(idCliente);
-    /*
-  * ok = 1 esta entre el 90 y el 100
-  *
-  * */
+    /*  ok = 1 esta entre el 90 y el 100 */
     if (vencimiento.ok == 1) {
       print('vencimiento: ${vencimiento.ok}');
 

@@ -8,7 +8,6 @@ class ArticuloCardDetalles extends StatelessWidget {
   final Articulo articulo;
   ArticuloCardDetalles({Key key, @required this.articulo});
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +18,7 @@ class ArticuloCardDetalles extends StatelessWidget {
         children: [
           Text(articulo.descripcion,
               style: Theme.of(context).textTheme.subtitle2.copyWith(),
-              maxLines: 3),
+              maxLines: 2),
           Visibility(
             visible: articulo.tieneAtributo,
             child: CarritoAtributo(

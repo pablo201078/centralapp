@@ -40,7 +40,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>La Camara se usa para scanear DNI y para tomar una foto de perfil.</string>
+	<string>La camara se usa para tomar una foto de perfil.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app does not access your location.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -10,7 +10,7 @@ import 'package:centralApp/utils.dart';
 class ArticuloAtributos extends StatefulWidget {
   final Articulo articulo;
 
-  ArticuloAtributos({Key key, this.articulo});
+  ArticuloAtributos({this.articulo});
 
   @override
   _ArticuloAtributosState createState() => _ArticuloAtributosState();
