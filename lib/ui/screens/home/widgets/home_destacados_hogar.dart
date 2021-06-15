@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_loading.dart';
 import 'package:centralApp/ui/widgets/elevated_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -198,12 +199,13 @@ class _Card extends StatelessWidget {
               ) {
                 if (loadingProgress == null) return child;
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child:
+                      ArticuloCardImagenLoading(), //CircularProgressIndicator(),
                 );
               },
               fit: BoxFit.fill,
               image: CachedNetworkImageProvider(
-                articuloRepository.url_img( articulo.idArticulo, 0 ),
+                articuloRepository.url_img(articulo.idArticulo, 0),
               ),
             ),
             Padding(
