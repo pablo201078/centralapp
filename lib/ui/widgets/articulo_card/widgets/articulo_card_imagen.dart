@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_loading.dart';
 import 'package:flutter/material.dart';
-import 'package:centralApp/constantes.dart';
 
 class ArticuloCardImagen extends StatelessWidget {
   final Articulo articulo;
@@ -21,7 +21,7 @@ class ArticuloCardImagen extends StatelessWidget {
         ) {
           if (loadingProgress == null) return child;
           return Center(
-            child: CircularProgressIndicator(),
+            child: ArticuloCardImagenLoading(),
           );
         },
         errorBuilder: (
