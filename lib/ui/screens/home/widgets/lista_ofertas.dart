@@ -2,6 +2,7 @@ import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
+import 'package:shimmer/shimmer.dart';
 import 'lista_ofertas_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,8 +35,24 @@ class _Cargando extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: Responsive.isMobile(context) ? 0.40.sw : 0.25.sw,
+      width: double.infinity * 0.8,
       margin: EdgeInsets.all(20.0),
-      child: CircularProgressIndicator(),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey[300],
+        highlightColor: Colors.grey[100],
+        enabled: true,
+        child: Container(
+          width: 50.0,
+          height: 50.0,
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+              shape: BoxShape.rectangle,
+              color: Colors.white),
+        ),
+      ),
     );
   }
 }
@@ -58,9 +75,7 @@ class _Container extends StatelessWidget {
         itemWidth: 0.9.sw,
         itemCount: ofertas.length,
         itemBuilder: (context, i) {
-          return ofertas[i] != null
-              ? ListaOfertasCard(oferta: ofertas[i])
-              : Container();
+          return ListaOfertasCard(oferta: ofertas[i]);
         },
       ),
     );

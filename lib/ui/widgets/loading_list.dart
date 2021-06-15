@@ -14,7 +14,7 @@ class LoadingList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
+        children: [
           Expanded(
             child: Shimmer.fromColors(
               baseColor: Colors.grey[300],
