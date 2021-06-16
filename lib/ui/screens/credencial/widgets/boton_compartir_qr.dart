@@ -28,7 +28,7 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
 
           final UsuarioBloc usuarioBloc =
               ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
-
+        //  usuarioBloc.setQrForShare();
           await usuarioBloc.compartirQr(
             widget.screenshotController,
             context,

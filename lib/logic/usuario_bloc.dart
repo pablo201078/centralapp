@@ -205,12 +205,12 @@ class UsuarioBloc extends Model {
     );
   }
 
-  /*setQrForShare() {
+  setQrForShare() {
     //modifico temporalmente el QR para campartirlo. La app de la cobradora lo puedo leer modificado pero la del supervisor no.
     //esto es para q los qr solo se puedan compartir con las cobradoras
     this.getUser.qrCode = this.getUser.qrCode + '*';
     notifyListeners();
-  }*/
+  }
 
   Future<void> compartirQr(
       ScreenshotController screenshotController, BuildContext context) async {
