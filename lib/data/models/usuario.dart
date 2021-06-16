@@ -19,6 +19,9 @@ class Usuario {
     this.qrCode = value;
   }
 
+
+  get getQr => this.qrCode;
+
   set setQrFecha(value) {
     this.qrFecha = value;
   }

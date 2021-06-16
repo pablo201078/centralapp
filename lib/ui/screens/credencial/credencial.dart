@@ -128,7 +128,7 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _Qr(
-                  data: widget.usuario.getUser.qrCode + '*',
+                  data: widget.usuario.getUser.qrCode,
                   size: SizeConfig.safeBlockVertical * 25,
                   screenshotController: _screenshotController,
                 ),
@@ -158,7 +158,6 @@ class _BodyState extends State<_Body> with WidgetsBindingObserver {
             child: Align(
               alignment: FractionalOffset.bottomCenter,
               child: BotonCompartirQr(
-                usuario: widget.usuario.getUser,
                 screenshotController: _screenshotController,
               ),
             ),
@@ -195,15 +194,18 @@ class _Qr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return QrImage(
-      data: data,
-      embeddedImage: Image.asset(
-        'assets/imagenes/amacar01.png',
-      ).image,
-      padding: EdgeInsets.all(4.5),
-      backgroundColor: Colors.white,
-      version: QrVersions.auto,
-      size: size,
+    return Screenshot(
+      controller: screenshotController,
+      child: QrImage(
+        data: data,
+        embeddedImage: Image.asset(
+          'assets/imagenes/amacar01.png',
+        ).image,
+        padding: EdgeInsets.all(4.5),
+        backgroundColor: Colors.white,
+        version: QrVersions.auto,
+        size: size,
+      ),
     );
   }
 }

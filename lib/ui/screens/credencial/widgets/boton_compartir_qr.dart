@@ -1,14 +1,12 @@
-import 'package:centralApp/data/models/usuario.dart';
 import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/utils.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class BotonCompartirQr extends StatefulWidget {
-  final Usuario usuario;
   final screenshotController;
 
-  BotonCompartirQr({this.usuario, this.screenshotController});
+  BotonCompartirQr({@required this.screenshotController});
 
   @override
   _BotonCompartirQrState createState() => _BotonCompartirQrState();
@@ -19,9 +17,6 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
 
   @override
   Widget build(BuildContext context) {
-    final UsuarioBloc usuarioBloc =
-        ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: MaterialButton(
@@ -30,10 +25,15 @@ class _BotonCompartirQrState extends State<BotonCompartirQr> {
           setState(() {
             _cargando = true;
           });
+
+          final UsuarioBloc usuarioBloc =
+              ScopedModel.of<UsuarioBloc>(context, rebuildOnChange: false);
+
           await usuarioBloc.compartirQr(
             widget.screenshotController,
             context,
           );
+
           setState(() {
             _cargando = false;
           });

@@ -18,7 +18,6 @@ import 'package:centralApp/one_signal.dart';
 import 'package:centralApp/utils.dart';
 import 'carrito.dart';
 
-
 class UsuarioBloc extends Model {
   UsuarioBloc() {
     _init();
@@ -206,9 +205,17 @@ class UsuarioBloc extends Model {
     );
   }
 
-  Future<void> compartirQr(ScreenshotController screenshotController,
-      BuildContext context) async {
+  /*setQrForShare() {
+    //modifico temporalmente el QR para campartirlo. La app de la cobradora lo puedo leer modificado pero la del supervisor no.
+    //esto es para q los qr solo se puedan compartir con las cobradoras
+    this.getUser.qrCode = this.getUser.qrCode + '*';
+    notifyListeners();
+  }*/
+
+  Future<void> compartirQr(
+      ScreenshotController screenshotController, BuildContext context) async {
     var usuarioRepo = UsuarioRepository();
+
     bool rta = await usuarioRepo.postCompartirQr(this.getUser.idCliente);
 
     if (!rta) {
@@ -272,7 +279,8 @@ class UsuarioBloc extends Model {
       textCancel: 'Por ahora no',
       onConfirm: () async {
         var usuarioRepo = UsuarioRepository();
-        bool rta = await usuarioRepo.postContactarAsesor(this.getUser.idCliente);
+        bool rta =
+            await usuarioRepo.postContactarAsesor(this.getUser.idCliente);
         if (rta) {
           Navigator.of(context).pop();
           Navigator.pushNamed(context, '/pedidos',

@@ -12,8 +12,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
       @required this.busquedas})
       : super(
           searchFieldLabel: hintText,
-          searchFieldStyle:
-              TextStyle(fontSize: SizeConfig.safeBlockHorizontal * 4.0),
+          searchFieldStyle: TextStyle(fontSize: 17, color: Colors.blueAccent),
           textInputAction: TextInputAction.search,
         );
 

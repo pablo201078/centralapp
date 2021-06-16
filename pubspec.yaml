@@ -45,7 +45,6 @@ dependencies:
   shimmer: ^2.0.0 #shimmer: ^1.1.1
   flutter_svg: ^0.22.0
   timeline_tile: 2.0.0 #las etapas del pedido
-  #device_info: ^2.0.2 # para sacar el ID de android
   device_info_plus: ^1.0.1
   get: ^4.1.4
   flutter_sms: ^2.3.1

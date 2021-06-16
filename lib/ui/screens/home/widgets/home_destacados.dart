@@ -251,15 +251,6 @@ class _Encabezado extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15),
-      child: Text(
-        titulo,
-        maxLines: 1,
-        textAlign: TextAlign.left,
-        style: Theme.of(context)
-            .textTheme
-            .subtitle1
-            .copyWith(fontWeight: FontWeight.w600),
-      ),
       alignment: Alignment.centerLeft,
       height: 0.06.sh,
       width: double.infinity,
@@ -271,6 +262,14 @@ class _Encabezado extends StatelessWidget {
             style: BorderStyle.solid,
           ),
         ),
+      ),
+      child: Text(
+        titulo,
+        maxLines: 1,
+        textAlign: TextAlign.left,
+        style: Theme.of(context).textTheme.subtitle1.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
       ),
     );
   }
