@@ -1,7 +1,7 @@
+import 'dart:async';
 import 'package:centralApp/logic/usuario_bloc.dart';
 import 'package:centralApp/ui/widgets/app_bar.dart';
 import 'package:centralApp/ui/widgets/boton_buscar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:centralApp/responsive.dart';
@@ -13,10 +13,12 @@ import 'package:centralApp/ui/widgets/boton_carrito.dart';
 
 class Home extends StatelessWidget {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
+    @override
     Future<bool> _onWillPop() {
       if (_scaffoldKey.currentState.isDrawerOpen)
         _scaffoldKey.currentState.openEndDrawer();
@@ -42,7 +44,7 @@ class Home extends StatelessWidget {
           BotonCarrito(),
         ],
       ),
-      drawer: /*Responsive.isMobile(context) ?*/ MenuLateral() /* : null*/,
+      drawer: MenuLateral(),
       body: WillPopScope(
         onWillPop: _onWillPop,
         child: Responsive(

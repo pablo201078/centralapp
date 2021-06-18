@@ -27,7 +27,7 @@ class _BotonLoginState extends State<BotonLogin> {
       icon: Icon(MaterialCommunityIcons.qrcode),
       label: Text(
         'Iniciar Sesión',
-        style: Theme.of(context).textTheme.headline6,
+        style: Theme.of(context).textTheme.headline6.copyWith(color: Colors.white),
       ),
       onPressed: () {
         Navigator.pushNamed(context, '/loggin');

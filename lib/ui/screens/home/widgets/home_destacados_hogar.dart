@@ -107,7 +107,7 @@ class _CajaDestacados extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedCard(
       shadowColor: Theme.of(context).accentColor,
-      height: 0.90.sh, //700,
+      height: 0.90.sh,
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0.0),
       child: Column(
         children: [
@@ -252,13 +252,17 @@ class _Encabezado extends StatelessWidget {
       height: 0.06.sh,
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-              width: 0.4,
-              color: Theme.of(context).accentColor,
-              style: BorderStyle.solid),
-        ),
-      ),
+          /* color: Theme.of(context).accentColor.withOpacity(0.95),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(19.0),
+          topRight: Radius.circular(19.0),
+        ),*/
+          border: Border(
+        bottom: BorderSide(
+            width: 0.4,
+            color: Theme.of(context).accentColor,
+            style: BorderStyle.solid),
+      )),
     );
   }
 }

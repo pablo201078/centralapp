@@ -1,24 +1,10 @@
 import 'package:centralApp/data/repositories/articulos.dart';
-import 'package:centralApp/ui/screens/articulo_detalle/widgets/articulo_detalle_galeria.dart';
-import 'package:centralApp/ui/screens/carrito/carrito.dart';
-import 'package:centralApp/ui/screens/destacados_hogar/destacados_hogar.dart';
-import 'package:centralApp/ui/screens/destacados_comercial/destacados_comercial.dart';
-import 'package:centralApp/ui/screens/deuda_vencida/deuda_vencida.dart';
-import 'package:centralApp/ui/screens/equipamiento_comercial/equipamiento_comercial.dart';
-import 'package:centralApp/ui/screens/favoritos/favoritos.dart';
-import 'package:centralApp/ui/screens/historial/historial.dart';
-import 'package:centralApp/ui/screens/hogar/hogar.dart';
-import 'package:centralApp/ui/screens/loggin/login.dart';
-import 'package:centralApp/ui/screens/mis_compras/mis_compras.dart';
-import 'package:centralApp/ui/screens/mis_compras_detalle/mis_compras_detalle.dart';
-import 'package:centralApp/ui/screens/pedido_detalle/pedido_detalle.dart';
-import 'package:centralApp/ui/screens/pedidos/pedidos.dart';
-import 'package:centralApp/ui/screens/search_result/search_result.dart';
-import 'package:centralApp/ui/screens/ticket/ticket.dart';
-import 'package:centralApp/ui/screens/usados/usados.dart';
-import 'package:centralApp/ui/screens/renovacion_efectivo/renovacion_efectivo.dart';
+import 'package:centralApp/routes.dart';
 import 'package:centralApp/theme.dart';
+import 'package:centralApp/ui/screens/articulo_detalle/articulo_detalle.dart';
+import 'package:centralApp/ui/screens/home/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'data/repositories//pedidos.dart';
 import 'data/repositories/usuario.dart';
@@ -27,14 +13,12 @@ import 'utils.dart';
 import 'one_signal.dart';
 import 'logic/carrito.dart';
 import 'logic/pedidos.dart';
-import 'ui/screens/articulo_detalle/articulo_detalle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'logic/usuario_bloc.dart';
-import 'ui/screens/credencial/credencial.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'ui/screens/home/home.dart';
+import 'package:app_links/app_links.dart';
 
 void inicializarApp(UsuarioBloc loggedModel, CarritoModel carritoModel,
     PedidoBloc pedidosModel) async {
@@ -54,7 +38,8 @@ void inicializarApp(UsuarioBloc loggedModel, CarritoModel carritoModel,
       String qr = await usuarioRepo.getQr(loggedModel, idCliente);
       if ((qr ?? '') != '') {
         loggedModel.favoritos = await articuloRepo.getFavoritos(idCliente);
-        loggedModel.deudaVencida = await comprasRepo.getCreditosDeudaContador(idCliente);
+        loggedModel.deudaVencida =
+            await comprasRepo.getCreditosDeudaContador(idCliente);
         carritoModel.articulos = await articuloRepo.getCarrito(idCliente);
         pedidosModel.pedidos = await getPedidos(idCliente);
       }
@@ -90,7 +75,7 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   final UsuarioBloc loggedModel;
   final CarritoModel carritoModel;
@@ -98,42 +83,76 @@ class MyApp extends StatelessWidget {
   const MyApp({Key key, this.loggedModel, this.carritoModel}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  _MyAppState createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  AppLinks _appLinks;
+
+  @override
+  void initState() {
+    initDeepLinks();
+    super.initState();
+  }
+
+  void initDeepLinks() async {
+    _appLinks = AppLinks(
+      onAppLink: (Uri uri, String stringUri) {
+        print('onAppLink: $stringUri');
+        openAppLink(uri);
+      },
+    );
+
+    final appLink = await _appLinks.getInitialAppLink();
+    if (appLink != null && appLink.hasFragment && appLink.fragment != '/') {
+      print('getInitialAppLink: ${appLink.toString()}');
+      openAppLink(appLink);
+    }
+  }
+
+  void openAppLink(Uri uri) {
+    _navigatorKey.currentState?.pushNamed(uri.fragment);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(360, 690),
       builder: () => ScopedModel<UsuarioBloc>(
-        model: loggedModel,
+        model: widget.loggedModel,
         child: ScopedModel<CarritoModel>(
-          model: carritoModel,
+          model: widget.carritoModel,
           child: OverlaySupport(
             child: GetMaterialApp(
               title: 'Central App',
+            /*  onGenerateRoute: (RouteSettings settings) {
+                Widget routeWidget = Home();
+
+                final routeName = settings.name;
+                if (routeName != null) {
+                  print('acaaaaaaaaaa: ' + routeName);
+                  if (routeName.startsWith('/articulos/')) {
+                    // Navigated to /book/:id
+                    routeWidget = ArticuloDetalle(idArticulo: 54
+                     *//* routeName.substring(
+                        routeName.indexOf('/book/'),
+                      ),*//*
+                    );
+                  } else if (routeName == '/book') {
+                    // Navigated to /book without other parameters
+                    routeWidget = ArticuloDetalle(idArticulo: 54,);
+                  }
+                }
+
+                return MaterialPageRoute(
+                  builder: (context) => routeWidget,
+                  settings: settings,
+                  fullscreenDialog: true,
+                );
+              },*/
               initialRoute: '/',
-              routes: {
-                '/': (context) => Home(),
-                '/loggin': (context) => Loggin(),
-                '/credencial': (context) => Credencial(),
-                '/carrito': (context) => Carrito(),
-                '/search_result': (context) => SearchResult(),
-                '/favoritos': (context) => Favoritos(),
-                '/historial': (context) => Historial(),
-                '/pedidos': (context) => Pedidos(),
-                '/pedido_detalle': (context) => PedidoDetalle(),
-                '/hogar': (context) => Hogar(),
-                '/equipamiento_comercial': (context) => EquipamientoComercial(),
-                '/usados': (context) => Usados(),
-                '/deuda_vencida': (context) => DeudaVencida(),
-                '/mis_compras': (context) => MisCompras(),
-                '/mis_compras_detalle': (context) => MisComprasDetalle(),
-                '/destacadosHogar': (context) => DestacadosHogar(),
-                '/destacadosComercial': (context) => DestacadosComercial(),
-                '/articulo_detalle': (context) => ArticuloDetalle(),
-                '/renovacion_efectivo': (context) => RenovacionEfectivo(),
-                '/articulo_detalle_galeria': (context) =>
-                    ArticuloDetalleGaleria(),
-                '/ticket': (context) => Ticket(),
-              },
+              routes: getRoutes(),
               debugShowCheckedModeBanner: false,
               theme: theme(),
             ),

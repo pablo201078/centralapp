@@ -267,9 +267,7 @@ class _Encabezado extends StatelessWidget {
         titulo,
         maxLines: 1,
         textAlign: TextAlign.left,
-        style: Theme.of(context).textTheme.subtitle1.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+        style: Theme.of(context).textTheme.subtitle1,
       ),
     );
   }
