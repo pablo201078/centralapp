@@ -13,11 +13,15 @@ class PedidoDetalle extends StatelessWidget {
   Pedido pedido;
   int idPedido;
 
+  PedidoDetalle({this.pedido});
+
   @override
   Widget build(BuildContext context) {
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-    this.pedido = arguments['pedido'];
-    this.idPedido = arguments['idPedido'];
+    if ( arguments != null ){
+      this.pedido = arguments['pedido'];
+      this.idPedido = arguments['idPedido'];
+    }
 
     //si no recibo el pedido, entonces recibo el id y tengo q descargarlo
     return this.pedido != null

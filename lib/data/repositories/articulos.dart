@@ -24,9 +24,10 @@ class ArticuloRepository {
       // Use the compute function to run parsePhotos in a separate isolate.
       // return compute(parseOfertas, response.body);
       var jsonData = json.decode(response.body);
-      for (var o in jsonData) {
-        lista.add(Articulo.fromJson(o));
-      }
+      for (var o in jsonData)
+        lista.add(
+          Articulo.fromJson(o),
+        );
     }
     return lista;
   }
@@ -70,12 +71,9 @@ class ArticuloRepository {
 
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
-        Articulo art;
         for (var o in jsonData) {
-          art = Articulo.fromJson(o);
-          lista.add(art);
+          lista.add(Articulo.fromJson(o));
         }
-
         return lista;
       }
     } on TimeoutException catch (e) {
@@ -147,10 +145,11 @@ class ArticuloRepository {
     if (response.statusCode == 200) {
       List<Articulo> lista = <Articulo>[];
       var jsonData = json.decode(response.body);
-      Articulo art;
+
       for (var o in jsonData) {
-        art = Articulo.fromJson(o);
-        lista.add(art);
+        lista.add(
+          Articulo.fromJson(o),
+        );
       }
       return lista;
     } else {
@@ -172,10 +171,11 @@ class ArticuloRepository {
 
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
-        Articulo art;
+
         for (var o in jsonData) {
-          art = Articulo.fromJson(o);
-          lista.add(art);
+          lista.add(
+            Articulo.fromJson(o),
+          );
         }
 
         return lista;

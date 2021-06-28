@@ -1,4 +1,6 @@
+import 'package:animations/animations.dart';
 import 'package:centralApp/data/models/pedido.dart';
+import 'package:centralApp/ui/screens/pedido_detalle/pedido_detalle.dart';
 import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_id.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/utils.dart';
@@ -8,7 +10,17 @@ class PedidoCard extends StatelessWidget {
   PedidoCard({this.pedido});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return OpenContainer(
+      transitionDuration: const Duration(milliseconds: 500),
+      closedBuilder: (BuildContext c, VoidCallback action) => _Container(
+        pedido: pedido,
+      ),
+      openBuilder: (BuildContext c, VoidCallback action) =>
+          PedidoDetalle(pedido: pedido),
+      tappable: pedido.idTipo == 2,
+    );
+
+    /*return GestureDetector(
       onTap: pedido.idTipo == 2
           ? () {
               Navigator.pushNamed(context, '/pedido_detalle',
@@ -25,6 +37,28 @@ class PedidoCard extends StatelessWidget {
                 color: Theme.of(context).accentColor,
                 style: BorderStyle.solid),
           ),
+        ),
+      ),
+    );*/
+  }
+}
+
+class _Container extends StatelessWidget {
+  final Pedido pedido;
+
+  _Container({this.pedido});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: SizeConfig.blockSizeVertical * 13,
+      child: _ContenidoCard(pedido: pedido),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+              width: 0.5,
+              color: Theme.of(context).accentColor,
+              style: BorderStyle.solid),
         ),
       ),
     );
@@ -119,7 +153,7 @@ class _CardDetalles extends StatelessWidget {
                 descripcion: pedido.descripcion,
               ),
         Visibility(
-          visible: pedido.idTipo == 1 ,
+          visible: pedido.idTipo == 1,
           child: SizedBox(
             height: 7.0,
           ),

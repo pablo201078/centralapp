@@ -18,7 +18,6 @@ import 'package:flutter/services.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'logic/usuario_bloc.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:app_links/app_links.dart';
 
 void inicializarApp(UsuarioBloc loggedModel, CarritoModel carritoModel,
     PedidoBloc pedidosModel) async {
@@ -75,7 +74,7 @@ void main() async {
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   final UsuarioBloc loggedModel;
   final CarritoModel carritoModel;
@@ -83,74 +82,16 @@ class MyApp extends StatefulWidget {
   const MyApp({Key key, this.loggedModel, this.carritoModel}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-  AppLinks _appLinks;
-
-  @override
-  void initState() {
-    initDeepLinks();
-    super.initState();
-  }
-
-  void initDeepLinks() async {
-    _appLinks = AppLinks(
-      onAppLink: (Uri uri, String stringUri) {
-        print('onAppLink: $stringUri');
-        openAppLink(uri);
-      },
-    );
-
-    final appLink = await _appLinks.getInitialAppLink();
-    if (appLink != null && appLink.hasFragment && appLink.fragment != '/') {
-      print('getInitialAppLink: ${appLink.toString()}');
-      openAppLink(appLink);
-    }
-  }
-
-  void openAppLink(Uri uri) {
-    _navigatorKey.currentState?.pushNamed(uri.fragment);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(360, 690),
       builder: () => ScopedModel<UsuarioBloc>(
-        model: widget.loggedModel,
+        model: loggedModel,
         child: ScopedModel<CarritoModel>(
-          model: widget.carritoModel,
+          model: carritoModel,
           child: OverlaySupport(
             child: GetMaterialApp(
               title: 'Central App',
-            /*  onGenerateRoute: (RouteSettings settings) {
-                Widget routeWidget = Home();
-
-                final routeName = settings.name;
-                if (routeName != null) {
-                  print('acaaaaaaaaaa: ' + routeName);
-                  if (routeName.startsWith('/articulos/')) {
-                    // Navigated to /book/:id
-                    routeWidget = ArticuloDetalle(idArticulo: 54
-                     *//* routeName.substring(
-                        routeName.indexOf('/book/'),
-                      ),*//*
-                    );
-                  } else if (routeName == '/book') {
-                    // Navigated to /book without other parameters
-                    routeWidget = ArticuloDetalle(idArticulo: 54,);
-                  }
-                }
-
-                return MaterialPageRoute(
-                  builder: (context) => routeWidget,
-                  settings: settings,
-                  fullscreenDialog: true,
-                );
-              },*/
               initialRoute: '/',
               routes: getRoutes(),
               debugShowCheckedModeBanner: false,
