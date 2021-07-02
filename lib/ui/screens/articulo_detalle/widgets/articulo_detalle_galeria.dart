@@ -79,7 +79,6 @@ class _GaleriaState extends State<Galeria> {
                 onPageChanged: (index) {
                   setState(() {
                     widget.actual = index;
-                    print(index.toString());
                   });
                 },
                 loadingBuilder: (context, event) => Center(

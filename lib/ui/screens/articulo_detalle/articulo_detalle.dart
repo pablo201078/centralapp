@@ -26,9 +26,9 @@ class ArticuloDetalle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
     this.articulo = arguments['articulo'];
-     this.idArticulo = arguments['idArticulo'];
+    this.idArticulo = arguments['idArticulo'];
 
     //si no recibo el articulo, entonces recibo el id y tengo q descargarlo
     return this.articulo != null
@@ -53,9 +53,10 @@ class _Futuro extends StatelessWidget {
 
     return FutureBuilder<Articulo>(
       future: articuloRepository.getArticulo(
-          loggedModel.isLogged ? loggedModel.getUser.idCliente: 0, 9, this.idArticulo),
+          loggedModel.isLogged ? loggedModel.getUser.idCliente : 0,
+          9,
+          this.idArticulo),
       builder: (context, snapshot) {
-        if (snapshot.hasError) print(snapshot.error);
         return snapshot.hasData
             ? _Scaffold(
                 articulo: snapshot.data,

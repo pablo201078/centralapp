@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:centralApp/data/repositories/articulos.dart';
 import 'package:centralApp/data/models/articulo.dart';
 import 'package:centralApp/ui/screens/articulo_detalle/widgets/numeracion_imagen.dart';
+import 'package:centralApp/ui/widgets/articulo_card/widgets/articulo_card_imagen_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:centralApp/ui/widgets/articulo_banner_oferta.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
@@ -46,7 +47,6 @@ class _ArticuloImagenesState extends State<ArticuloImagenes> {
               });
             },
             itemBuilder: (context, i) {
-              print('${widget.articulo.urlImagenBase}$i.png');
               return GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, '/articulo_detalle_galeria',
@@ -126,7 +126,7 @@ class _Imagen extends StatelessWidget {
       imageUrl: this.url,
       imageBuilder:
           _buildContainer, // el container es el q muestra la imagen, lo construyo aca adentro para usar cachedImages
-      placeholder: (context, url) => CircularProgressIndicator(),
+      placeholder: (context, url) => ArticuloCardImagenLoading(),
       errorWidget: (context, url, error) => Icon(Icons.error, size: 30),
     );
   }

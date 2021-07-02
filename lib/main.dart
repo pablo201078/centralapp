@@ -96,6 +96,7 @@ class MyApp extends StatelessWidget {
               routes: getRoutes(),
               debugShowCheckedModeBanner: false,
               theme: theme(),
+            //  darkTheme: darkThemeData(context),
             ),
           ),
         ),

@@ -74,9 +74,7 @@ class _Container extends StatelessWidget {
         autoplayDisableOnInteraction: true,
         itemWidth: 0.9.sw,
         itemCount: ofertas.length,
-        itemBuilder: (context, i) {
-          return ListaOfertasCard(oferta: ofertas[i]);
-        },
+        itemBuilder: (context, i) =>ListaOfertasCard(oferta: ofertas[i]),
       ),
     );
   }

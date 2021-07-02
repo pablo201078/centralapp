@@ -110,6 +110,7 @@ class Articulo {
     for (var o in json.decode(jsonData['atributos'])) {
       atributo = Atributo(
           idAtributo: int.parse(o['idAtributo']), atributo: o['atributo']);
+      print(atributo.atributo);
       listaAtributos.add(atributo);
     }
     atributo = Atributo(idAtributo: 0, atributo: 'Elegi Uno');

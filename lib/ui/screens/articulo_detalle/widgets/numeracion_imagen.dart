@@ -11,7 +11,6 @@ class NumeracionImagen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Positioned(
       top: this.top,
       left: this.left,
